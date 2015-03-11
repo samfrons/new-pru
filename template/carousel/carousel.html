@@ -1,22 +1,4 @@
-<div>
-    <ul class="nav nav-tabs">
-        <li ng-class="{active: isActiveIndex(0)}"><a href="#">about you</a></li>
-        <li ng-class="{active: isActiveIndex(1)}"><a href="#">your retirement</a></li>
-        <li ng-class="{active: isActiveIndex(2)}"><a href="#">your contribution</a></li>
-        <li ng-class="{active: isActiveIndex(3)}"><a href="#">results</a></li>
-        <li ng-class="{active: isActiveIndex(4)}"><a href="#">next steps</a></li>
-    </ul>
 <div class="carousel">
-    <!--<ol class="carousel-indicators" ng-show="slides.length > 1">
-        <li ng-repeat="slide in slides track by $index" ng-class="{active: isActive(slide)}" ng-click="select(slide)"></li>
-    </ol>-->
     <div class="carousel-inner" ng-transclude></div>
-    <!--<a class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1"><span class="glyphicon glyphicon-chevron-left"></span></a>
-    <a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span class="glyphicon glyphicon-chevron-right"></span></a>-->
-</div>
-<div class="btn-group">
-	<button type="button" class="btn btn-default" ng-click="prev()">prev</button>
-	<button type="button" class="btn btn-default" ng-click="next()">next</button>
-</div>
 </div>
 

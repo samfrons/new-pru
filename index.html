@@ -18,22 +18,28 @@
 
 
 <div class="main">
+	<ul class="nav nav-tabs">
+		<li ng-class="{active: main.currentIndex === 0}"><a href="#">about you</a></li>
+		<li ng-class="{active: main.currentIndex === 1}"><a href="#">your retirement</a></li>
+		<li ng-class="{active: main.currentIndex === 2}"><a href="#">your contribution</a></li>
+		<li ng-class="{active: main.currentIndex === 3}"><a href="#">results</a></li>
+		<li ng-class="{active: main.currentIndex === 4}"><a href="#">next steps</a></li>
+	</ul>
+	<carousel-spec current-index="main.currentIndex">
 
-	<carousel interval="0">
 
-
-	  <slide class="slide">
+	  <slide-spec class="slide">
 	    <div class="container">
 			<h3>Retirement</h3>
 		    <h1>REALITY CHECK</h1>
 		    <h5>Are you being too optimistic about your retirment plans?</h5>
 		    <button class="btn btn-default">Find out</button>
 		</div>
-	  </slide>
+	  </slide-spec>
 
 
 
-	  <slide class="slide">
+	  <slide-spec class="slide">
 	    <div class="container">
 	    	<div class="content inner">
 			<div class="col-sm-4">
@@ -54,11 +60,11 @@
 		    <p class="note">This information will only be used for your calculation. It won't be shared with anyone.</p>
 			</div>
 		</div>
-	  </slide>
+	  </slide-spec>
 
 
 
-  	  <slide class="slide">
+  	  <slide-spec class="slide">
 	    <div class="container">
 			<div class="content inner row">
 			<div class="col-sm-6">
@@ -74,12 +80,12 @@
 			</div>
 
 		</div>
-	  </slide>
+	  </slide-spec>
 
 
 
 
-	  <slide class="slide">
+	  <slide-spec class="slide">
 	    <div class="container">
 			<div class="content inner row">
 			<h4 class="labels">How much are you currently contributing to your workplace retirement plan?</h4>
@@ -106,16 +112,20 @@
 			</div>
 		</div>
 		</div>
-	  </slide>
+	  </slide-spec>
 
 
 
-	  <slide class="slide">
+	  <slide-spec class="slide">
 	    <div class="container">
 			<I>this are the results</I>
 		</div>
-	  </slide>
-	</carousel>
+	  </slide-spec>
+	</carousel-spec>
+	<div class="btn-group">
+		<button type="button" class="btn btn-default" ng-click="main.prev()">prev</button>
+		<button type="button" class="btn btn-default" ng-click="main.next()">next</button>
+	</div>
 </div>
 
 </div><!-- end container -->
