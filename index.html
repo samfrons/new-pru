@@ -46,6 +46,7 @@
 	    	<div class="content inner">
 			<div class="col-sm-4">
 			<h4 class="labels">How old are you?</h4>
+<<<<<<< HEAD
 			<input type="text">
 
 
@@ -53,16 +54,19 @@
 			<label class="upit-info-input-age-unit upit-info-input-unit" for="upit-info-input-age">years old</label>
 
 			-->
+=======
+			<input type="text" ng-model="main.user.age">
+>>>>>>> f12850b85f8dbb025012868c50f66a82b71a6733
 			</div>
 
 			<div class="col-sm-4">
 		    <h4 class="labels">What is your annual salary?</h4>
-		    <input type="text">
+		    <input type="text" ng-model="main.user.annualSalary">
 		    </div>
 
 		    <div class="col-sm-4">
 		    <h4 class="labels">How much do you currently have saved for retirement?</h4>
-		    <input type="text">
+		    <input type="text" ng-model="main.user.savedForRetirement">
 		    </div>
 
 		    <p class="note">This information will only be used for your calculation. It won't be shared with anyone.</p>
@@ -175,7 +179,7 @@
 	</carousel-spec>
 	<div class="btn-group" ng-if="main.currentIndex > 0 && !main.loading && main.currentIndex < 5">
 		<button type="button" class="btn btn-default" ng-click="main.prev()">Back</button>
-		<button type="button" class="btn btn-default" ng-click="main.next()">
+		<button type="button" class="btn btn-default" ng-disabled="main.disabled()" ng-click="main.next()">
 			<span ng-if="main.currentIndex < 3">Next</span>
 			<span ng-if="main.currentIndex === 3">Calculate</span>
 			<span ng-if="main.currentIndex === 4">Next steps</span>
