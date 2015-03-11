@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="js/angular.js"></script>
+    <script src="js/ui-bootstrap-0.12.1.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+<body>
+<div class="optimismbias-container" ng-app="dragon" ng-controller="MainController as main">
+
+
+<div class="main">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#">about you</a></li>
+		<li><a href="#">your retirement</a></li>
+		<li><a href="#">your contribution</a></li>
+		<li><a href="#">results</a></li>
+		<li><a href="#">next steps</a></li>
+	</ul>
+	<carousel interval="0">
+
+
+	  <slide class="slide">
+	    <div class="container">
+			<h3>Retirement</h3>
+		    <h1>REALITY CHECK</h1>
+		    <h5>Are you being too optimistic about your retirment plans?</h5>
+		    <button class="btn btn-default">Find out</button>
+		</div>
+	  </slide>
+
+
+
+	  <slide class="slide">
+	    <div class="container">
+	    	<div class="content inner">
+			<div class="col-sm-4">
+			<h4 class="labels">How old are you?</h4>
+			<input type="text">
+			</div>
+
+			<div class="col-sm-4">
+		    <h4 class="labels">What is your annual salary?</h4>
+		    <input type="text">
+		    </div>
+
+		    <div class="col-sm-4">
+		    <h4 class="labels">How much do you currently have saved for retirement?</h4>
+		    <input type="text">
+		    </div>
+
+		    <p class="note">This information will only be used for your calculation. It won't be shared with anyone.</p>
+			</div>
+		</div>
+	  </slide>
+
+
+
+  	  <slide class="slide">
+	    <div class="container">
+			<div class="content inner row">
+			<div class="col-sm-6">
+				<h4 class="labels">How old do you think you'll be when you retire?</h4>
+				<input type="text">
+			</div>
+
+			<div class="col-sm-6">
+		   		<h4 class="labels">How many years do you think your retirement will last?</h4>
+		   		<input type="text">
+		   	</div>
+
+			</div>
+
+		</div>
+	  </slide>
+
+
+
+
+	  <slide class="slide">
+	    <div class="container">
+			<div class="content inner row">
+			<h4 class="labels">How much are you currently contributing to your workplace retirement plan?</h4>
+
+			<div class="col-sm-4">
+				<input type="radio">
+
+				<div class="row controls">
+					<button class="btn btn-default">less</button>
+					<h4 class="labels">1%</h4> <!-- that goes up or down when you click arrows -->
+					<button class="btn btn-default">more</button>
+				</div>
+
+			</div>
+
+			<div class="col-sm-4">
+				<input type="radio">
+				<h4 class="labels">I don't know. I just did auto-enrollment.</h4>
+			</div>
+
+			<div class="col-sm-4">
+				<input type="radio">
+				<h4 class="labels">Nothing. I'll just collect my Social Security</h4>
+			</div>
+		</div>
+		</div>
+	  </slide>
+
+
+
+	  <slide class="slide">
+	    <div class="container">
+			<I>this are the results</I>
+		</div>
+	  </slide>
+	</carousel>
+</div>
+
+</div><!-- end container -->
+</body>
+</html>
+

@@ -1,0 +1,60 @@
+body {
+margin: 10px;
+}
+.container {
+background: rgb(236,236,236);
+padding: 1em;
+}
+
+.container.intro {
+text-align: center;
+}
+
+.slide {
+	height: 500px;
+}
+
+.main {
+	height: 500px;
+}
+
+nav.tabs ul li {
+display: inline-block;
+list-style-type: none;
+text-transform: uppercase;
+font-weight: bold;
+margin: 0 1em;
+
+}
+
+.content.inner {
+background: white;
+padding: 1em;
+margin: 0 auto;
+}
+
+
+p.note {
+font-style: italic;
+text-align: center;
+}
+
+input {
+background: rgb(237,249,252);
+border-radius: 5px;
+padding: 1em;
+border-style: none;
+box-shadow: inset 0px 5px 14px rgba(0,0,0,.2);
+
+}
+
+h4.labels {
+display: block;
+font-size: 1.1em;
+
+}
+
+.row.controls > * {
+display: inline-block;
+}
+
