@@ -510,7 +510,9 @@ angular.module('ui.bootstrap.carousel', ['ui.bootstrap.transition'])
       return self.select(slides[newIndex], 'prev');
     }
   };
-
+  $scope.isActiveIndex = function(slideIndex) {
+    return currentIndex === slideIndex;
+  };
   $scope.isActive = function(slide) {
      return self.currentSlide === slide;
   };

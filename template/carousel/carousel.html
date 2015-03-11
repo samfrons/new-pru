@@ -1,4 +1,11 @@
 <div>
+    <ul class="nav nav-tabs">
+        <li ng-class="{active: isActiveIndex(0)}"><a href="#">about you</a></li>
+        <li ng-class="{active: isActiveIndex(1)}"><a href="#">your retirement</a></li>
+        <li ng-class="{active: isActiveIndex(2)}"><a href="#">your contribution</a></li>
+        <li ng-class="{active: isActiveIndex(3)}"><a href="#">results</a></li>
+        <li ng-class="{active: isActiveIndex(4)}"><a href="#">next steps</a></li>
+    </ul>
 <div class="carousel">
     <!--<ol class="carousel-indicators" ng-show="slides.length > 1">
         <li ng-repeat="slide in slides track by $index" ng-class="{active: isActive(slide)}" ng-click="select(slide)"></li>
