@@ -33,7 +33,7 @@
 			<h3>Retirement</h3>
 		    <h1>REALITY CHECK</h1>
 		    <h5>Are you being too optimistic about your retirment plans?</h5>
-		    <button class="btn btn-default blue">Find out</button>
+		    <button class="btn btn-default" ng-click="main.next()">Find out</button>
 		</div>
 	  </slide-spec>
 
@@ -136,14 +136,24 @@
 
 
 	  <slide-spec class="slide">
-	    <div class="container">
+		<div class="container">
 			<I>this are the results</I>
 		</div>
 	  </slide-spec>
+
+	  <slide-spec class="slide">
+		<div class="container">
+			<I>MAKE A PLAN , GOT A KITKAT</I>
+		</div>
+	  </slide-spec>
 	</carousel-spec>
-	<div class="btn-group">
-		<button type="button" class="btn btn-default" ng-click="main.prev()">prev</button>
-		<button type="button" class="btn btn-default" ng-click="main.next()">next</button>
+	<div class="btn-group" ng-if="main.currentIndex > 0 && !main.loading && main.currentIndex < 5">
+		<button type="button" class="btn btn-default" ng-click="main.prev()">Back</button>
+		<button type="button" class="btn btn-default" ng-click="main.next()">
+			<span ng-if="main.currentIndex < 3">Next</span>
+			<span ng-if="main.currentIndex === 3">Calculate</span>
+			<span ng-if="main.currentIndex === 4">Next steps</span>
+		</button>
 	</div>
 </div>
 
