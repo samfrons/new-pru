@@ -16,6 +16,34 @@ angular.module('dragon', ['ui.bootstrap'])
     this.prev = function(){
       this.currentIndex--;
     };
+
+    this.ageValid = function(){
+      if(angular.isUndefined(this.user.age) || this.user.age === null || this.user.age === ''){
+        return false;
+      }
+      if(this.user.age == parseInt(this.user.age,10)){
+        return true;
+      }
+      return false;
+    };
+
+    this.annualSalaryValid = function(){
+      if(angular.isUndefined(this.user.annualSalary) || this.user.annualSalary === null || this.user.annualSalary === ''){
+        return false;
+      }
+      return true;
+    };
+
+    this.savedForRetirementValid = function(){
+      if(angular.isUndefined(this.user.savedForRetirement) || this.user.savedForRetirement === null || this.user.savedForRetirement === ''){
+        return false;
+      }
+      return true;
+    };
+
+    this.disabled = function(){
+      return !this.ageValid() || !this.annualSalaryValid() || !this.savedForRetirementValid();
+    };
   }])
 
 
@@ -171,4 +199,18 @@ angular.module('dragon', ['ui.bootstrap'])
           });
         }
       };
-    });
+    })
+
+    .directive('inputMoney', [function() {
+      return {
+        restrict: 'E',
+        replace: true,
+        templateUrl: 'template/inputMoney/inputMoney.html',
+        scope: {
+          currentIndex: '='
+        },
+        link: function(){
+
+        }
+      };
+    }]);
