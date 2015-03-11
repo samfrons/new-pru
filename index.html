@@ -18,12 +18,12 @@
 
 
 <div class="main">
-	<ul class="nav nav-tabs">
-		<li ng-class="{active: main.currentIndex === 0}"><a href="#">about you</a></li>
-		<li ng-class="{active: main.currentIndex === 1}"><a href="#">your retirement</a></li>
-		<li ng-class="{active: main.currentIndex === 2}"><a href="#">your contribution</a></li>
-		<li ng-class="{active: main.currentIndex === 3}"><a href="#">results</a></li>
-		<li ng-class="{active: main.currentIndex === 4}"><a href="#">next steps</a></li>
+	<ul class="nav nav-tabs" ng-if="main.currentIndex > 0">
+		<li ng-class="{active: main.currentIndex === 1}"><a href="#">about you</a></li>
+		<li ng-class="{active: main.currentIndex === 2}"><a href="#">your retirement</a></li>
+		<li ng-class="{active: main.currentIndex === 3}"><a href="#">your contribution</a></li>
+		<li ng-class="{active: main.currentIndex === 4}"><a href="#">results</a></li>
+		<li ng-class="{active: main.currentIndex === 5}"><a href="#">next steps</a></li>
 	</ul>
 	<carousel-spec current-index="main.currentIndex">
 
