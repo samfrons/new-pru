@@ -9,14 +9,12 @@
 }
 
 input[type=text], textarea, button, button:active, button:hover {
-
   outline: none !important;
   border: none;
 }
 
 
 body {
-margin: 10px;
 background: rgb(236,236,236);
 }
 .container {
@@ -36,21 +34,39 @@ text-align: center;
 	height: 500px;
 }
 
+header {
+	  border-bottom: 1px solid #ddd;
+}
+ul.nav {
+	 margin-right: auto;
+  margin-left: auto;
+  width: 700px;
+}
 nav.tabs li {
 display: inline-block;
 list-style-type: none;
-
+border: none;
 font-weight: bold;
 margin: 0 1em;
 background: transparent;
 }
 
+.btn-group {
+	display: block;
+  margin-left: auto;
+  width: 500px;
+  margin-right: auto;
+  overflow: auto;
+}
+
 .nav-tabs>li>a {
 	text-transform: uppercase !important;
+	border: none !important;
 }
 
 .nav-tabs>li.active>a {
 background: transparent !important;	
+border: none;
 }
 
 .content.inner {

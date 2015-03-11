@@ -18,6 +18,7 @@
 
 
 <div class="main">
+<header>
 	<ul class="nav nav-tabs" ng-if="main.currentIndex > 0">
 		<li ng-class="{active: main.currentIndex === 1}"><a href="#">about you</a></li>
 		<li ng-class="{active: main.currentIndex === 2}"><a href="#">your retirement</a></li>
@@ -25,6 +26,7 @@
 		<li ng-class="{active: main.currentIndex === 4}"><a href="#">results</a></li>
 		<li ng-class="{active: main.currentIndex === 5}"><a href="#">next steps</a></li>
 	</ul>
+</header>
 	<carousel-spec current-index="main.currentIndex">
 
 
@@ -45,6 +47,12 @@
 			<div class="col-sm-4">
 			<h4 class="labels">How old are you?</h4>
 			<input type="text">
+
+
+			<!-- 
+			<label class="upit-info-input-age-unit upit-info-input-unit" for="upit-info-input-age">years old</label>
+
+			-->
 			</div>
 
 			<div class="col-sm-4">
@@ -143,7 +151,25 @@
 
 	  <slide-spec class="slide">
 		<div class="container">
-			<I>MAKE A PLAN , GOT A KITKAT</I>
+			<h3>MAKE A PLAN </h3>
+			<p>Studies show people who monitor their investments are more than twice as likely to succeed at retirement planning.<span class="footnote">1</span>
+
+			<div class="col-sm-4">
+		    <h4 class="labels">Remind me</h4>
+		    <p>Set a quarterly calendar reminder to check in on your retirement account.
+		    <button>Set a calendar reminder</button>
+		    </div>
+
+		    <div class="col-sm-4">
+		    <h4 class="labels">Start now</h4>
+		    <p>Log in to your Prudential retirement account and start contributing more today. Or call 1-XXX-XXXX for assistance.
+		    <button>Increase my contributions</button>
+		    </div>
+
+			<div class="col-sm-4">
+		    <h4 class="labels">Call me</h4>
+		    <input type="text">
+		    </div>
 		</div>
 	  </slide-spec>
 	</carousel-spec>
