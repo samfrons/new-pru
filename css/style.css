@@ -1,27 +1,64 @@
-@font-face {
-	font-family: "Trade Gothic Bold", sans-serif;
-	src: url(../fonts/trade-gothic-bold-condensed.ttf);
-}
+
 
 @font-face {
-	font-family: "Trade Gothic", sans-serif;
-	src: url(../fonts/trade-gothic-lt.ttf);
+	font-family: "TradeGothicNo.20-Condensed", sans-serif;
+	src: url("../fonts/trade-gothic-no-20-condensed-bold.ttf");
+	font-weight: 600;
 }
+
 
 input[type=text], textarea, button, button:active, button:hover {
-
   outline: none !important;
   border: none;
 }
 
+p {
+	font-family: "Trade Gothic Light";
+}
+
+
+h1 {
+	font-family: "TradeGothicNo.20-Condensed", sans-serif;
+	
+}
+
+h5 {
+	font-family: "TradeGothic";
+
+}
+
+h3.ywft {
+	font-family: "Chapparral Pro";
+	font-style: italic;
+	font-size: 30px;
+	font-weight: 200;
+}
+
+.navy {
+	color: #001f45;
+}
+
+
 
 body {
-margin: 10px;
 background: rgb(236,236,236);
+-webkit-font-smoothing: antialiased;
 }
-.container {
 
+.container {
 padding: 1em;
+}
+
+.grid {
+	background: url(../images/grid.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding-top: 15px;
+}
+
+.grid h5 {
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .container.intro {
@@ -36,27 +73,64 @@ text-align: center;
 	height: 500px;
 }
 
+button.btn.btn-default.next {
+	float: right;
+}
+
+header {
+	  border-bottom: 1px solid #ddd;
+}
+ul.nav {
+	 margin-right: auto;
+  margin-left: auto;
+  width: 700px;
+}
 nav.tabs li {
 display: inline-block;
 list-style-type: none;
-
+border: none;
 font-weight: bold;
 margin: 0 1em;
 background: transparent;
 }
 
+.btn-group {
+	display: block;
+  margin-left: auto;
+  width: 300px;
+  margin-right: auto;
+  overflow: auto;
+}
+
+.btn-group button.back {
+	background: white !important;
+	color: #009ed1 !important;
+}
+
 .nav-tabs>li>a {
 	text-transform: uppercase !important;
+	border: none !important;
 }
 
 .nav-tabs>li.active>a {
 background: transparent !important;	
+border: none;
+}
+
+.v-center {
+	padding-top: 10%;
+}
+
+.note.navy {
+	padding: 25% 0 0 0;
 }
 
 .content.inner {
 background: white;
 padding: 1em;
 margin: 0 auto;
+max-width: 700px;
+min-height: 400px;
 }
 
 button.btn {
@@ -67,9 +141,15 @@ button.btn {
 	border: none;
 	min-width: 130px;
 	padding: .5em;
-	font-family: "Trade Gothic", sans-serif;
+	font-family: "TradeGothicNo.20-Condensed", sans-serif;
 	background: #009ed1 !important;
 
+}
+
+
+
+button.btn.btn-default.find {
+	padding: .7em 1em;
 }
 
 button.btn:hover {
@@ -80,9 +160,17 @@ button.btn:hover {
 	border: none;
 	background: #009ed1;
 }
+button.btn-default[disabled] {
+	background: lightgrey !important;
+	color: white !important;
+}
 
 .blue {
 	background: #009ed1;
+}
+
+.prompt {
+	background: url(../images/reality-check.png);
 }
 
 
@@ -91,20 +179,34 @@ font-style: italic;
 text-align: center;
 }
 
+.right {
+	float: right;
+}
+
+.h-center {
+	width: 80%;
+  margin: 0 auto;
+}
+
 input {
 background: rgb(237,249,252);
 border-radius: 5px;
-padding: 1em;
+padding: 10px;
 border-style: none;
 box-shadow: inset 0px 5px 14px rgba(0,0,0,.2);
+color: #001f45;
+font-family: "TradeGothicNo.20-Condensed", sans-serif;
+font-size: 30px;
+  width: 100%;
 
 }
 
 h4.labels {
 display: block;
 font-size: 1.1em;
-font-family: "Trade Gothic Bold", sans-serif;
-
+font-family: "TradeGothic", sans-serif;
+min-height: 50px;
+font-weight: bold;
 }
 
 .row.controls > * {
