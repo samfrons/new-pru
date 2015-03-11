@@ -31,11 +31,11 @@
 
 
 	  <slide-spec class="slide">
-	    <div class="container">
-			<h3>Retirement</h3>
-		    <h1>REALITY CHECK</h1>
-		    <h5>Are you being too optimistic about your retirment plans?</h5>
-		    <button class="btn btn-default" ng-click="main.next()">Find out</button>
+	    <div class="container grid">
+			<h3 class="ywft navy">Retirement</h3>
+		    <img src="images/reality-check.png" alt="reality check"/>
+		    <h5 class="navy">Are you being too optimistic about your retirment plans?</h5>
+		    <button class="btn btn-default find" ng-click="main.next()">Find out</button>
 		</div>
 	  </slide-spec>
 
@@ -44,32 +44,34 @@
 	  <slide-spec class="slide">
 	    <div class="container">
 	    	<div class="content inner">
+	    		<div class="v-center">
 			<div class="col-sm-4">
-			<h4 class="labels">How old are you?</h4>
-<<<<<<< HEAD
-			<input type="text">
+			<h4 class="labels navy">How old are you?</h4>
+
+		
 
 
 			<!-- 
 			<label class="upit-info-input-age-unit upit-info-input-unit" for="upit-info-input-age">years old</label>
 
 			-->
-=======
+
 			<input type="text" ng-model="main.user.age">
->>>>>>> f12850b85f8dbb025012868c50f66a82b71a6733
+
 			</div>
 
 			<div class="col-sm-4">
-		    <h4 class="labels">What is your annual salary?</h4>
+		    <h4 class="labels navy">What is your annual salary?</h4>
 		    <input type="text" ng-model="main.user.annualSalary">
 		    </div>
 
 		    <div class="col-sm-4">
-		    <h4 class="labels">How much do you currently have saved for retirement?</h4>
+		    <h4 class="labels navy">How much do you currently have saved for retirement?</h4>
 		    <input type="text" ng-model="main.user.savedForRetirement">
 		    </div>
 
-		    <p class="note">This information will only be used for your calculation. It won't be shared with anyone.</p>
+		    <p class="note navy">This information will only be used for your calculation. It won't be shared with anyone.</p>
+			</div>
 			</div>
 		</div>
 	  </slide-spec>
@@ -79,8 +81,9 @@
   	  <slide-spec class="slide">
 	    <div class="container">
 			<div class="content inner row">
+				<div class="h-center">
 			<div class="col-sm-6">
-				<h4 class="labels">How old do you think you'll be when you retire?</h4>
+				<h4 class="labels navy">How old do you think you'll be when you retire?</h4>
 				<input type="text">
 
 
@@ -92,22 +95,27 @@
 
 
 				<!-- IF GREATER THAN 70 --> 
+				<!--
 				<div class="prompt" id="too-low">
 				Many of us plan on working longer, but studies show that 49% of Americans have to retire earlier than expected.
 				</div>
+				-->
 
 				<!-- IF BETWEEN 65 AND 70 --> 
+				<!--
 				<div class="prompt" id="too-low">
 				It looks like you're setting realistic goals. The average American retires at 62.
 				</div>
+				-->
 
 			</div>
 
-			<div class="col-sm-6">
-		   		<h4 class="labels">How many years do you think your retirement will last?</h4>
+			<div class="col-sm-6 right">
+		   		<h4 class="labels navy">How many years do you think your retirement will last?</h4>
 		   		<input type="text">
 		   	</div>
 
+			</div>
 			</div>
 
 		</div>
@@ -119,14 +127,14 @@
 	  <slide-spec class="slide">
 	    <div class="container">
 			<div class="content inner row">
-			<h4 class="labels">How much are you currently contributing to your workplace retirement plan?</h4>
+			<h4 class="labels navy">How much are you currently contributing to your workplace retirement plan?</h4>
 
 			<div class="col-sm-4">
 				<input type="radio">
 
 				<div class="row controls">
 					<button class="btn btn-default">less</button>
-					<h4 class="labels">1%</h4> <!-- that goes up or down when you click arrows -->
+					<h4 class="labels navy">1%</h4> <!-- that goes up or down when you click arrows -->
 					<button class="btn btn-default">more</button>
 				</div>
 
@@ -134,12 +142,12 @@
 
 			<div class="col-sm-4">
 				<input type="radio">
-				<h4 class="labels">I don't know. I just did auto-enrollment.</h4>
+				<h4 class="labels navy">I don't know. I just did auto-enrollment.</h4>
 			</div>
 
 			<div class="col-sm-4">
 				<input type="radio">
-				<h4 class="labels">Nothing. I'll just collect my Social Security</h4>
+				<h4 class="labels navy">Nothing. I'll just collect my Social Security</h4>
 			</div>
 		</div>
 		</div>
@@ -159,27 +167,27 @@
 			<p>Studies show people who monitor their investments are more than twice as likely to succeed at retirement planning.<span class="footnote">1</span>
 
 			<div class="col-sm-4">
-		    <h4 class="labels">Remind me</h4>
+		    <h4 class="labels navy">Remind me</h4>
 		    <p>Set a quarterly calendar reminder to check in on your retirement account.
 		    <button>Set a calendar reminder</button>
 		    </div>
 
 		    <div class="col-sm-4">
-		    <h4 class="labels">Start now</h4>
+		    <h4 class="labels navy">Start now</h4>
 		    <p>Log in to your Prudential retirement account and start contributing more today. Or call 1-XXX-XXXX for assistance.
 		    <button>Increase my contributions</button>
 		    </div>
 
 			<div class="col-sm-4">
-		    <h4 class="labels">Call me</h4>
+		    <h4 class="labels navy">Call me</h4>
 		    <input type="text">
 		    </div>
 		</div>
 	  </slide-spec>
 	</carousel-spec>
 	<div class="btn-group" ng-if="main.currentIndex > 0 && !main.loading && main.currentIndex < 5">
-		<button type="button" class="btn btn-default" ng-click="main.prev()">Back</button>
-		<button type="button" class="btn btn-default" ng-disabled="main.disabled()" ng-click="main.next()">
+		<button type="button" class="btn btn-default back" ng-click="main.prev()">Back</button>
+		<button type="button" class="btn btn-default next" ng-disabled="main.disabled()" ng-click="main.next()">
 			<span ng-if="main.currentIndex < 3">Next</span>
 			<span ng-if="main.currentIndex === 3">Calculate</span>
 			<span ng-if="main.currentIndex === 4">Next steps</span>
