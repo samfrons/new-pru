@@ -38,7 +38,13 @@ h3.ywft {
 	color: #001f45;
 }
 
+input[type=radio] {
+	width: auto;
+}
 
+html {
+	  overflow-x: hidden;
+}
 
 body {
 background: rgb(236,236,236);
@@ -49,11 +55,25 @@ background: rgb(236,236,236);
 padding: 1em;
 }
 
+.money button.btn.btn-default {
+	width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 100%;
+}
+
+.money button.btn.btn-default.disabled {
+	width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 100%;
+}
+
 .grid {
 	background: url(../images/grid.png);
 	background-position: center center;
 	background-repeat: no-repeat;
-	padding-top: 15px;
+	padding-top: 25px;
 }
 
 .grid h5 {
@@ -92,6 +112,7 @@ border: none;
 font-weight: bold;
 margin: 0 1em;
 background: transparent;
+
 }
 
 .btn-group {
@@ -110,11 +131,21 @@ background: transparent;
 .nav-tabs>li>a {
 	text-transform: uppercase !important;
 	border: none !important;
+	font-family: "TradeGothic", sans-serif;
+	font-weight: bold;
+}
+
+.nav-tabs>li.active {
+	border-bottom: 1px solid red;
 }
 
 .nav-tabs>li.active>a {
 background: transparent !important;	
-border: none;
+border-top: none;
+border-left: none;
+border-right: none;
+border-bottom: 1px solid red;
+
 }
 
 .v-center {
@@ -131,6 +162,7 @@ padding: 1em;
 margin: 0 auto;
 max-width: 700px;
 min-height: 400px;
+position: relative;
 }
 
 button.btn {
@@ -170,7 +202,18 @@ button.btn-default[disabled] {
 }
 
 .prompt {
-	background: url(../images/reality-check.png);
+	background: url(../images/reality-check-bk.png);
+	color: #009ed1;
+	font-family: "Chapparral Pro";
+	font-style: italic;
+	min-height: 100px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-position: center center;
+    max-width: 290px;
 }
 
 
@@ -186,6 +229,10 @@ text-align: center;
 .h-center {
 	width: 80%;
   margin: 0 auto;
+   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 input {
@@ -203,9 +250,9 @@ font-size: 30px;
 
 h4.labels {
 display: block;
-font-size: 1.1em;
+font-size: 1.4em;
 font-family: "TradeGothic", sans-serif;
-min-height: 50px;
+min-height: 60px;
 font-weight: bold;
 }
 
@@ -213,3 +260,10 @@ font-weight: bold;
 display: inline-block;
 }
 
+
+@media (min-width: 568px) {
+.col-sm-6 {
+	width: 50%;
+	  float: left;
+}
+}
