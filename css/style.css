@@ -1,3 +1,20 @@
+@font-face {
+	font-family: "Trade Gothic Bold", sans-serif;
+	src: url(../fonts/trade-gothic-bold-condensed.ttf);
+}
+
+@font-face {
+	font-family: "Trade Gothic", sans-serif;
+	src: url(../fonts/trade-gothic-lt.ttf);
+}
+
+input[type=text], textarea, button, button:active, button:hover {
+
+  outline: none !important;
+  border: none;
+}
+
+
 body {
 margin: 10px;
 }
@@ -33,6 +50,32 @@ padding: 1em;
 margin: 0 auto;
 }
 
+button.btn {
+	box-shadow: none !important;
+	color: white !important;
+	text-shadow: none;
+	border-radius: 0;
+	border: none;
+	min-width: 130px;
+	padding: .5em;
+	font-family: "Trade Gothic", sans-serif;
+	background: #009ed1 !important;
+
+}
+
+button.btn:hover {
+	box-shadow: none !important;
+	color: white;
+	text-shadow: none;
+	border-radius: 0;
+	border: none;
+	background: #009ed1;
+}
+
+.blue {
+	background: #009ed1;
+}
+
 
 p.note {
 font-style: italic;
@@ -51,6 +94,7 @@ box-shadow: inset 0px 5px 14px rgba(0,0,0,.2);
 h4.labels {
 display: block;
 font-size: 1.1em;
+font-family: "Trade Gothic Bold", sans-serif;
 
 }
 
