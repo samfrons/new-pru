@@ -17,9 +17,10 @@ input[type=text], textarea, button, button:active, button:hover {
 
 body {
 margin: 10px;
+background: rgb(236,236,236);
 }
 .container {
-background: rgb(236,236,236);
+
 padding: 1em;
 }
 
@@ -35,13 +36,21 @@ text-align: center;
 	height: 500px;
 }
 
-nav.tabs ul li {
+nav.tabs li {
 display: inline-block;
 list-style-type: none;
-text-transform: uppercase;
+
 font-weight: bold;
 margin: 0 1em;
+background: transparent;
+}
 
+.nav-tabs>li>a {
+	text-transform: uppercase !important;
+}
+
+.nav-tabs>li.active>a {
+background: transparent !important;	
 }
 
 .content.inner {
