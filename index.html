@@ -18,12 +18,12 @@
 
 
 <div class="main">
-	<ul class="nav nav-tabs" ng-if="main.currentIndex > 0">
-		<li ng-class="{active: main.currentIndex === 1}"><a href="#">about you</a></li>
-		<li ng-class="{active: main.currentIndex === 2}"><a href="#">your retirement</a></li>
-		<li ng-class="{active: main.currentIndex === 3}"><a href="#">your contribution</a></li>
-		<li ng-class="{active: main.currentIndex === 4}"><a href="#">results</a></li>
-		<li ng-class="{active: main.currentIndex === 5}"><a href="#">next steps</a></li>
+	<ul class="nav nav-tabs">
+		<li ng-class="{active: main.currentIndex === 0}"><a href="#">about you</a></li>
+		<li ng-class="{active: main.currentIndex === 1}"><a href="#">your retirement</a></li>
+		<li ng-class="{active: main.currentIndex === 2}"><a href="#">your contribution</a></li>
+		<li ng-class="{active: main.currentIndex === 3}"><a href="#">results</a></li>
+		<li ng-class="{active: main.currentIndex === 4}"><a href="#">next steps</a></li>
 	</ul>
 	<carousel-spec current-index="main.currentIndex">
 
@@ -70,6 +70,25 @@
 			<div class="col-sm-6">
 				<h4 class="labels">How old do you think you'll be when you retire?</h4>
 				<input type="text">
+
+
+
+				<!-- IF LESS THAN 65 --> 
+				<div class="prompt" id="too-low">
+				Did you know the average American retires at 66?
+				</div>
+
+
+				<!-- IF GREATER THAN 70 --> 
+				<div class="prompt" id="too-low">
+				Many of us plan on working longer, but studies show that 49% of Americans have to retire earlier than expected.
+				</div>
+
+				<!-- IF BETWEEN 65 AND 70 --> 
+				<div class="prompt" id="too-low">
+				It looks like you're setting realistic goals. The average American retires at 62.
+				</div>
+
 			</div>
 
 			<div class="col-sm-6">
