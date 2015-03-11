@@ -44,6 +44,93 @@ angular.module('dragon', ['ui.bootstrap'])
     this.disabled = function(){
       return !this.ageValid() || !this.annualSalaryValid() || !this.savedForRetirementValid();
     };
+
+    this.realityMin = function(){
+      if(angular.isUndefined(this.user.minRetire) || this.user.minRetire === null || this.user.minRetire === ''){
+        return false;
+      }
+      if(this.user.minRetire == parseInt(this.user.minRetire, 10)){
+        if(parseInt(this.user.minRetire,10) <= 65){
+          return true;
+        }
+      }
+
+      return false;
+    };
+
+    this.realityMax = function(){
+      if(angular.isUndefined(this.user.minRetire) || this.user.minRetire === null || this.user.minRetire === ''){
+        return false;
+      }
+      if(this.user.minRetire == parseInt(this.user.minRetire, 10)){
+        if(parseInt(this.user.minRetire,10) > 75){
+          return true;
+        }
+      }
+
+      return false;
+    };
+
+    this.realityMid = function(){
+      if(angular.isUndefined(this.user.minRetire) || this.user.minRetire === null || this.user.minRetire === ''){
+        return false;
+      }
+      if(this.user.minRetire == parseInt(this.user.minRetire, 10)){
+        if(parseInt(this.user.minRetire,10) > 65 && parseInt(this.user.minRetire,10) <= 75){
+          return true;
+        }
+      }
+
+      return false;
+    };
+
+      this.futureMin = function(){
+        if(angular.isUndefined(this.user.minRetire) || this.user.minRetire === null || this.user.minRetire === '' || this.user.minRetire != parseInt(this.user.minRetire, 10)){
+          return false;
+        }
+        if(angular.isUndefined(this.user.maxRetire) || this.user.maxRetire === null || this.user.maxRetire === ''){
+          return false;
+        }
+        if(this.user.maxRetire == parseInt(this.user.maxRetire, 10)){
+          if(parseInt(this.user.maxRetire,10) + parseInt(this.user.minRetire,10) <= 100){
+            return true;
+          }
+        }
+
+        return false;
+      };
+
+      this.futureMax = function(){
+        if(angular.isUndefined(this.user.minRetire) || this.user.minRetire === null || this.user.minRetire === '' || this.user.minRetire != parseInt(this.user.minRetire, 10)){
+          return false;
+        }
+        if(angular.isUndefined(this.user.maxRetire) || this.user.maxRetire === null || this.user.maxRetire === ''){
+          return false;
+        }
+        if(this.user.maxRetire == parseInt(this.user.maxRetire, 10)){
+          if(parseInt(this.user.maxRetire,10) + parseInt(this.user.minRetire,10) >= 120){
+            return true;
+          }
+        }
+
+        return false;
+      };
+
+      this.futureMid = function(){
+        if(angular.isUndefined(this.user.minRetire) || this.user.minRetire === null || this.user.minRetire === '' || this.user.minRetire != parseInt(this.user.minRetire, 10)){
+          return false;
+        }
+        if(angular.isUndefined(this.user.maxRetire) || this.user.maxRetire === null || this.user.maxRetire === ''){
+          return false;
+        }
+        if(this.user.maxRetire == parseInt(this.user.maxRetire, 10)){
+          if(parseInt(this.user.maxRetire,10) + parseInt(this.user.minRetire,10) > 100 && parseInt(this.user.maxRetire,10) + parseInt(this.user.minRetire,10) < 120){
+            return true;
+          }
+        }
+
+        return false;
+      };
   }])
 
 

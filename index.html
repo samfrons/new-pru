@@ -84,35 +84,47 @@
 				<div class="h-center">
 			<div class="col-sm-6">
 				<h4 class="labels navy">How old do you think you'll be when you retire?</h4>
-				<input type="text">
+				<input type="text" ng-model="main.user.minRetire">
 
 
 
 				<!-- IF LESS THAN 65 --> 
-				<div class="prompt" id="too-low">
+				<div class="prompt" id="too-low" ng-if="main.realityMin()">
 				Did you know the average American retires at 66?
 				</div>
 
 
 				<!-- IF GREATER THAN 70 --> 
-				<!--
-				<div class="prompt" id="too-low">
+				<div class="prompt" id="too-low" ng-if="main.realityMax()">
 				Many of us plan on working longer, but studies show that 49% of Americans have to retire earlier than expected.
 				</div>
-				-->
 
 				<!-- IF BETWEEN 65 AND 70 --> 
-				<!--
-				<div class="prompt" id="too-low">
+				<div class="prompt" id="too-low" ng-if="main.realityMid()">
 				It looks like you're setting realistic goals. The average American retires at 62.
 				</div>
-				-->
 
 			</div>
 
 			<div class="col-sm-6 right">
 		   		<h4 class="labels navy">How many years do you think your retirement will last?</h4>
-		   		<input type="text">
+		   		<input type="text" ng-model="main.user.maxRetire">
+
+				<!-- IF LESS THAN 65 -->
+				<div class="prompt" id="too-low" ng-if="main.futureMin()">
+					Did you know the average American retires at 66?
+				</div>
+
+
+				<!-- IF GREATER THAN 70 -->
+				<div class="prompt" id="too-low" ng-if="main.futureMax()">
+					Many of us plan on working longer, but studies show that 49% of Americans have to retire earlier than expected.
+				</div>
+
+				<!-- IF BETWEEN 65 AND 70 -->
+				<div class="prompt" id="too-low" ng-if="main.futureMid()">
+					It looks like you're setting realistic goals. The average American retires at 62.
+				</div>
 		   	</div>
 
 			</div>
