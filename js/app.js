@@ -201,16 +201,17 @@ angular.module('dragon', ['ui.bootstrap'])
       };
     })
 
-    .directive('inputMoney', [function() {
+    .directive('formatMoney', ['$filter', function ($filter) {
       return {
-        restrict: 'E',
-        replace: true,
-        templateUrl: 'template/inputMoney/inputMoney.html',
-        scope: {
-          currentIndex: '='
-        },
-        link: function(){
-
+        require: '?ngModel',
+        link: function (scope, element, attrs, ngModel) {
+          if(!ngModel) return; // do nothing if no ng-model
+          ngModel.$formatters.unshift(function (a) {
+            return '$$'+ngModel.$modelValue;
+          });
+          ngModel.$parsers.unshift(function(value){
+            ngModel.$modelValue = '$ '+ value;
+          });
         }
       };
     }]);
