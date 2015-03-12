@@ -105,11 +105,11 @@ text-align: center;
 }
 
 .slide {
-	height: 500px;
+	height: auto;
 }
 
 .main {
-	height: 500px;
+	height: auto;
 }
 
 button.btn.btn-default.next {
