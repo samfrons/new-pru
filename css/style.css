@@ -62,11 +62,17 @@ padding: 1em;
   border-radius: 100%;
 }
 
+.retire .col-sm-6 input {
+	margin-bottom: 10px;
+	text-align: center;
+}
+
 .money button.btn.btn-default.disabled {
 	width: 40px;
   height: 40px;
   min-width: 40px;
   border-radius: 100%;
+  background: gray;
 }
 
 .grid {
@@ -118,7 +124,7 @@ background: transparent;
 .btn-group {
 	display: block;
   margin-left: auto;
-  width: 300px;
+  width: 265px;
   margin-right: auto;
   overflow: auto;
 }
@@ -214,6 +220,7 @@ button.btn-default[disabled] {
     flex-direction: column;
     background-position: center center;
     max-width: 290px;
+    padding: 10px;
 }
 
 
@@ -254,6 +261,11 @@ font-size: 1.4em;
 font-family: "TradeGothic", sans-serif;
 min-height: 60px;
 font-weight: bold;
+}
+
+h5.labels {
+	font-weight: normal;
+	font-size: 1em;
 }
 
 .row.controls > * {
