@@ -279,3 +279,6 @@ display: inline-block;
 	  float: left;
 }
 }
+.vis-hidden{
+	visibility: hidden;
+}

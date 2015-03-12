@@ -81,7 +81,7 @@
   	  <slide-spec class="slide">
 	    <div class="container">
 			<div class="content inner row">
-				<div class="h-center retire">
+				<div class="h-center">
 			<div class="col-sm-6">
 				<h4 class="labels navy">How old do you think you'll be when you retire?</h4>
 				<input type="text" ng-model="main.user.minRetire">
@@ -89,19 +89,10 @@
 
 
 				<!-- IF LESS THAN 65 --> 
-				<div class="prompt" id="too-low" ng-if="main.realityMin()">
-				Did you know the average American retires at 66?
-				</div>
-
-
-				<!-- IF GREATER THAN 70 --> 
-				<div class="prompt" id="too-low" ng-if="main.realityMax()">
-				Many of us plan on working longer, but studies show that 49% of Americans have to retire earlier than expected.
-				</div>
-
-				<!-- IF BETWEEN 65 AND 70 --> 
-				<div class="prompt" id="too-low" ng-if="main.realityMid()">
-				It looks like you're setting realistic goals. The average American retires at 62.
+				<div class="prompt" id="too-low" ng-class="{'vis-hidden': !main.realityMin() && !main.realityMax() && !main.realityMid()}">
+					<span ng-if="main.realityMin()">Did you know the average American retires at 66?</span>
+					<span ng-if="main.realityMax()">Many of us plan on working longer, but studies show that 49% of Americans have to retire earlier than expected.</span>
+					<span ng-if="main.realityMid()">It looks like you're setting realistic goals. The average American retires at 62.</span>
 				</div>
 
 			</div>
@@ -110,21 +101,11 @@
 		   		<h4 class="labels navy">How many years do you think your retirement will last?</h4>
 		   		<input type="text" ng-model="main.user.maxRetire">
 
-				<!-- IF LESS THAN 65 -->
-				<div class="prompt" id="too-low" ng-if="main.futureMin()">
-					Did you know experts recommend planning to live to 105?
-				</div>
-
-
-				<!-- IF GREATER THAN 70 -->
-				<div class="prompt" id="too-low" ng-if="main.futureMax()">
-					The oldest person in history lived to 122. But with modern medical advances, who knows the future of longevity will bring.
-				</div>
-
-				<!-- IF BETWEEN 65 AND 70 -->
-				<div class="prompt" id="too-low" ng-if="main.futureMid()">
-					That sounds about right. Many experts recommend planning to live to 105.
-				</div>
+				<div class="prompt" id="too-low" ng-class="{'vis-hidden': !main.futureMin() && !main.futureMax() && !main.futureMid()}">
+					<span ng-if="main.futureMin()">Did you know the average American retires at 66?</span>
+					<span ng-if="main.futureMax()">Many of us plan on working longer, but studies show that 49% of Americans have to retire earlier than expected.</span>
+					<span ng-if="main.futureMid()">It looks like you're setting realistic goals. The average American retires at 62.</span>
+			</div>
 		   	</div>
 
 			</div>
