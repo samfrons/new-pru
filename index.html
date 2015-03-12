@@ -35,7 +35,7 @@
 			<h3 class="ywft navy">Retirement</h3>
 		    <img class="responsive" src="images/reality-check.png" alt="reality check"/>
 		    <h5 class="navy">Are you being too optimistic about your retirment plans?</h5>
-		    <button class="btn btn-default find" ng-click="main.next()">Find out</button>
+		    <button class="btn btn-default find" ng-click="main.next()">Find out<span class="glyphicon glyphicon-menu-right"></span></button>
 		</div>
 	  </slide-spec>
 
@@ -103,7 +103,7 @@
 
 				<div class="prompt" id="too-low" ng-class="{'vis-hidden': !main.futureMin() && !main.futureMax() && !main.futureMid()}">
 					<span ng-if="main.futureMin()">Did you know experts recomment planning to live to 105?</span>
-					<span ng-if="main.futureMax()">Many of us plan on working longer, but studies show that 49% of Americans have to retire earlier than expected.</span>
+					<span ng-if="main.futureMax()">The oldest person in history lived to 122. But with modern medical advances, who knows what the future of longevity will bring.</span>
 					<span ng-if="main.futureMid()">It looks like you're setting realistic goals. The average American retires at 62.</span>
 				</div>
 		   	</div>
@@ -127,9 +127,9 @@
 				<input type="radio" name="contributionPlan" value="percentage" ng-model="main.user.contributionPlan">
 
 				<div class="row controls money">
-					<button class="btn btn-default" ng-click="main.lessContribution()" ng-disabled="main.user.contributionPlan !== 'percentage'">less</button>
+					<button class="btn btn-default" ng-click="main.lessContribution()" ng-disabled="main.user.contributionPlan !== 'percentage'"><span class="glyphicon glyphicon-chevron-down"></button>
 					<h4 class="labels navy">{{ main.user.contribution }}%</h4> <!-- that goes up or down when you click arrows -->
-					<button class="btn btn-default" ng-click="main.moreContribution()" ng-disabled="main.user.contributionPlan !== 'percentage'">more</button>
+					<button class="btn btn-default" ng-click="main.moreContribution()" ng-disabled="main.user.contributionPlan !== 'percentage'"><span class="glyphicon glyphicon-chevron-up"></button>
 				</div>
 
 			</div>
@@ -157,7 +157,7 @@
 
 
 	  <slide-spec class="slide">
-		<div class="container grid">
+		<div class="container grid r-none">
 
 		<div class="row">
 
@@ -178,9 +178,9 @@
 			<h4>is that enough?</h4>
 			<p>See how increasing your retirement contribution could make a big difference.</p>
 			<div class="row controls money">
-					<button class="btn btn-default" ng-click="main.lessContribution()" >less</button>
+					<button class="btn btn-default" ng-click="main.lessContribution()" ><span class="glyphicon glyphicon-chevron-down"></span></button>
 					<h4 class="labels navy">1%</h4> <!-- that goes up or down when you click arrows -->
-					<button class="btn btn-default" ng-click="main.moreContribution()">more</button>
+					<button class="btn btn-default" ng-click="main.moreContribution()"><span class="glyphicon glyphicon-chevron-up"></button>
 				</div>
 
 				<div class="matches">
@@ -208,8 +208,9 @@
 		<div class="container">
 		<div class="content inner plan">
 		<ul class="row nav-plan">
-			<li class="left">Back</li>
-			<li class="right">Start over</li>
+			<li class="left" ng-click="main.prev()">Back</li>
+			<li class="right" ng-click="main()">Start over</li>
+
 
 		</ul>
 			<h3>MAKE A PLAN </h3>
@@ -227,13 +228,13 @@
 		    <button class="btn btn-default round" >Increase my contributions</button>
 		    </div>
 
-			<div class="col-sm-4 plan-entry">
+			<div class="col-sm-4 plan-entry call">
 		    <h4 class="labels navy">Call me</h4>
 		    	<p>Enter your phone number and we’ll have 
 			a financial professional call to help 
 			answer your questions.</p>
 		    <input type="text">
-		    <button class="call-submit">></button>
+		    <button class="call-submit"><span class="glyphicon glyphicon-menu-right"></span></button>
 		    </div>
 
 		    <div class="row source">
@@ -244,11 +245,11 @@
 	  </slide-spec>
 	</carousel-spec>
 	<div class="btn-group" ng-if="main.currentIndex > 0 && !main.loading && main.currentIndex < 5">
-		<button type="button" class="btn btn-default back" ng-click="main.prev()">Back</button>
+		<button type="button" class="btn btn-default back" ng-click="main.prev()"><span class="glyphicon glyphicon-menu-left"></span>Back</button>
 		<button type="button" class="btn btn-default next" ng-disabled="main.disabled()" ng-click="main.next()">
-			<span ng-if="main.currentIndex < 3">Next</span>
-			<span ng-if="main.currentIndex === 3">Calculate</span>
-			<span ng-if="main.currentIndex === 4">Next steps</span>
+			<span ng-if="main.currentIndex < 3">Next<span class="glyphicon glyphicon-menu-right"></span></span>
+			<span ng-if="main.currentIndex === 3">Calculate<span class="glyphicon glyphicon-menu-right"></span></span>
+			<span ng-if="main.currentIndex === 4">Next steps<span class="glyphicon glyphicon-menu-right"></span></span>
 		</button>
 	</div>
 </div>

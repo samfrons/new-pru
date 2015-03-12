@@ -131,7 +131,7 @@ header {
 ul.nav {
 	 margin-right: auto;
   margin-left: auto;
-  width: 600px;
+  width: 500px;
 }
 nav.tabs li {
 display: inline-block;
@@ -169,6 +169,7 @@ padding: 10px 10px 0 10px;
 	font-weight: bold;
 	font-size: .9em;
 	padding: 0px;
+	color: #d3d3d3;
 }
 
 .nav-tabs>li.active {
@@ -244,9 +245,10 @@ button.btn:hover {
 	border: none;
 	background: #009ed1;
 }
-button.btn-default[disabled] {
-	background: lightgrey !important;
-	color: white !important;
+
+
+.money > h4[disabled] {
+	color: red !important;
 }
 
 .blue {
@@ -269,6 +271,7 @@ button.btn-default[disabled] {
     padding: 10px;
     margin: 0 auto;
     min-height: 113px;
+    position: relative;
 }
 
 
@@ -330,6 +333,16 @@ display: inline-block;
 
 .prompt span {
 	padding: 10px;
+	line-height: 1em;
+	position: absolute;
+ 	top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.call input {
+	width: 70%;
 }
 
 /* results */ 
@@ -434,6 +447,7 @@ input[type="checkbox"] {
   max-width: 500px;
   text-align: center;
   margin: 0 auto;
+  line-height: 1em;
 }
 
 .plan .labels {
@@ -461,8 +475,11 @@ img.responsive {
 }
 
 button.call-submit {
-	height: 30px;
+	height: 50px;
 	min-width: 30px;
+	border-radius: 3px;
+	  vertical-align: bottom;
+
 }
 
 .prompt.estimate h2, .prompt.estimate p {
@@ -470,6 +487,15 @@ button.call-submit {
 	margin: 0;
 }
 
+.nav-plan {
+	  padding: 0 15px;
+}
+.nav-plan li {
+	color: #009ed1;
+	font-family: "TradeGothic", sans-serif;	
+	font-weight: bold;
+	text-decoration: underline;
+}
 @media (min-width: 568px) {
 
 .col-sm-offset-2 {
@@ -478,11 +504,19 @@ button.call-submit {
 
 
 }
-
+@media (max-width: 768px) { 
+.plan-entry p, .source p{
+	display: none;
+}
+}
 @media (max-width: 568px) { 
 .h-center {
 	position: static;
 	transform: none;
+}
+
+.plan-entry p, .source p{
+	display: none;
 }
 
 .col-sm-offset-2 {
@@ -528,6 +562,10 @@ button.call-submit {
 	width: 100%;
 	margin-bottom: 10px;
 
+}
+
+.note.navy {
+	padding-top: 10px;
 }
 
 
