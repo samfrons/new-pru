@@ -105,7 +105,7 @@
 					<span ng-if="main.futureMin()">Did you know the average American retires at 66?</span>
 					<span ng-if="main.futureMax()">Many of us plan on working longer, but studies show that 49% of Americans have to retire earlier than expected.</span>
 					<span ng-if="main.futureMid()">It looks like you're setting realistic goals. The average American retires at 62.</span>
-			</div>
+				</div>
 		   	</div>
 
 			</div>
@@ -124,24 +124,30 @@
 			<h4 class="labels navy">How much are you currently contributing to your workplace retirement plan?</h4>
 
 			<div class="col-sm-4">
-				<input type="radio">
+				<input type="radio" name="contributionPlan" value="percentage" ng-model="main.user.contributionPlan">
 
 				<div class="row controls money">
-					<button class="btn btn-default">less</button>
-					<h4 class="labels navy">1%</h4> <!-- that goes up or down when you click arrows -->
-					<button class="btn btn-default">more</button>
+					<button class="btn btn-default" ng-click="main.lessContribution()" ng-disabled="main.user.contributionPlan !== 'percentage'">less</button>
+					<h4 class="labels navy">{{ main.user.contribution }}%</h4> <!-- that goes up or down when you click arrows -->
+					<button class="btn btn-default" ng-click="main.moreContribution()" ng-disabled="main.user.contributionPlan !== 'percentage'">more</button>
 				</div>
 
 			</div>
 
 			<div class="col-sm-4">
-				<input type="radio">
-				<h5 class="labels navy">I don't know. I just did auto-enrollment.</h4>
+				<input type="radio" name="contributionPlan" value="auto" ng-model="main.user.contributionPlan">
+				<h5 class="labels navy">I don't know. I just did auto-enrollment.</h5>
+				<div class="prompt" id="too-low" ng-class="{'vis-hidden': main.user.contributionPlan !== 'auto'}">
+					Did you know the average American retires at 66?
+				</div>
 			</div>
 
 			<div class="col-sm-4">
-				<input type="radio">
-				<h5 class="labels navy">Nothing. I'll just collect my Social Security</h4>
+				<input type="radio" name="contributionPlan"  value="social" ng-model="main.user.contributionPlan">
+				<h5 class="labels navy">Nothing. I'll just collect my Social Security</h5>
+				<div class="prompt" id="too-low" ng-class="{'vis-hidden': main.user.contributionPlan !== 'social'}">
+					Did you know the average American retires at 66?
+				</div>
 			</div>
 			</div>
 		</div>
