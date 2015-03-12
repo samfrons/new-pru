@@ -102,7 +102,7 @@
 		   		<input type="text" ng-model="main.user.maxRetire" class="col-xs-6 col-sm-12">
 
 				<div class="prompt" id="too-low" ng-class="{'vis-hidden': !main.futureMin() && !main.futureMax() && !main.futureMid()}">
-					<span ng-if="main.futureMin()">Did you know the average American retires at 66?</span>
+					<span ng-if="main.futureMin()">Did you know experts recomment planning to live to 105?</span>
 					<span ng-if="main.futureMax()">Many of us plan on working longer, but studies show that 49% of Americans have to retire earlier than expected.</span>
 					<span ng-if="main.futureMid()">It looks like you're setting realistic goals. The average American retires at 62.</span>
 				</div>
@@ -138,7 +138,7 @@
 				<input type="radio" name="contributionPlan" value="auto" ng-model="main.user.contributionPlan">
 				<h5 class="labels navy">I don't know. I just did auto-enrollment.</h5>
 				<div class="prompt contribution" id="too-low" ng-class="{'vis-hidden': main.user.contributionPlan !== 'auto'}">
-					You make be contributing less than you think. Most auto-enrollment plans start your contributions at just 3%. We'll use that for your calculation.
+					You may be contributing less than you think. Most auto-enrollment plans start your contributions at just 3%. We'll use that for your calculation.
 				</div>
 			</div>
 

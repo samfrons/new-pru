@@ -268,6 +268,7 @@ button.btn-default[disabled] {
     max-width: 290px;
     padding: 10px;
     margin: 0 auto;
+    min-height: 113px;
 }
 
 
@@ -377,7 +378,7 @@ input[type="checkbox"] {
 	border-radius: 3px; 
 	color: white;
 	font-family: "TradeGothic", sans-serif;	
-	
+	margin: 0 auto;
 	 padding-right: 15px;
   padding-left: 15px;
     max-width: 400px;
@@ -413,6 +414,7 @@ input[type="checkbox"] {
 	background-repeat: no-repeat;
 	  background-position: center center;
 	  color: #009ed1;
+	    min-height: 142px;
 }
 
 .prompt.contribution {
@@ -491,6 +493,10 @@ button.call-submit {
 	  float: left;
 }
 
+.estimate {
+	margin: 0 auto;
+}
+
 .v-center {
 	padding: 0;
 }
@@ -521,6 +527,7 @@ button.call-submit {
 .prompt {
 	width: 100%;
 	margin-bottom: 10px;
+
 }
 
 
