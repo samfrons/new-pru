@@ -79,7 +79,7 @@ padding: 1em;
 	background: url(../images/grid.png);
 	background-position: center center;
 	background-repeat: no-repeat;
-	padding-top: 25px;
+	margin-top: 25px;
 }
 
 .grid h5 {
