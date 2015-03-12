@@ -30,10 +30,10 @@
 	<carousel-spec current-index="main.currentIndex">
 
 
-	  <slide-spec class="slide">
+	  <slide-spec class="slide one">
 	    <div class="container grid">
 			<h3 class="ywft navy">Retirement</h3>
-		    <img src="images/reality-check.png" alt="reality check"/>
+		    <img class="responsive" src="images/reality-check.png" alt="reality check"/>
 		    <h5 class="navy">Are you being too optimistic about your retirment plans?</h5>
 		    <button class="btn btn-default find" ng-click="main.next()">Find out</button>
 		</div>
@@ -46,7 +46,7 @@
 	    	<div class="content inner">
 	    		<div class="v-center">
 			<div class="col-sm-4">
-			<h4 class="labels navy">How old are you?</h4>
+			<h4 class="labels navy col-xs-6 col-sm-12">How old are you?</h4>
 
 		
 
@@ -56,18 +56,18 @@
 
 			-->
 
-			<input type="text" ng-model="main.user.age">
+			<input type="text" ng-model="main.user.age" class="col-xs-6 col-sm-12">
 
 			</div>
 
 			<div class="col-sm-4">
-		    <h4 class="labels navy">What is your annual salary?</h4>
-		    <input type="text" ng-model="main.user.annualSalary">
+		    <h4 class="labels navy col-xs-6 col-sm-12" >What is your annual salary?</h4> 
+		    <input type="text" ng-model="main.user.annualSalary" class="col-xs-6 col-sm-12">
 		    </div>
 
 		    <div class="col-sm-4">
-		    <h4 class="labels navy">How much do you currently have saved for retirement?</h4>
-		    <input type="text" ng-model="main.user.savedForRetirement">
+		    <h4 class="labels navy col-xs-6 col-sm-12">How much do you currently have saved for retirement?</h4>
+		    <input type="text" ng-model="main.user.savedForRetirement" class="col-xs-6 col-sm-12">
 		    </div>
 
 		    <p class="note navy">This information will only be used for your calculation. It won't be shared with anyone.</p>
@@ -81,10 +81,10 @@
   	  <slide-spec class="slide">
 	    <div class="container">
 			<div class="content inner row">
-				<div class="h-center">
+				<div class="h-center response col-sm-9 col-xs-12">
 			<div class="col-sm-6">
-				<h4 class="labels navy">How old do you think you'll be when you retire?</h4>
-				<input type="text" ng-model="main.user.minRetire">
+				<h4 class="labels navy col-xs-6 col-sm-12">How old do you think you'll be when you retire?</h4>
+				<input type="text" ng-model="main.user.minRetire" class="col-xs-6 col-sm-12">
 
 
 
@@ -98,8 +98,8 @@
 			</div>
 
 			<div class="col-sm-6 right">
-		   		<h4 class="labels navy">How many years do you think your retirement will last?</h4>
-		   		<input type="text" ng-model="main.user.maxRetire">
+		   		<h4 class="labels navy col-xs-6 col-sm-12">How many years do you think your retirement will last?</h4>
+		   		<input type="text" ng-model="main.user.maxRetire" class="col-xs-6 col-sm-12">
 
 				<div class="prompt" id="too-low" ng-class="{'vis-hidden': !main.futureMin() && !main.futureMax() && !main.futureMid()}">
 					<span ng-if="main.futureMin()">Did you know the average American retires at 66?</span>
@@ -120,7 +120,7 @@
 	  <slide-spec class="slide">
 	    <div class="container">
 			<div class="content inner row">
-			<div class="h-center">
+			<div class="h-center col-xs-12">
 			<h4 class="labels navy">How much are you currently contributing to your workplace retirement plan?</h4>
 
 			<div class="col-sm-4">
@@ -137,16 +137,16 @@
 			<div class="col-sm-4">
 				<input type="radio" name="contributionPlan" value="auto" ng-model="main.user.contributionPlan">
 				<h5 class="labels navy">I don't know. I just did auto-enrollment.</h5>
-				<div class="prompt" id="too-low" ng-class="{'vis-hidden': main.user.contributionPlan !== 'auto'}">
-					Did you know the average American retires at 66?
+				<div class="prompt contribution" id="too-low" ng-class="{'vis-hidden': main.user.contributionPlan !== 'auto'}">
+					You make be contributing less than you think. Most auto-enrollment plans start your contributions at just 3%. We'll use that for your calculation.
 				</div>
 			</div>
 
 			<div class="col-sm-4">
 				<input type="radio" name="contributionPlan"  value="social" ng-model="main.user.contributionPlan">
 				<h5 class="labels navy">Nothing. I'll just collect my Social Security</h5>
-				<div class="prompt" id="too-low" ng-class="{'vis-hidden': main.user.contributionPlan !== 'social'}">
-					Did you know the average American retires at 66?
+				<div class="prompt contribution" id="too-low" ng-class="{'vis-hidden': main.user.contributionPlan !== 'social'}">
+					A lot of people think of Social Security as a safety net, but on its own, the average monthly benefit likely isn't enough to live abov a federal poverty line.
 				</div>
 			</div>
 			</div>
@@ -178,9 +178,9 @@
 			<h4>is that enough?</h4>
 			<p>See how increasing your retirement contribution could make a big difference.</p>
 			<div class="row controls money">
-					<button class="btn btn-default">less</button>
+					<button class="btn btn-default" ng-click="main.lessContribution()" >less</button>
 					<h4 class="labels navy">1%</h4> <!-- that goes up or down when you click arrows -->
-					<button class="btn btn-default">more</button>
+					<button class="btn btn-default" ng-click="main.moreContribution()">more</button>
 				</div>
 
 				<div class="matches">
@@ -196,7 +196,7 @@
 				</div>
 				</div>
 
-				<p class="footnote">Footnote</p>
+				<p class="footnote">Inflation is assumed to be 3%. The return is purely hypothetical</p>
 
 
 			</div>
@@ -207,33 +207,37 @@
 	  <slide-spec class="slide">
 		<div class="container">
 		<div class="content inner plan">
-		<ul>
-			<li>Back</li>
+		<ul class="row nav-plan">
+			<li class="left">Back</li>
 			<li class="right">Start over</li>
 
 		</ul>
 			<h3>MAKE A PLAN </h3>
-			<p>Studies show people who monitor their investments are more than twice as likely to succeed at retirement planning.<span class="footnote">1</span>
+			<p class="blue-note">Studies show people who monitor their investments are more than twice as likely to succeed at retirement planning.<span class="footnote">1</span>
 
-			<div class="col-sm-4">
+			<div class="col-sm-4 plan-entry">
 		    <h4 class="labels navy">Remind me</h4>
-		    <p>Set a quarterly calendar reminder to check in on your retirement account.
-		    <button>Set a calendar reminder</button>
+		    <p>Set a quarterly calendar reminder to check in on your retirement account.</p>
+		    <button class="btn btn-default round" >Set a calendar reminder</button>
 		    </div>
 
-		    <div class="col-sm-4">
+		    <div class="col-sm-4 plan-entry">
 		    <h4 class="labels navy">Start now</h4>
-		    <p>Log in to your Prudential retirement account and start contributing more today. Or call 1-XXX-XXXX for assistance.
-		    <button>Increase my contributions</button>
+		    <p>Log in to your Prudential retirement account and start contributing more today. <br>Or call 1-XXX-XXXX for assistance.</p>
+		    <button class="btn btn-default round" >Increase my contributions</button>
 		    </div>
 
-			<div class="col-sm-4">
+			<div class="col-sm-4 plan-entry">
 		    <h4 class="labels navy">Call me</h4>
+		    	<p>Enter your phone number and we’ll have 
+			a financial professional call to help 
+			answer your questions.</p>
 		    <input type="text">
+		    <button class="call-submit">></button>
 		    </div>
 
 		    <div class="row source">
-		    <p>source <a href="#">here</a></p>
+		    <p>Source: <a href="#">Prudential Financial Literacy and Retirement Readiness Study</a></p>
 		    </div>
 		</div>
 		</div>
