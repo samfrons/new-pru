@@ -27,7 +27,7 @@
 		<li ng-class="{active: main.currentIndex === 5}"><a href="#">next steps</a></li>
 	</ul>
 </header>
-	<carousel-spec current-index="main.currentIndex">
+	<carousel-spec current-index="main.currentIndex" animation-done="main.animationDone()">
 
 
 	  <slide-spec class="slide one">
@@ -62,12 +62,12 @@
 
 			<div class="col-sm-4">
 		    <h4 class="labels navy col-xs-6 col-sm-12" >What is your annual salary?</h4> 
-		    <input type="text" ng-model="main.user.annualSalary" class="col-xs-6 col-sm-12">
+		    <input type="text" field="main.user.annualSalary" format-money class="col-xs-6 col-sm-12">
 		    </div>
 
 		    <div class="col-sm-4">
 		    <h4 class="labels navy col-xs-6 col-sm-12">How much do you currently have saved for retirement?</h4>
-		    <input type="text" ng-model="main.user.savedForRetirement" class="col-xs-6 col-sm-12">
+		    <input type="text" field="main.user.savedForRetirement" format-money class="col-xs-6 col-sm-12">
 		    </div>
 
 		    <p class="note navy">This information will only be used for your calculation. It won't be shared with anyone.</p>
@@ -127,9 +127,9 @@
 				<input type="radio" name="contributionPlan" value="percentage" ng-model="main.user.contributionPlan">
 
 				<div class="row controls money">
-					<button class="btn btn-default" ng-click="main.lessContribution()" ng-disabled="main.user.contributionPlan !== 'percentage'"><span class="glyphicon glyphicon-chevron-down"></button>
-					<h4 class="labels navy">{{ main.user.contribution }}%</h4> <!-- that goes up or down when you click arrows -->
-					<button class="btn btn-default" ng-click="main.moreContribution()" ng-disabled="main.user.contributionPlan !== 'percentage'"><span class="glyphicon glyphicon-chevron-up"></button>
+					<button class="btn btn-default" ng-click="main.lessContribution()" ng-disabled="main.user.contributionPlan !== 'percentage'"><span class="glyphicon glyphicon-chevron-down"/></button>
+					<h4 class="labels navy"><animated-number number="main.user.contribution" />%</h4>
+					<button class="btn btn-default" ng-click="main.moreContribution()" ng-disabled="main.user.contributionPlan !== 'percentage'"><span class="glyphicon glyphicon-chevron-up"/></button>
 				</div>
 
 			</div>
@@ -162,10 +162,16 @@
 		<div class="row">
 
 			<div class="col-sm-6 col-sm-offset-2 estimate">
-			<div class="top-info">
-				<h4>estimated income in retirement</h4>
-				<h2>$65,536<span class="slash">/yr</span></h2>
-				<p>including Social Security</p>
+			<div class="top-info" ng-init="result = true">
+				<span ng-if="result">
+					<h4>estimated income in retirement</h4>
+					<h2>$65,536<span class="slash">/yr</span></h2>
+					<p>including Social Security</p>
+				</span>
+				<span ng-if="!result">
+					<p>this calculation ......</p>
+				</span>
+				<p><button ng-click="result = !result">i</button></p>
 			</div>
 			<div class="circle">
 			<span class="inner"></span>
@@ -177,10 +183,10 @@
 			<div class="inner">
 			<h4>is that enough?</h4>
 			<p>See how increasing your retirement contribution could make a big difference.</p>
-			<div class="row controls money">
-					<button class="btn btn-default" ng-click="main.lessContribution()" ><span class="glyphicon glyphicon-chevron-down"></span></button>
-					<h4 class="labels navy">1%</h4> <!-- that goes up or down when you click arrows -->
-					<button class="btn btn-default" ng-click="main.moreContribution()"><span class="glyphicon glyphicon-chevron-up"></button>
+				<div class="row controls money">
+					<button class="btn btn-default" ng-click="main.lessIncrease()"><span class="glyphicon glyphicon-chevron-down"/></button>
+					<h4 class="labels navy"><animated-number number="main.increase" />%</h4>
+					<button class="btn btn-default" ng-click="main.moreIncrease()"><span class="glyphicon glyphicon-chevron-up"/></button>
 				</div>
 
 				<div class="matches">
@@ -209,7 +215,7 @@
 		<div class="content inner plan">
 		<ul class="row nav-plan">
 			<li class="left" ng-click="main.prev()">Back</li>
-			<li class="right" ng-click="main()">Start over</li>
+			<li class="right" ng-click="main.startOver()">Start over</li>
 
 
 		</ul>

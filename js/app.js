@@ -8,14 +8,27 @@ angular.module('dragon', ['ui.bootstrap'])
     this.user = {
       contribution: 1
     };
+    this.increase = 1;
+    this.animation = false;
 
     this.currentIndex = 0;
 
+    this.animationDone = function(){
+      this.animation = false;
+    };
     this.next = function(){
+      if(this.animation){
+        return;
+      }
+      this.animation = true;
       this.currentIndex++;
     };
 
     this.prev = function(){
+      if(this.animation){
+        return;
+      }
+      this.animation = true;
       this.currentIndex--;
     };
 
@@ -145,6 +158,25 @@ angular.module('dragon', ['ui.bootstrap'])
       this.user.contribution--;
     };
 
+
+    this.moreIncrease = function(){
+      this.increase++;
+    };
+
+    this.lessIncrease = function(){
+      if(this.increase === 0){
+        return;
+      }
+      this.increase--;
+    };
+
+    this.startOver = function(){
+      if(this.animation){
+        return;
+      }
+      this.animation = true;
+      this.currentIndex = -1;
+    };
   }])
 
 
@@ -212,6 +244,7 @@ angular.module('dragon', ['ui.bootstrap'])
           angular.extend(next, {direction: '', active: true, leaving: false, entering: false});
           angular.extend(current||{}, {direction: '', active: false, leaving: false, entering: false});
           $scope.$currentTransition = null;
+          $scope.animationDone();
         }
       };
 
@@ -239,13 +272,18 @@ angular.module('dragon', ['ui.bootstrap'])
       };
       $scope.$watch('currentIndex', function(index) {
         if (index !== currentIndex) {
-          if(index > currentIndex){
-            for(var i=0;i<index - currentIndex;i++){
-              $scope.next();
-            }
+          if(index === -1){
+            self.select(slides[0],'prev');
+            $scope.currentIndex = 0;
           }else{
-            for(var i=0;i<currentIndex - index;i++){
-              $scope.prev();
+            if(index > currentIndex){
+              for(var i=0;i<index - currentIndex;i++){
+                $scope.next();
+              }
+            }else{
+              for(var i=0;i<currentIndex - index;i++){
+                $scope.prev();
+              }
             }
           }
         }
@@ -275,7 +313,8 @@ angular.module('dragon', ['ui.bootstrap'])
         require: 'carouselSpec',
         templateUrl: 'template/carouselSpec/carouselSpec.html',
         scope: {
-          currentIndex: '='
+          currentIndex: '=',
+          animationDone: '&'
         }
       };
     }])
@@ -304,14 +343,89 @@ angular.module('dragon', ['ui.bootstrap'])
 
     .directive('formatMoney', ['$filter', function ($filter) {
       return {
-        require: '?ngModel',
-        link: function (scope, element, attrs, ngModel) {
-          if(!ngModel) return; // do nothing if no ng-model
-          ngModel.$formatters.unshift(function (a) {
-            return '$$'+ngModel.$modelValue;
+        restrict: 'A',
+        scope: {
+          field: '='
+        },
+        replace: true,
+        template: '<span><input type="text" ng-model="field"></input></span>',
+        link: function(scope, element, attrs) {
+          function spliceSlice(str, index, count, add) {
+            return str.slice(0, index) + (add || "") + str.slice(index + count);
+          }
+          (element).bind('keyup', function(e) {
+            var input = element.find('input');
+            var inputVal = input.val();
+
+            //scope.field = scope.field.replace(/[^\d.\',']/g, '');
+
+            var point = scope.field.indexOf(".");
+            if (point >= 0) {
+              scope.field = scope.field.slice(0, point + 3);
+            }
+
+            var decimalSplit = scope.field.split(".");
+            var intPart = decimalSplit[0];
+            var decPart = decimalSplit[1];
+
+            intPart = intPart.replace(/[^\d]/g, '');
+            if (intPart.length > 3) {
+              var intDiv = Math.floor(intPart.length / 3);
+              while (intDiv > 0) {
+                var lastComma = intPart.indexOf(",");
+                if (lastComma < 0) {
+                  lastComma = intPart.length;
+                }
+
+                if (lastComma - 3 > 0) {
+                  intPart = spliceSlice(intPart,lastComma - 3, 0, ",");
+                }
+                intDiv--;
+              }
+            }
+
+            if (decPart === undefined) {
+              decPart = "";
+            }
+            else {
+              decPart = "." + decPart;
+            }
+            var res = '$ ' + intPart + decPart;
+            if(res === '$ '){
+              res = '';
+            }
+
+
+            scope.$apply(function() {scope.field = res});
+
           });
-          ngModel.$parsers.unshift(function(value){
-            ngModel.$modelValue = '$ '+ value;
+
+        }
+      };
+    }])
+
+    .directive('animatedNumber', [function () {
+      return {
+        restrict: 'E',
+        scope: {
+          number: '='
+        },
+        replace: true,
+        template: '<div>{{number}}</div>',
+        link: function(scope, element, attrs) {
+          var oldValue = -1;
+          scope.$watch('number',function(value){
+            var animationClass = '';
+            if(oldValue > value){
+              animationClass = 'slideDown';
+            }else{
+              animationClass = 'slideUp';
+            }
+            oldValue = value;
+            element.addClass(animationClass);
+            setTimeout(function(){
+              element.removeClass(animationClass);
+            },300);
           });
         }
       };
