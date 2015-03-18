@@ -15,7 +15,9 @@ angular.module('ob')
             parent.displayButtons = true;
             parent.nextButton = 'Next';
         };
-
+        this.resultMode = false;
+        this.calculMode = true;
+        this.progress = 0;
         this.increase = 1;
 
         this.moreIncrease = function(){

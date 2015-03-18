@@ -146,55 +146,62 @@
 
 		  <page class="slide">
 			<div class="container grid r-none" ng-controller="FifthPageController as fifthPage">
+				<div class="row">
 
-			<div class="row">
-
-				<div class="col-sm-6 col-sm-offset-2 estimate">
-				<div class="top-info" ng-init="result = true">
-					<span ng-if="result">
-						<h4>estimated income in retirement</h4>
-						<h2>$65,536<span class="slash">/yr</span></h2>
-						<p>including Social Security</p>
-					</span>
-					<span ng-if="!result">
-						<p>this calculation ......</p>
-					</span>
-					<p><button ng-click="result = !result">i</button></p>
-				</div>
-				<div class="circle">
-				<span class="inner"></span>
-				</div>
-				<div class="shadow"></div>
-				</div>
-
-				<div class="enough col-sm-6">
-				<div class="inner">
-				<h4>is that enough?</h4>
-				<p>See how increasing your retirement contribution could make a big difference.</p>
-					<div class="row controls money">
-						<button class="btn btn-default" ng-click="fifthPage.lessIncrease()"><span class="glyphicon glyphicon-chevron-down"/></button>
-						<h4 class="labels navy"><animated-number number="fifthPage.increase" />%</h4>
-						<button class="btn btn-default" ng-click="fifthPage.moreIncrease()"><span class="glyphicon glyphicon-chevron-up"/></button>
+					<div class="col-sm-6 col-sm-offset-2 estimate">
+					<div class="top-info">
+						<span ng-show="fifthPage.resultMode">
+							<span>
+								<h4>estimated income in retirement</h4>
+								<h2>$65,536<span class="slash">/yr</span></h2>
+								<p>including Social Security</p>
+							</span>
+							<span>
+								<p>this calculation ......</p>
+							</span>
+							<p><button>i</button></p>
+						</span>
+						<span ng-show="fifthPage.calculMode">
+							<h3>Calculating...</h3>
+							<progressbar value="fifthPage.progress"></progressbar>
+							<slot-machine-text>
+								<div>text 1</div>
+								<div>super text 2</div>
+								<div>text 3</div>
+								<div>hoho</div>
+							</slot-machine-text>
+						</span>
+					</div>
+					<div class="circle">
+					<span class="inner"></span>
+					</div>
+					<div class="shadow"></div>
 					</div>
 
-					<div class="matches">
-					<label>My company matches</label>
-					<input type="checkbox">
+					<div class="enough col-sm-6" ng-show="fifthPage.resultMode">
+						<div class="inner">
+							<h4>is that enough?</h4>
+							<p>See how increasing your retirement contribution could make a big difference.</p>
+							<div class="row controls money">
+								<button class="btn btn-default" ng-click="fifthPage.lessIncrease()"><span class="glyphicon glyphicon-chevron-down"/></button>
+								<h4 class="labels navy"><animated-number number="fifthPage.increase" />%</h4>
+								<button class="btn btn-default" ng-click="fifthPage.moreIncrease()"><span class="glyphicon glyphicon-chevron-up"/></button>
+							</div>
 
+							<div class="matches">
+								<label>My company matches</label>
+								<input type="checkbox">
+							</div>
+
+							<div class="prompt estimate">
+								<p>Once you factor in inflation, you would have about <h2>$27,000<span class="slash">/yr</span><span class="footnote">1</span></h2>
+								in today's dollars.
+								</p>
+							</div>
+						</div>
+						<p class="footnote">Inflation is assumed to be 3%. The return is purely hypothetical</p>
 					</div>
-
-					<div class="prompt estimate">
-					<p>Once you factor in inflation, you would have about <h2>$27,000<span class="slash">/yr</span><span class="footnote">1</span></h2>
-					in today's dollars.
-					</p>
-					</div>
-					</div>
-
-					<p class="footnote">Inflation is assumed to be 3%. The return is purely hypothetical</p>
-
-
 				</div>
-			</div>
 			</div>
 		  </page>
 

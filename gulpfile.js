@@ -39,7 +39,8 @@ gulp.task('js', function() {
     'js/app/services/utils.js',
     'js/app/directives/animatedNumber.js',
     'js/app/directives/formatMoney.js',
-    'js/app/directives/pageCarousel.js'
+    'js/app/directives/pageCarousel.js',
+    'js/app/directives/slotMachineText.js'
       ])
       .pipe(concat('app.min.js'))
       .pipe(uglify())
