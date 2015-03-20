@@ -1,13 +1,21 @@
 angular.module('ob')
 
-.controller('SecondPageController', ['$scope', 'utils', function($scope, utils) {
+.controller('SecondPageController', ['$scope', 'utils', 'retirment', function($scope, utils, retirment) {
 
     var parent = $scope.main;
     var _this = this;
 
+    this.user = {};
+
     $scope.$watch('main.currentIndex', function(index){
         if(index === 1){
             _this.init();
+        }
+        if(index === 2){
+            console.log(_this.user.annualSalary);
+            retirment.age = parseInt(_this.user.age,10);
+            retirment.salary = parseInt(_this.user.annualSalary.replace('$','').replace(',','').trim(),10);
+            retirment.savedForRetirment = parseInt(_this.user.savedForRetirement.replace('$','').replace(',','').trim(),10);
         }
     });
 
@@ -18,8 +26,6 @@ angular.module('ob')
             return !_this.ageValid() || !_this.annualSalaryValid() || !_this.savedForRetirementValid();
         };
     };
-
-    this.user = {};
 
     this.ageValid = function(){
         return utils.isInteger(this.user.age);

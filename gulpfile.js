@@ -27,6 +27,7 @@ gulp.task('scss', function(done) {
 gulp.task('js', function() {
   gulp.src([
     'js/lib/angular.js',
+    'js/lib/angular-animate.js',
     'js/lib/ui-bootstrap-0.12.1.js',
     'js/app/app.js',
     'js/app/controllers/MainController.js',
@@ -37,13 +38,14 @@ gulp.task('js', function() {
     'js/app/controllers/FifthPageController.js',
     'js/app/controllers/SixthPageController.js',
     'js/app/services/utils.js',
+    'js/app/services/retirment.js',
     'js/app/directives/animatedNumber.js',
     'js/app/directives/formatMoney.js',
     'js/app/directives/pageCarousel.js',
     'js/app/directives/slotMachineText.js'
       ])
       .pipe(concat('app.min.js'))
-      .pipe(uglify())
+      //.pipe(uglify())
       .pipe(gulp.dest('js/dist/'))
 });
 

@@ -1,13 +1,18 @@
 angular.module('ob')
 
-.controller('ThirdPageController', ['$scope', 'utils', function($scope, utils) {
+.controller('ThirdPageController', ['$scope', 'utils','retirment', function($scope, utils, retirment) {
 
     var parent = $scope.main;
     var _this = this;
+    this.user = {};
 
     $scope.$watch('main.currentIndex', function(index){
         if(index === 2){
             _this.init();
+        }
+        if(index === 3){
+            retirment.retirmentAge = parseInt(_this.user.minRetire,10);
+            retirment.retirmentLast = parseInt(_this.user.maxRetire,10);
         }
     });
 
@@ -15,8 +20,6 @@ angular.module('ob')
         parent.displayButtons = true;
         parent.nextButton = 'Next';
     };
-
-    this.user = {};
 
     this.realityMin = function(){
         return utils.isInf(65, this.user.minRetire);

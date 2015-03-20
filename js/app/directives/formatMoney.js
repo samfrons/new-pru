@@ -15,7 +15,7 @@ angular.module('ob')
                 var input = element.find('input');
                 var inputVal = input.val();
 
-                //scope.field = scope.field.replace(/[^\d.\',']/g, '');
+                scope.field = scope.field.replace(/[^\d.\',']/g, '');
 
                 var point = scope.field.indexOf(".");
                 if (point >= 0) {

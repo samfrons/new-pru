@@ -125,7 +125,7 @@ angular.module('ob')
         replace: true,
         controller: 'PageCarouselController',
         require: 'pageCarousel',
-        templateUrl: 'template/pageCarousel/pageCarousel.html',
+        templateUrl: '/bundles/droga5optimismbias/template/pageCarousel/pageCarousel.html',
         scope: {
             currentIndex: '=',
             animationDone: '&'
@@ -139,7 +139,7 @@ angular.module('ob')
         restrict: 'EA',
         transclude: true,
         replace: true,
-        templateUrl: 'template/pageCarousel/page.html',
+        templateUrl: '/bundles/droga5optimismbias/template/pageCarousel/page.html',
         scope: {
             active: '=?',
             isActive: '&'

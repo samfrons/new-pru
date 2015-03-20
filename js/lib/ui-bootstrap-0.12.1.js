@@ -216,7 +216,7 @@ angular.module('ui.bootstrap.accordion', ['ui.bootstrap.collapse'])
     controller:'AccordionController',
     transclude: true,
     replace: false,
-    templateUrl: 'template/accordion/accordion.html'
+    templateUrl: '/bundles/droga5optimismbias/template/accordion/accordion.html'
   };
 })
 
@@ -227,7 +227,7 @@ angular.module('ui.bootstrap.accordion', ['ui.bootstrap.collapse'])
     restrict:'EA',
     transclude:true,              // It transcludes the contents of the directive into the template
     replace: true,                // The element containing the directive will be replaced with the template
-    templateUrl:'template/accordion/accordion-group.html',
+    templateUrl:'/bundles/droga5optimismbias/template/accordion/accordion-group.html',
     scope: {
       heading: '@',               // Interpolate the heading attribute onto this scope
       isOpen: '=?',
@@ -307,7 +307,7 @@ angular.module('ui.bootstrap.alert', [])
   return {
     restrict:'EA',
     controller:'AlertController',
-    templateUrl:'template/alert/alert.html',
+    templateUrl:'/bundles/droga5optimismbias/template/alert/alert.html',
     transclude:true,
     replace:true,
     scope: {
@@ -633,7 +633,7 @@ angular.module('ui.bootstrap.carousel', ['ui.bootstrap.transition'])
     replace: true,
     controller: 'CarouselController',
     require: 'carousel',
-    templateUrl: 'template/carousel/carousel.html',
+    templateUrl: '/bundles/droga5optimismbias/template/carousel/carousel.html',
     scope: {
       interval: '=',
       noTransition: '=',
@@ -689,7 +689,7 @@ function CarouselDemoCtrl($scope) {
     restrict: 'EA',
     transclude: true,
     replace: true,
-    templateUrl: 'template/carousel/slide.html',
+    templateUrl: '/bundles/droga5optimismbias/template/carousel/slide.html',
     scope: {
       active: '=?'
     },
@@ -1172,7 +1172,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
   return {
     restrict: 'EA',
     replace: true,
-    templateUrl: 'template/datepicker/datepicker.html',
+    templateUrl: '/bundles/droga5optimismbias/template/datepicker/datepicker.html',
     scope: {
       datepickerMode: '=?',
       dateDisabled: '&'
@@ -1193,7 +1193,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
   return {
     restrict: 'EA',
     replace: true,
-    templateUrl: 'template/datepicker/day.html',
+    templateUrl: '/bundles/droga5optimismbias/template/datepicker/day.html',
     require: '^datepicker',
     link: function(scope, element, attrs, ctrl) {
       scope.showWeeks = ctrl.showWeeks;
@@ -1301,7 +1301,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
   return {
     restrict: 'EA',
     replace: true,
-    templateUrl: 'template/datepicker/month.html',
+    templateUrl: '/bundles/droga5optimismbias/template/datepicker/month.html',
     require: '^datepicker',
     link: function(scope, element, attrs, ctrl) {
       ctrl.step = { years: 1 };
@@ -1356,7 +1356,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
   return {
     restrict: 'EA',
     replace: true,
-    templateUrl: 'template/datepicker/year.html',
+    templateUrl: '/bundles/droga5optimismbias/template/datepicker/year.html',
     require: '^datepicker',
     link: function(scope, element, attrs, ctrl) {
       var range = ctrl.yearRange;
@@ -1619,7 +1619,7 @@ function ($compile, $parse, $document, $position, dateFilter, dateParser, datepi
     restrict:'EA',
     replace: true,
     transclude: true,
-    templateUrl: 'template/datepicker/popup.html',
+    templateUrl: '/bundles/droga5optimismbias/template/datepicker/popup.html',
     link:function (scope, element, attrs) {
       element.bind('click', function(event) {
         event.preventDefault();
@@ -1854,7 +1854,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.transition'])
     return {
       restrict: 'EA',
       replace: true,
-      templateUrl: 'template/modal/backdrop.html',
+      templateUrl: '/bundles/droga5optimismbias/template/modal/backdrop.html',
       link: function (scope, element, attrs) {
         scope.backdropClass = attrs.backdropClass || '';
 
@@ -2296,7 +2296,7 @@ angular.module('ui.bootstrap.pagination', [])
     },
     require: ['pagination', '?ngModel'],
     controller: 'PaginationController',
-    templateUrl: 'template/pagination/pagination.html',
+    templateUrl: '/bundles/droga5optimismbias/template/pagination/pagination.html',
     replace: true,
     link: function(scope, element, attrs, ctrls) {
       var paginationCtrl = ctrls[0], ngModelCtrl = ctrls[1];
@@ -2407,7 +2407,7 @@ angular.module('ui.bootstrap.pagination', [])
     },
     require: ['pager', '?ngModel'],
     controller: 'PaginationController',
-    templateUrl: 'template/pagination/pager.html',
+    templateUrl: '/bundles/droga5optimismbias/template/pagination/pager.html',
     replace: true,
     link: function(scope, element, attrs, ctrls) {
       var paginationCtrl = ctrls[0], ngModelCtrl = ctrls[1];
@@ -2762,7 +2762,7 @@ angular.module( 'ui.bootstrap.tooltip', [ 'ui.bootstrap.position', 'ui.bootstrap
     restrict: 'EA',
     replace: true,
     scope: { content: '@', placement: '@', animation: '&', isOpen: '&' },
-    templateUrl: 'template/tooltip/tooltip-popup.html'
+    templateUrl: '/bundles/droga5optimismbias/template/tooltip/tooltip-popup.html'
   };
 })
 
@@ -2775,7 +2775,7 @@ angular.module( 'ui.bootstrap.tooltip', [ 'ui.bootstrap.position', 'ui.bootstrap
     restrict: 'EA',
     replace: true,
     scope: { content: '@', placement: '@', animation: '&', isOpen: '&' },
-    templateUrl: 'template/tooltip/tooltip-html-unsafe-popup.html'
+    templateUrl: '/bundles/droga5optimismbias/template/tooltip/tooltip-html-unsafe-popup.html'
   };
 })
 
@@ -2795,7 +2795,7 @@ angular.module( 'ui.bootstrap.popover', [ 'ui.bootstrap.tooltip' ] )
     restrict: 'EA',
     replace: true,
     scope: { title: '@', content: '@', placement: '@', animation: '&', isOpen: '&' },
-    templateUrl: 'template/popover/popover.html'
+    templateUrl: '/bundles/droga5optimismbias/template/popover/popover.html'
   };
 })
 
@@ -2847,7 +2847,7 @@ angular.module('ui.bootstrap.progressbar', [])
         controller: 'ProgressController',
         require: 'progress',
         scope: {},
-        templateUrl: 'template/progressbar/progress.html'
+        templateUrl: '/bundles/droga5optimismbias/template/progressbar/progress.html'
     };
 })
 
@@ -2861,7 +2861,7 @@ angular.module('ui.bootstrap.progressbar', [])
             value: '=',
             type: '@'
         },
-        templateUrl: 'template/progressbar/bar.html',
+        templateUrl: '/bundles/droga5optimismbias/template/progressbar/bar.html',
         link: function(scope, element, attrs, progressCtrl) {
             progressCtrl.addBar(scope, element);
         }
@@ -2878,7 +2878,7 @@ angular.module('ui.bootstrap.progressbar', [])
             value: '=',
             type: '@'
         },
-        templateUrl: 'template/progressbar/progressbar.html',
+        templateUrl: '/bundles/droga5optimismbias/template/progressbar/progressbar.html',
         link: function(scope, element, attrs, progressCtrl) {
             progressCtrl.addBar(scope, angular.element(element.children()[0]));
         }
@@ -2956,7 +2956,7 @@ angular.module('ui.bootstrap.rating', [])
       onLeave: '&'
     },
     controller: 'RatingController',
-    templateUrl: 'template/rating/rating.html',
+    templateUrl: '/bundles/droga5optimismbias/template/rating/rating.html',
     replace: true,
     link: function(scope, element, attrs, ctrls) {
       var ratingCtrl = ctrls[0], ngModelCtrl = ctrls[1];
@@ -3060,7 +3060,7 @@ angular.module('ui.bootstrap.tabs', [])
       type: '@'
     },
     controller: 'TabsetController',
-    templateUrl: 'template/tabs/tabset.html',
+    templateUrl: '/bundles/droga5optimismbias/template/tabs/tabset.html',
     link: function(scope, element, attrs) {
       scope.vertical = angular.isDefined(attrs.vertical) ? scope.$parent.$eval(attrs.vertical) : false;
       scope.justified = angular.isDefined(attrs.justified) ? scope.$parent.$eval(attrs.justified) : false;
@@ -3153,7 +3153,7 @@ angular.module('ui.bootstrap.tabs', [])
     require: '^tabset',
     restrict: 'EA',
     replace: true,
-    templateUrl: 'template/tabs/tab.html',
+    templateUrl: '/bundles/droga5optimismbias/template/tabs/tab.html',
     transclude: true,
     scope: {
       active: '=?',
@@ -3491,7 +3491,7 @@ angular.module('ui.bootstrap.timepicker', [])
     controller:'TimepickerController',
     replace: true,
     scope: {},
-    templateUrl: 'template/timepicker/timepicker.html',
+    templateUrl: '/bundles/droga5optimismbias/template/timepicker/timepicker.html',
     link: function(scope, element, attrs, ctrls) {
       var timepickerCtrl = ctrls[0], ngModelCtrl = ctrls[1];
 
