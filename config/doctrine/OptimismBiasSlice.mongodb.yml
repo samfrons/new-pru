@@ -1,0 +1,55 @@
+Droga5\OptimismBiasBundle\Document\OptimismBiasSlice:
+    type: document
+    fields:
+        isShareable:
+            type: boolean
+        linkedInDescription:
+            type: string
+            nullable: true
+        linkedInTitle:
+            type: string
+            nullable: true
+        linkedInUrl:
+            type: string
+            nullable: true
+        ogCaption:
+            type: string
+            nullable: true
+        ogDescription:
+            type: string
+            nullable: true
+        ogImageUrl:
+            type: string
+            nullable: true
+        ogTitle:
+            type: string
+            nullable: true
+        ogUrl:
+            type: string
+            nullable: true
+        themeId:
+            type: int
+        twitterHashtags:
+            type: string
+            nullable: true
+        twitterText:
+            type: string
+            nullable: true
+        twitterUrl:
+            type: string
+            nullable: true
+        isForestView:
+            type: boolean
+            nullable: true
+        forestView1:
+            type: integer
+            nullable: true
+        forestView2:
+            type: integer
+            nullable: true
+        forestView3:
+            type: integer
+            nullable: true
+        forestViewTitle:
+            type: string
+            nullable: true

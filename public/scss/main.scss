@@ -454,9 +454,6 @@ p.note.sans {
     float: right;
 }
 
-.slide.one {
-}
-
 .h-center {
     margin: 0 auto;
     position: absolute;
@@ -1090,6 +1087,22 @@ slideUp
     opacity: 1;
 }
 
+.dollar {
+  background: transparent;
+  position: absolute;
+  overflow: auto;
+  clear: both;
+  width: 30px;
+  height: 100%;
+  vertical-align: top;
+  padding: 12% 10px;
+  font-size: 30px;
+  border: none;
+  color: $navy;
+  top: 28%;
+  left: 5px;
+}
+
 
 /* ------------------------------ MEDIA QUERIES ------------------------------ */
 
@@ -1221,7 +1234,8 @@ slideUp
             font-family: "ChaparralItalic";
             font-size: 16px;
             padding: 5% 0 0 0;
-              line-height: initial;
+            line-height: initial;
+            float: left;
         }
     }
 

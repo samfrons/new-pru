@@ -1,12 +1,12 @@
 angular.module('ob')
 
-.controller('MainController', [function() {
+.controller('MainController', ['$window', '$scope',function($window, $scope) {
     this.displayButtons = false;
     this.nextButton = '';
     this.nextDisabled = function(){
         return false;
     };
-
+    var _this = this;
     this.animation = false;
 
     this.currentIndex = 0;
@@ -37,4 +37,12 @@ angular.module('ob')
         this.animation = true;
         this.currentIndex = -1;
     };
+
+    $scope.isMobile = function(){
+        return $window.innerWidth < 768;
+    }
+    var w = angular.element($window);
+    w.bind('resize', function () {
+        $scope.$apply();
+    });
 }]);

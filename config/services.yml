@@ -1,0 +1,17 @@
+parameters:
+    droga5_optimism_bias_bundle.byc_persistance_layer.class:      BYC\PersistanceLayerBundle\DependencyInjection\PersistanceLayerConfigurationContainer
+    droga5_optimism_bias_bundle.byc_persistance_layer.mapping:
+        Droga5OptimismBiasBundle_OptimismBiasSlice: doctrine
+
+services:
+    byc_persistance_layer.layers.droga5_optimism_bias_bundle:
+        class:        "%droga5_optimism_bias_bundle.byc_persistance_layer.class%"
+        arguments:
+            -
+                doctrine:
+                    dirName: Entity
+                    objectManager: @doctrine
+            -
+                "%droga5_optimism_bias_bundle.byc_persistance_layer.mapping%"
+        tags:
+            - { name: byc_persistance_layer.layers }

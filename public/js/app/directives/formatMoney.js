@@ -6,7 +6,7 @@ angular.module('ob')
             field: '='
         },
         replace: true,
-        template: '<span><input type="text" ng-model="field" /></span>',
+        template: '<span><div class="input-group right"><span class="input-group-addon dollar">$</span><input type="text" ng-model="field" /></div></span>',
         link: function(scope, element, attrs) {
             function spliceSlice(str, index, count, add) {
                 return str.slice(0, index) + (add || "") + str.slice(index + count);
@@ -48,12 +48,7 @@ angular.module('ob')
                 else {
                     decPart = "." + decPart;
                 }
-                var res = '$ ' + intPart + decPart;
-                if(res === '$ '){
-                    res = '';
-                }
-
-
+                var res = intPart + decPart;
                 scope.$apply(function() {scope.field = res});
 
             });
