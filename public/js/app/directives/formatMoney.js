@@ -55,4 +55,23 @@ angular.module('ob')
 
         }
     };
-}]);
+}])
+.directive('onlyInteger', function() {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attr, ngModelCtrl) {
+            function deleteNonInteger(text) {
+                var transformedInput = text.replace(/[^0-9]/g, '');
+                if(!angular.isUndefined(attr.max)){
+                    transformedInput = transformedInput.slice(0,parseInt(attr.max, 10));
+                }
+                if(transformedInput !== text) {
+                    ngModelCtrl.$setViewValue(transformedInput);
+                    ngModelCtrl.$render();
+                }
+                return transformedInput;
+            }
+            ngModelCtrl.$parsers.push(deleteNonInteger);
+        }
+    };
+});

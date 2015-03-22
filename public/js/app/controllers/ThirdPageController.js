@@ -19,30 +19,41 @@ angular.module('ob')
     this.init = function(){
         parent.displayButtons = true;
         parent.nextButton = 'Next';
+        parent.nextDisabled = function(){
+            return !_this.validMinRate() || !_this.validMaxRate();
+        };
+    };
+
+    this.validMinRate = function(){
+        return utils.isInteger(this.user.minRetire) && this.user.minRetire.length > 1;
+    };
+
+    this.validMaxRate = function(){
+        return utils.isInteger(this.user.maxRetire);
     };
 
     this.realityMin = function(){
-        return utils.isInf(65, this.user.minRetire);
+        return this.validMinRate() && utils.isInf(65, this.user.minRetire);
     };
 
     this.realityMax = function(){
-        return utils.isSup(75, this.user.minRetire);
+        return this.validMinRate() && utils.isSup(75, this.user.minRetire);
     };
 
     this.realityMid = function(){
-        return utils.isBetween(65, 75, this.user.minRetire);
+        return this.validMinRate() && utils.isBetween(65, 75, this.user.minRetire);
     };
 
     this.futureMin = function(){
-        return utils.isInf(100, this.user.minRetire, this.user.maxRetire);
+        return this.validMinRate() && this.validMaxRate() && utils.isInf(100, this.user.minRetire, this.user.maxRetire);
     };
 
     this.futureMax = function(){
-        return utils.isSup(120, this.user.minRetire, this.user.maxRetire);
+        return this.validMinRate() && this.validMaxRate() && utils.isSup(120, this.user.minRetire, this.user.maxRetire);
     };
 
     this.futureMid = function(){
-        return utils.isBetween(100, 120, this.user.minRetire, this.user.maxRetire);
+        return this.validMinRate() && this.validMaxRate() && utils.isBetween(100, 120, this.user.minRetire, this.user.maxRetire);
     };
 
     }]);

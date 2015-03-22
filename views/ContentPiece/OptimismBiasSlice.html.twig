@@ -42,7 +42,7 @@
 					<div class="v-center">
 						<div class="col-sm-4 tall">
 							<h4 class="labels navy col-xs-6 col-sm-12">How old are you?</h4>
-							<input type="text" ng-model="secondPage.user.age" class="col-xs-6 col-sm-12 ">
+							<input type="text" ng-model="secondPage.user.age" only-integer class="col-xs-6 col-sm-12 ">
 						</div>
 
 						<div class="col-sm-4 tall">
@@ -70,24 +70,35 @@
 					<div class="h-center response col-sm-11 col-xs-12">
 				<div class="col-sm-6 tall small left">
 					<h4 class="labels navy col-xs-6 col-sm-12">How old do you think you'll be when you retire?</h4>
-					<input type="text" ng-model="thirdPage.user.minRetire" class="col-xs-6 col-sm-12">
+					<input type="text" ng-model="thirdPage.user.minRetire" only-integer max="3" class="col-xs-6 col-sm-12">
 
 					<!-- IF LESS THAN 65 -->
-					<div class="prompt" ng-class="{'vis-hidden': !thirdPage.realityMin() && !thirdPage.realityMax() && !thirdPage.realityMid()}">
+					<div class="col-xs-12 prompt" ng-class="{'vis-hidden': !thirdPage.realityMin() && !thirdPage.realityMax() && !thirdPage.realityMid()}">
 						<span ng-if="thirdPage.realityMin()">Did you know the average American retires at 66?
-											<span ng-if="thirdPage.realityMin()" class="source" style="color: red" ng-class="{'vis-hidden': !thirdPage.realityMin() && !thirdPage.realityMax() && !thirdPage.realityMid()}" ng-show="isMobile()">Source: <a href="#">Gallop Poll 1</a></span>
+						<span ng-if="thirdPage.realityMin()" class="source r-age-min" ng-class="{'vis-hidden': !thirdPage.realityMin() && !thirdPage.realityMax() && !thirdPage.realityMid()}" ng-show="isMobile()">Source: <a href="#">Gallop Poll 1</a></span>
 
 
 						</span>
-						<span ng-if="thirdPage.realityMax()">Many of us plan on working longer, but studies show that 49% of Americans have to retire earlier than expected.</span>
-						<span ng-if="thirdPage.realityMid()">It looks like you're setting realistic goals. The average American retires at 62.</span>
+
+
+						<span ng-if="thirdPage.realityMax()">Many of us plan on working longer, but studies show that 49% of Americans have to retire earlier than expected.
+						<span ng-if="thirdPage.realityMax()"class="source r-age-max" ng-class="{'vis-hidden': !thirdPage.realityMin() && !thirdPage.realityMax() && !thirdPage.realityMid()}" ng-show="isMobile()">Source: <a href="#">US News</a></span>
+						</span>
+
+
+
+						<span ng-if="thirdPage.realityMid()">It looks like you're setting realistic goals. The average American retires at 62.
+						
+						<span ng-if="thirdPage.realityMid()"class="source r-age-mid" ng-class="{'vis-hidden': !thirdPage.realityMin() && !thirdPage.realityMax() && !thirdPage.realityMid()}" ng-show="isMobile()">Source: <a href="#">Gallop Poll</a></span>
+
+						</span>
 					</div>
 
 					<span ng-if="thirdPage.realityMin()" class="source" ng-class="{'vis-hidden': !thirdPage.realityMin() && !thirdPage.realityMax() && !thirdPage.realityMid()}" ng-hide="isMobile()">Source: <a href="#">Gallop Poll 1</a></span>
 
-					<span ng-if="thirdPage.realityMax()"class="source" ng-class="{'vis-hidden': !thirdPage.realityMin() && !thirdPage.realityMax() && !thirdPage.realityMid()}">Source: <a href="#">US News</a></span>
+					<span ng-if="thirdPage.realityMax()"class="source" ng-class="{'vis-hidden': !thirdPage.realityMin() && !thirdPage.realityMax() && !thirdPage.realityMid()}" ng-hide="isMobile()">Source: <a href="#">US News</a></span>
 
-					<span ng-if="thirdPage.realityMid()"class="source" ng-class="{'vis-hidden': !thirdPage.realityMin() && !thirdPage.realityMax() && !thirdPage.realityMid()}">Source: <a href="#">Gallop Poll</a></span>
+					<span ng-if="thirdPage.realityMid()"class="source" ng-class="{'vis-hidden': !thirdPage.realityMin() && !thirdPage.realityMax() && !thirdPage.realityMid()}" ng-hide="isMobile()">Source: <a href="#">Gallop Poll</a></span>
 
 				</div>
 
@@ -95,15 +106,18 @@
 
 				<div class="col-sm-6 right tall small">
 					<h4 class="labels navy col-xs-6 col-sm-12">How many years do you think your retirement will last?</h4>
-					<input type="text" ng-model="thirdPage.user.maxRetire" class="col-xs-6 col-sm-12">
+					<input type="text" ng-model="thirdPage.user.maxRetire" only-integer max="3" class="col-xs-6 col-sm-12">
 
-					<div class="prompt" ng-class="{'vis-hidden': !thirdPage.futureMin() && !thirdPage.futureMax() && !thirdPage.futureMid()}">
+					<div class="col-xs-12 prompt" ng-class="{'vis-hidden': !thirdPage.futureMin() && !thirdPage.futureMax() && !thirdPage.futureMid()}">
 						<span ng-if="thirdPage.futureMin()">Did you know experts recomment planning to live to 105?</span>
 						<span ng-if="thirdPage.futureMax()">The oldest person in history lived to 122. But with modern medical advances, who knows what the future of longevity will bring.</span>
 						<span ng-if="thirdPage.futureMid()">It looks like you're setting realistic goals. The average American retires at 62.</span>
+						<span ng-if="thirdPage.futureMax()" class="source future-max" ng-class="{'vis-hidden': !thirdPage.futureMin() && !thirdPage.futureMax() && !thirdPage.futureMid()}" ng-show="isMobile()">Source: 
+						<a href="#">New York Times</a>
+						</span>
 					</div>
 
-					<span ng-if="thirdPage.futureMax()" class="source" ng-class="{'vis-hidden': !thirdPage.futureMin() && !thirdPage.futureMax() && !thirdPage.futureMid()}">Source: New York Times</span>
+					<span ng-if="thirdPage.futureMax()" class="source" ng-class="{'vis-hidden': !thirdPage.futureMin() && !thirdPage.futureMax() && !thirdPage.futureMid()}" ng-hide="isMobile()">Source: <a href="#">New York Times</a></span>
 				</div>
 
 				</div>
@@ -121,14 +135,14 @@
 				<div class="h-center col-xs-12 your">
 				<h4 class="labels navy">How much are you currently contributing to your workplace retirement plan?</h4>
 
-				<div class="col-sm-4">
+				<div class="col-sm-4 contrib">
 					<div class="roundedOne">
 						<input type="checkbox"  id="roundedOne" name="contributionPlan" value="percentage" ng-model="forthPage.user.contributionPlan" />
 						<label for="roundedOne"></label>
 					</div>
 				
 
-					<div class="row controls money">
+					<div class="row controls money col-xs-9 col-sm-12">
 						<button class="btn btn-default" ng-click="forthPage.lessContribution()" ng-disabled="forthPage.user.contributionPlan !== 'percentage'"><span class="arrow-less"/></button>
 						<h4 class="labels navy"><animated-number class="number" number="forthPage.user.contribution" /></animated-number><span class="percent">%</span></h4>
 						<button class="btn btn-default" ng-click="forthPage.moreContribution()" ng-disabled="forthPage.user.contributionPlan !== 'percentage'"><span class="arrow-more"/></button>
@@ -149,7 +163,7 @@
 							</div>
 		  				</div>
 
-		  				<div class="row controls money match">
+		  				<div class="row controls money match col-xs-12">
 						<button class="btn btn-default" ng-click="forthPage.lessCompany()" ng-disabled="forthPage.user.contributionPlan !== 'percentage'"><span class="arrow-less"/></button>
 						<h4 class="labels navy"><animated-number number="forthPage.user.contribution" class="number"/></animated-number><span class="percent">%</span></h4>
 						<button class="btn btn-default" ng-click="forthPage.moreCompany()" ng-disabled="forthPage.user.contributionPlan !== 'percentage'"><span class="arrow-more"/></button>
@@ -157,7 +171,7 @@
 
 				</div>
 
-				<div class="col-sm-4">
+				<div class="col-sm-4 col-xs-12">
 					<!--<input type="radio" name="contributionPlan" value="auto" ng-model="forthPage.user.contributionPlan">
 										 Rounded ONE -->
 					<div class="roundedOne">
@@ -165,12 +179,12 @@
 						<label for="roundedOne"></label>
 					</div>
 					<h5 class="labels navy">I don't know. I just did auto-enrollment.</h5>
-					<div class="prompt contribution" ng-class="{'vis-hidden': forthPage.user.contributionPlan !== 'auto'}">
+					<div class="prompt contribution" ng-class="{'vis-hidden': forthPage.user.contributionPlan !== 'auto'}" ng-hide="isMobile()">
 						You may be contributing less than you think. Most auto-enrollment plans start your contributions at just 3%. We'll use that for your calculation.
 					</div>
 				</div>
 
-				<div class="col-sm-4">
+				<div class="col-sm-4 col-xs-12">
 
 					<div class="roundedOne">
 						<input type="radio"  name="contributionPlan"  value="social" ng-model="forthPage.user.contributionPlan" />
@@ -181,6 +195,9 @@
 					<h5 class="labels navy">Nothing. I'll just collect my Social Security</h5>
 					<div class="prompt contribution" ng-class="{'vis-hidden': forthPage.user.contributionPlan !== 'social'}">
 						A lot of people think of Social Security as a safety net, but on its own, the average monthly benefit likely isn't enough to live abov a federal poverty line.
+					</div>
+					<div class="prompt contribution" ng-class="{'dis-hidden': forthPage.user.contributionPlan !== 'auto'}" ng-show="isMobile()">
+						You may be contributing less than you think. Most auto-enrollment plans start your contributions at just 3%. We'll use that for your calculation.
 					</div>
 				</div>
 				</div>
@@ -197,12 +214,25 @@
 		  				<div class="top-info">
 		  					<span ng-show="fifthPage.resultMode">
 		  						<span ng-hide="fifthPage.infoMode">
-		  							<h4>estimated income in retirement</h4>
-		  							<h2>{{ fifthPage.result.totalSaving | currency:"$":0 }}<span class="slash">/yr</span></h2>
-		  							<p>including Social Security</p>
+
+									<div class="col-xs-6 estimate-left" ng-show="isMobile()">
+		  							<h4 class="col-sm-12">estimated income in retirement</h4>
+		  							<p class="col-sm-12">including Social Security</p>
+									</div>
+
+		  							<h4 class="col-xs-6 col-sm-12" ng-hide="isMobile()">estimated income in retirement</h4>
+		  							<h2 class="col-xs-6 col-sm-12">{{ fifthPage.result.totalSaving | currency:"$":0 }}<span class="slash">/yr</span></h2>
+		  							<p class="col-xs-6 col-sm-12" ng-hide="isMobile()">including Social Security</p>
 		  						</span>
 		  						<span ng-show="fifthPage.infoMode">
-		  							<p>this is info text......</p>
+		  							<p class="note">This calculation assumes a xx rate of return over xx year.  
+									The compounding concept is hypothetical and for illustrative 
+									purposes only and is not intended to represent performance of any specific investment, which may fluctuate. No taxes are considered in the calculations; generally withdrawals are taxable at ordinary rates. It is possible to lose money by investing in securities. 
+									</br><br>
+
+									The Social Security benefits included are estimates and 
+									are not guaranteed.  Benefits may be reduced or even 
+									eliminated at any time. </p>
 		  						</span>
 		  						<p class="i"><button ng-click="fifthPage.infoMode = !fifthPage.infoMode">i</button></p>
 		  					</span>
@@ -210,7 +240,7 @@
 		  						<span style="font-size: 20px;">Calculating...</span>
 		  						<progressbar style="height: 5px;margin-bottom: 0px;margin-left: 40px;margin-right: 40px;" value="fifthPage.progress"></progressbar>
 		  						<slot-machine-text increase="fifthPage.slot">
-		  						<div style="font-size: 20px;" class="slideUp">Years Until Retirment: {{ fifthPage.result.yearBeforeRetirment }}</div>
+		  						<div style="font-size: 20px;" class="slideUp">Years Until Retirement: {{ fifthPage.result.yearBeforeRetirment }}</div>
 		  						<div style="font-size: 20px;" class="slideUp">Annual Contribution: {{ fifthPage.result.annualContribution }}%</div>
 		  						<div style="font-size: 20px;" class="slideUp">Inflation: {{ fifthPage.result.inflationRate }}%</div>
 		  						<div style="font-size: 20px;" class="slideUp">Total Saving: {{ fifthPage.result.totalSaving | currency:"$":0 }}</div>
@@ -227,6 +257,7 @@
 
 		  		<div class="enough col-sm-6" ng-show="fifthPage.resultMode">
 		  			<div class="inner">
+		  			<div class="grey">
 		  			<div class="col-xs-6 col-sm-12">
 		  				<h4 class="col-sm-12">is that enough?</h4>
 		  				<p class="col-sm-12">See how increasing your retirement contribution could make a big difference.</p>
@@ -236,14 +267,26 @@
 		  					<h4 class="labels navy" ><animated-number number="fifthPage.increase" style="display:inline-block"/></animated-number><span class="percent">%</span></h4>
 		  					<button class="btn btn-default" ng-click="fifthPage.moreIncrease()"><span class="arrow-more"/></button>
 		  				</div>
+		  				</div>
 
-		  				<div class="prompt estimate col-xs-12">
-		  					<p>Once you factor in inflation, you would have about <h2>$27,000<span class="slash">/yr</span><span class="footnote">1</span></h2>
+		  				<div class="prompt estimate col-xs-12" ng-hide="isMobile()">
+		  					<p>Once you factor in inflation, you would have about 
+
+		  					<h2>$27,000<span class="slash">/yr</span><span class="footnote num">1</span></h2>
+		  						in today's dollars.
+		  					</p>
+		  				</div>
+
+
+		  				<div class="prompt estimate col-xs-12" ng-show="isMobile()">
+		  					<p>Once you factor in inflation, you would have about 
+
+		  					<b>$27,000<span class="slash">/yr</span><span class="footnote num">1</span></b>
 		  						in today's dollars.
 		  					</p>
 		  				</div>
 		  			</div>
-		  			<p class="footnote">Inflation is assumed to be 3%. The return is purely hypothetical</p>
+		  			<p class="footnote" ng-hide="isMobile()">Inflation is assumed to be 3%. The return is purely hypothetical</p>
 		  		</div>
 		  	</div>
 		  </div>
@@ -260,7 +303,7 @@
 
 			</ul>
 				<h3>MAKE A PLAN </h3>
-				<p class="blue-note">Studies show people who monitor their investments are more than twice as likely to succeed at retirement planning.<span class="footnote">1</span>
+				<p class="blue-note">Studies show people who monitor their investments are more than twice as likely to succeed at retirement.<span class="footnote" ng-hide="isMobile()">1</span>
 
 				<div class="col-sm-6 plan-entry">
 				<h4 class="labels navy">Remind me</h4>
@@ -271,7 +314,7 @@
 				<div class="col-sm-6 plan-entry">
 				<h4 class="labels navy">Start now</h4>
 				<p>Log in to your Prudential retirement account and start contributing more today. <br>Or call 1-XXX-XXXX for assistance.</p>
-				<button class="btn btn-default round" >Increase my contributions</button>
+				<button class="btn btn-default round" >Login now</button>
 				</div>
 
 				<div class="row source">
@@ -279,6 +322,16 @@
 				</div>
 			</div>
 			</div>
+					<div class="btn-group" ng-if="main.displayButtons">
+			<button type="button" class="btn btn-default back" ng-click="main.prev()">
+				<span class="glyphicon glyphicon-menu-left"></span>Back
+			</button>
+
+			<button type="button" class="btn btn-default next" ng-disabled="main.nextDisabled()" ng-click="main.next()">
+			{{main.nextButton}}
+				<span class="glyphicon glyphicon-menu-right"></span>
+			</button>
+		</div>
 		  </page>
 		</page-carousel>
 

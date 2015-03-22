@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased; }
 
 .container {
-  padding: 1em; }
+  padding: 10px; }
 
 input[type=text], textarea, button, button:active, button:hover {
   outline: none !important;
@@ -44,8 +44,7 @@ h3.ywft {
 .plan h3 {
   color: #001f45;
   text-transform: uppercase;
-  font-family: "TradeGothic", sans-serif;
-  font-weight: bold; }
+  font-family: "TradeGothicBoldCon20", sans-serif; }
 
 .tall {
   padding-right: 25px;
@@ -67,7 +66,7 @@ h3.ywft {
   top: 20px; }
 .tall.small .source {
   position: relative;
-  top: 40px;
+  top: 20px;
   font-size: 10px; }
   .tall.small .source a {
     color: #009ed1;
@@ -103,15 +102,22 @@ input[type=radio] {
 .money button.btn.btn-default {
   width: 50px;
   height: 50px;
-  min-width: 40px;
   border-radius: 100%;
   vertical-align: top;
   position: relative; }
 
+.money .btn-default[disabled] {
+  background: #c4c4c4; }
+
 .controls.money {
-  width: auto;
   position: static;
-  height: 60px; }
+  height: 60px;
+  overflow: auto;
+  clear: both;
+  margin: 0 auto; }
+
+.grey .controls.money {
+  margin: 0 auto; }
 
 .controls.money.contribution {
   position: static; }
@@ -119,7 +125,8 @@ input[type=radio] {
 .controls.money .labels.navy {
   width: 60px;
   min-height: 20px;
-  overflow: hidden; }
+  overflow: hidden;
+  text-align: center; }
 
 .retire .col-sm-6 input {
   margin-bottom: 10px;
@@ -231,7 +238,9 @@ div.carousel {
     .btn-group .btn.btn-default .glyphicon-menu-left {
       float: left; }
     .btn-group .btn.btn-default .glyphicon-menu-right {
-      float: right; }
+      top: 15px;
+      right: 15px;
+      position: absolute; }
 
 .btn-group button.back {
   background: white !important;
@@ -244,7 +253,8 @@ div.carousel {
     font-style: normal;
     font-family: "ChaparralItalic";
     font-size: 18px;
-    padding: 25% 0 0 0; }
+    padding: 25% 0 0 0;
+    width: 100%; }
 
 .note.navy {
   padding: 25% 0 0 0; }
@@ -266,7 +276,6 @@ button.btn {
   text-shadow: none;
   border-radius: 0;
   border: none;
-  min-width: 130px;
   padding: .5em;
   font-family: "TradeGothicBoldCon20";
   background: #009ed1;
@@ -279,9 +288,9 @@ button.btn.btn-default.find {
   top: 30px;
   -webkit-transition: .3 all ease-in; }
   button.btn.btn-default.find .glyphicon.glyphicon-menu-right {
-    float: right;
-    position: static;
-    line-height: inherit; }
+    top: 15px;
+    right: 15px;
+    position: absolute; }
 
 button.btn.btn-default.find:hover {
   -webkit-transform: translateY(-2%);
@@ -314,6 +323,7 @@ button.btn:hover {
   color: #009ed1;
   font-family: "Chapparral Pro";
   font-style: italic;
+  float: none;
   min-height: 100px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -334,7 +344,7 @@ button.btn:hover {
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    font-size: 18px; }
+    font-size: 15px; }
 
 p.note {
   font-style: italic;
@@ -373,14 +383,16 @@ input {
 
 h4.labels {
   display: block;
-  font-size: 1.2em;
+  font-size: 16px;
   font-family: "TradeGothic", sans-serif;
   min-height: 60px;
   font-weight: bold; }
 
-.your h4.labels {
-  min-height: auto;
-  margin-bottom: 40px; }
+.your {
+  padding: 0px; }
+  .your h4.labels {
+    min-height: auto;
+    margin-bottom: 0px; }
 
 h5.labels {
   font-weight: normal;
@@ -395,11 +407,12 @@ h5.labels {
 /* results */
 .offset-container {
   max-width: 960px;
-  overflow: auto;
+  overflow: visible;
   margin: 0 auto;
   width: auto;
   position: relative;
-  left: 125px; }
+  left: 125px;
+  min-height: 450px; }
 
 .enough {
   max-width: 290px;
@@ -411,34 +424,43 @@ h5.labels {
 .prompt.estimate h2 {
   font-family: "TradeGothic", sans-serif;
   font-weight: bold; }
-
-.prompt.estimate h2 span {
-  font-size: .6em; }
-
-.enough h4 {
-  text-transform: uppercase;
-  font-weight: bold; }
-
-.enough p {
-  font-family: "Chapparral Pro";
-  font-style: italic; }
+  .prompt.estimate h2 span {
+    font-size: .6em; }
 
 .enough .inner {
   background: white;
-  padding: 20px;
+  padding: 20px 0px;
   overflow: auto;
   clear: both; }
+  .enough .inner h4 {
+    text-transform: uppercase;
+    color: #001f45;
+    font-family: "TradeGothicBoldCon20", sans-serif;
+    letter-spacing: inherit; }
+  .enough .inner p {
+    font-family: "Chapparral Pro";
+    font-style: italic;
+    line-height: initial;
+    color: #333333; }
 
 .matches {
-  padding: 10px; }
+  padding: 0px;
+  overflow: auto;
+  clear: both;
+  float: left; }
   .matches h5 {
     font-size: 16px;
     display: inline-block;
-    font-family: "TradeGothicBoldCon20";
+    font-family: "TradeGothicBoldCon20", sans-serif;
     padding-right: 10px; }
-  .matches .money .btn.btn-default {
-    height: 40px;
-    width: 40px; }
+    .matches h5 .i.dark {
+      margin-right: 10px; }
+  .matches .squaredTwo {
+    margin: 8px auto; }
+
+.money .btn.btn-default {
+  height: 40px;
+  width: 40px; }
 
 input[type="checkbox"] {
   width: auto; }
@@ -461,10 +483,15 @@ input[type="checkbox"] {
   margin: 0 auto;
   padding-right: 15px;
   padding-left: 15px;
-  max-width: 400px;
+  max-width: 320px;
   overflow: auto;
   padding-bottom: 0px;
-  height: 150px; }
+  min-height: 150px; }
+  .top-info p.note {
+    line-height: inherit;
+    font-family: "TradeGothic", sans-serif;
+    font-style: normal;
+    font-size: 10px; }
 
 #upit-related-content h2.h1 {
   font-family: "TradeGothicBoldCon20"; }
@@ -501,8 +528,8 @@ input[type="checkbox"] {
 
 .top-info h4 {
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 16px;
+  font-family: "TradeGothicBoldCon20", sans-serif;
+  font-size: 1em;
   margin-bottom: 0; }
 
 .top-info h2 {
@@ -516,8 +543,6 @@ input[type="checkbox"] {
   font-size: .7em; }
 
 .top-info p {
-  font-family: "Chapparral Pro";
-  font-style: italic;
   color: white; }
 
 .circle {
@@ -549,21 +574,22 @@ input[type="checkbox"] {
   color: white;
   border: 1px solid white;
   float: right;
-  background: transparent;
   border-radius: 100px;
   height: 20px;
   width: 20px;
-  overflow: auto; }
+  font-family: "ChaparralItalic", serif;
+  overflow: visible;
+  clear: both; }
 
 .i.dark {
-  color: #000;
-  border: 1px solid #000;
+  background: black;
   float: left;
-  background: transparent;
   border-radius: 100px;
   height: 20px;
   width: 20px;
-  overflow: auto; }
+  font-family: "ChaparralItalic", serif;
+  overflow: visible;
+  clear: both; }
 
 .i button {
   background: transparent;
@@ -572,26 +598,27 @@ input[type="checkbox"] {
 
 .prompt.estimate {
   background: url(/bundles/droga5optimismbias/images/estimate-check.png);
-  margin: 0 auto;
-  background-size: contain;
-  background-repeat: no-repeat;
   background-position: center center;
   color: #009ed1;
-  min-height: 142px; }
+  min-height: 142px;
+  margin: 0 auto;
+  background-size: contain;
+  background-repeat: no-repeat; }
 
 .prompt.estimate p {
   max-width: 200px;
   margin: 0 auto;
   line-height: 1em;
-  color: #009ed1; }
+  color: #009ed1;
+  text-align: center; }
 
 .prompt.contribution {
   background: url(/bundles/droga5optimismbias/images/contribution-check.png);
-  background-size: contain;
-  background-repeat: no-repeat;
   line-height: 1em;
   background-position: top center;
-  margin: 0 auto; }
+  margin: 0 auto;
+  background-size: contain;
+  background-repeat: no-repeat; }
 
 .blue-note {
   color: #009ed1;
@@ -621,6 +648,12 @@ img.responsive {
 .col-sm-4 {
   overflow: auto; }
 
+.col-sm-4.tall {
+  overflow: hidden; }
+
+.your .col-sm-4 {
+  overflow: visible; }
+
 button.call-submit {
   height: 50px;
   min-width: 30px;
@@ -642,10 +675,10 @@ button.call-submit {
 .vis-hidden {
   visibility: hidden; }
 
-.percent {
-  display: inline-block; }
+.dis-hidden {
+  display: none; }
 
-.number {
+.percent, .number {
   display: inline-block; }
 
 .slideDown {
@@ -791,8 +824,8 @@ slideUp
 
 /* SQUARED TWO */
 .squaredTwo {
-  width: 28px;
-  height: 28px;
+  width: 23px;
+  height: 23px;
   background: black;
   margin: 20px auto;
   position: relative;
@@ -801,10 +834,10 @@ slideUp
 .squaredTwo label {
   cursor: pointer;
   position: absolute;
-  width: 23.5px;
-  height: 23.5px;
-  left: 2.75px;
-  top: 2.4px;
+  width: 18.5px;
+  height: 18.5px;
+  left: 2.2px;
+  top: 2.2px;
   background: white; }
 
 .squaredTwo label:after {
@@ -904,8 +937,9 @@ slideUp
   font-size: 30px;
   border: none;
   color: #001f45;
-  top: 28%;
-  left: 5px; }
+  top: 21%;
+  left: 5px;
+  font-family: "TradeGothicBold", sans-serif; }
 
 /* ------------------------------ MEDIA QUERIES ------------------------------ */
 @media (min-width: 568px) {
@@ -919,24 +953,77 @@ slideUp
     position: relative; } }
 
 @media (max-width: 768px) {
+  .container.grid h5 {
+    font-size: 1.1em;
+    padding: 0 1.4em; }
+  .container.grid h3.ywft {
+    margin-bottom: -8px;
+    font-size: 1.8em; }
   .carousel-inner {
     height: 475px; }
+  .estimate {
+    max-width: inherit; }
+  .prompt.estimate {
+    background: url(/bundles/droga5optimismbias/images/contribution-check.png);
+    max-width: 360px;
+    background-repeat: no-repeat;
+    background-size: 100% auto; }
+    .prompt.estimate p {
+      max-width: inherit; }
+      .prompt.estimate p .inflate {
+        width: 100px; }
+  .your div.col-sm-4 {
+    padding: 0;
+    overflow: auto;
+    max-width: 300px;
+    margin: 0 auto;
+    float: none; }
+  .your div.col-sm-4.contrib {
+    overflow: visible; }
+  .your h4.labels {
+    min-height: initial;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1em; }
   .grid.r-none {
     background-image: none;
     background: transparent; }
+  .controls.money.col-xs-9.col-sm-12 {
+    clear: none;
+    overflow: visible; }
+  .row.controls.money.col-xs-6.col-sm-12 {
+    overflow: visible;
+    clear: none; }
+    .row.controls.money.col-xs-6.col-sm-12 h4.labels.navy {
+      font-size: 22px;
+      font-weight: lighter;
+      margin-top: 15px; }
+  .controls.money.match {
+    overflow: auto;
+    clear: both; }
+    .controls.money.match button.btn.btn-default {
+      width: 30px;
+      height: 30px; }
+      .controls.money.match button.btn.btn-default span {
+        left: 10px;
+        top: 10px; }
   .offset-container {
     left: 0px;
     background: white;
-    padding: 10px; }
+    padding: 10px;
+    text-align: left; }
     .offset-container div {
       padding: 0; }
     .offset-container .left-align.estimate {
       top: 0px; }
       .offset-container .left-align.estimate .top-info {
         padding: 0;
-        max-width: initial; }
-  .circle, .arrow-down, .shadow {
-    display: none; }
+        max-width: initial;
+        min-height: 100px; }
+        .offset-container .left-align.estimate .top-info span p.i {
+          position: absolute;
+          top: 10px;
+          right: 10px; }
   .enough {
     left: 0px;
     max-width: initial; }
@@ -947,18 +1034,38 @@ slideUp
       padding-bottom: 5px;
       float: right; }
     .tall.small .prompt {
-      top: 0px; }
+      top: 0px;
+      margin: 0 auto;
+      float: none;
+      max-width: 360px;
+      text-align: center; }
       .tall.small .prompt span {
-        font-size: 16px; }
+        max-width: 360px;
+        padding: 10px 32px 0 32px;
+        padding: 10px 11% 0 11%;
+        text-align: center; }
     .tall.small .source {
       position: relative;
-      top: 0px;
-      font-size: 10px; }
+      top: 0%;
+      font-size: 8px;
+      display: block;
+      color: #333333;
+      font-style: normal;
+      font-family: "TradeGothic", sans-serif; }
       .tall.small .source a {
         color: #009ed1;
         font-style: underline; }
+  .r-age-min {
+    bottom: -25px; }
+  .r-age-mid {
+    bottom: -15px; }
+  .r-age-max {
+    bottom: -10px; }
+  .future-max {
+    bottom: -45px; }
   .roundedOne {
-    float: left; }
+    float: left;
+    margin-top: 10px; }
   .h-center {
     position: static;
     transform: none;
@@ -970,7 +1077,9 @@ slideUp
     border-right: none;
     padding-right: 0;
     border-bottom: 1px solid #c4c4c4;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    overflow: auto;
+    padding-bottom: 20px; }
   .tall.small.right {
     border-right: none;
     padding-left: 0; }
@@ -981,6 +1090,15 @@ slideUp
     font-size: 15px; }
   .content.inner {
     height: 450px; }
+  .enough .inner {
+    padding: 0; }
+    .enough .inner .grey {
+      background: #f6f6f6;
+      overflow: auto;
+      clear: both; }
+      .enough .inner .grey div p {
+        line-height: initial;
+        color: #333333; }
   .v-center {
     padding-top: 5%; }
     .v-center .note.navy {
@@ -1002,9 +1120,12 @@ slideUp
     padding: 5px 0;
     position: relative;
     top: -20px;
-    line-height: 0px; }
-  .plan-entry p, .source p {
+    width: 50%;
+    line-height: initial; }
+  .plan-entry p, .source p, .circle, .arrow-down, .shadow {
     display: none; }
+  .plan-entry h4 {
+    text-align: center; }
   .v-center div {
     padding: 0; }
   .main {
@@ -1016,38 +1137,7 @@ slideUp
   .response h4 {
     text-align: left; }
   .btn-group {
-    top: 0px; } }
-
-@media (max-width: 568px) {
-  .plan-entry p, .source p {
-    display: none; }
-  .col-sm-offset-2 {
-    margin-left: 0%; }
-  .col-sm-6.fix {
-    width: 50%;
-    float: left; }
-  .estimate {
-    margin: 0 auto; }
-  .v-center {
-    padding: 0;
-    width: 100%;
-    margin: 0 auto; }
-  .v-center div h4.labels {
-    text-align: left;
-    padding: 0 10px 0 0;
-    font-size: 15px; }
-  .response {
-    padding: 0; }
-  .response div {
-    padding-left: 0; }
-  .response div h4.labels {
-    text-align: left;
-    padding: 0 10px 0 0;
-    font-size: 15px; }
-  .response div h4.labels.navy {
-    margin-top: 0; }
-  .prompt {
-    width: 100%;
-    margin-bottom: 10px; }
-  .note.navy {
-    padding-top: 10px; } }
+    top: 0px;
+    width: 280px; }
+    .btn-group .btn.btn-default {
+      width: 135px; } }
