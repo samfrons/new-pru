@@ -1,0 +1,72 @@
+
+.intro-shadow {
+  animation-name: intro-shadow;
+  -webkit-animation-name: intro-shadow;
+  animation-duration: 1.5s;
+  -webkit-animation-duration: 1.5s;
+  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+  visibility: visible !important;
+}
+
+@-webkit-keyframes intro-shadow {
+  0% {
+    -webkit-transform: scaleX(1);
+  }
+
+  40% {
+    -webkit-transform: scaleX(2.2);
+  }
+
+  60% {
+    -webkit-transform: scaleX(2.2);
+  }
+
+  100% {
+    -webkit-transform: scaleX(1);
+  }
+}
+
+
+
+
+.intro-circle {
+  animation-name: intro-circle;
+  -webkit-animation-name: intro-circle;
+  animation-duration: 3.5s;
+  -webkit-animation-duration: 3.5s;
+  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+  visibility: visible !important;
+}
+
+
+@-webkit-keyframes intro-circle {
+  0% {
+    -webkit-transform: translateY(120%);
+  }
+
+  10% {
+    -webkit-transform: translateY(120%);
+  }
+
+  40% {
+    -webkit-transform: translateY(0%);
+  }
+
+  65% {
+    -webkit-transform: translateY(4%);
+  }
+
+  80% {
+    -webkit-transform: translateY(-4%);
+  }
+
+  95% {
+    -webkit-transform: translateY(2%);
+  }
+
+  100% {
+    -webkit-transform: translateY(0%);
+  }
+}

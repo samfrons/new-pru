@@ -1,0 +1,35 @@
+.roundedOne input[type="radio"] {
+  display:none;
+}
+.roundedOne input[type="radio"] + label {
+  display:inline-block;
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 20px auto;
+  background: rgb(237,249,252);
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  cursor: pointer;
+  -webkit-box-shadow: inset 3px 2px 6px 0px rgba(0, 0, 0, 0.26);
+  -moz-box-shadow: inset 3px 2px 6px 0px rgba(0, 0, 0, 0.26);
+  box-shadow: inset 3px 2px 6px 0px rgba(0, 0, 0, 0.26);
+}
+.roundedOne input[type="radio"] + label span {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background: $blue;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  top: 6px;
+}
+
+.roundedOne input[type="radio"]:checked + label span{
+  opacity: 1;
+}

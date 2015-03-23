@@ -12,7 +12,6 @@ angular.module('ob')
             _this.init();
         }
         if(index === 2){
-            console.log(_this.user.annualSalary);
             retirment.age = parseInt(_this.user.age,10);
             retirment.salary = parseInt(_this.user.annualSalary.replace('$','').replace(',','').trim(),10);
             retirment.savedForRetirment = parseInt(_this.user.savedForRetirement.replace('$','').replace(',','').trim(),10);

@@ -697,6 +697,7 @@ input[type="checkbox"] {
     width: 155px;
     height: 155px;
     overflow: hidden;
+    position: relative;
 }
 
 .left-align.estimate {
@@ -704,12 +705,16 @@ input[type="checkbox"] {
     top: 60px;
 }
 
-.circle.inner {
+.circle {
+    .inner {
     background: rgba(56,72,77,0.4);
-    left: -45px;
-    top: 20px;
+    left: -25px;
+    top: 100px;
     width: 200px;
     height: 200px;
+    position: absolute;
+    border-radius: 100%;
+}
 }
 
 .shadow {
@@ -1071,7 +1076,7 @@ slideUp
 }
 
 
-/* ROUNDED ONE */
+/* ROUNDED ONE 
 .roundedOne {
     width: 28px;
     height: 28px;
@@ -1136,7 +1141,7 @@ slideUp
     filter: alpha(opacity=100);
     opacity: 1;
 }
-
+*/
 .dollar {
   background: transparent;
   position: absolute;
@@ -1477,3 +1482,10 @@ slideUp
         }
     }
 }
+.ng-animate.item:not(.left):not(.right) {
+  -webkit-transition: 0s ease-in-out left;
+  transition: 0s ease-in-out left
+}
+@import "input",
+        "animatedNumber",
+        "resultPage";

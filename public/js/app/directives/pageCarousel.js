@@ -1,5 +1,5 @@
 angular.module('ob')
-.controller('PageCarouselController', ['$scope', '$timeout', '$interval', '$transition', function ($scope, $timeout, $interval, $transition) {
+.controller('PageCarouselController', ['$scope', '$interval', '$animate', function ($scope, $interval, $animate) {
     var self = this;
     var slides = self.slides = $scope.slides = [];
     var currentIndex = -1;
@@ -14,48 +14,28 @@ angular.module('ob')
             direction = nextIndex > currentIndex ? 'next' : 'prev';
         }
         if (nextSlide && nextSlide !== self.currentSlide) {
-            if ($scope.$currentTransition) {
-                $scope.$currentTransition.cancel();
-                $timeout(goNext);
-            } else {
-                goNext();
-            }
+            goNext();
         }
         function goNext() {
             // Scope has been destroyed, stop here.
-            if (destroyed) { return; }
-            //If we have a slide to transition from and we have a transition type and we're allowed, go
-            if (self.currentSlide && angular.isString(direction) && !$scope.noTransition && nextSlide.$element) {
-                //We shouldn't do class manip in here, but it's the same weird thing bootstrap does. need to fix sometime
-                nextSlide.$element.addClass(direction);
-                var reflow = nextSlide.$element[0].offsetWidth; //force reflow
+           if (destroyed) { return; }
 
-                //Set all other slides to stop doing their stuff for the new transition
-                angular.forEach(slides, function(slide) {
-                    angular.extend(slide, {direction: '', entering: false, leaving: false, active: false});
-                });
-                angular.extend(nextSlide, {direction: direction, active: true, entering: true});
-                angular.extend(self.currentSlide||{}, {direction: direction, leaving: true});
+          angular.extend(nextSlide, {direction: direction, active: true});
+          angular.extend(self.currentSlide || {}, {direction: direction, active: false});
 
-                $scope.$currentTransition = $transition(nextSlide.$element, {});
-                //We have to create new pointers inside a closure since next & current will change
-                (function(next,current) {
-                    $scope.$currentTransition.then(
-                        function(){ transitionDone(next, current); },
-                        function(){ transitionDone(next, current); }
-                    );
-                }(nextSlide, self.currentSlide));
-            } else {
-                transitionDone(nextSlide, self.currentSlide);
-            }
-            self.currentSlide = nextSlide;
-            currentIndex = nextIndex;
-        }
-        function transitionDone(next, current) {
-            angular.extend(next, {direction: '', active: true, leaving: false, entering: false});
-            angular.extend(current||{}, {direction: '', active: false, leaving: false, entering: false});
-            $scope.$currentTransition = null;
-            $scope.animationDone();
+          if ($animate.enabled() && !$scope.noTransition && nextSlide.$element) {
+            $scope.$currentTransition = true;
+            // TODO: Switch to use .one when upgrading beyond 1.2.21
+            // (See https://github.com/angular/angular.js/pull/5984)
+            nextSlide.$element.on('$animate:close', function closeFn() {
+              $scope.$currentTransition = null;
+              nextSlide.$element.off('$animate:close', closeFn);
+              $scope.animationDone();
+            });
+          }
+
+          self.currentSlide = nextSlide;
+          currentIndex = nextIndex;
         }
     };
 
@@ -69,7 +49,7 @@ angular.module('ob')
 
         //Prevent this user-triggered transition from occurring if there is already one in progress
         if (!$scope.$currentTransition) {
-            return self.select(slides[newIndex], 'next');
+          return self.select(slides[newIndex], 'next');
         }
     };
 
@@ -78,7 +58,7 @@ angular.module('ob')
 
         //Prevent this user-triggered transition from occurring if there is already one in progress
         if (!$scope.$currentTransition) {
-            return self.select(slides[newIndex], 'prev');
+          return self.select(slides[newIndex], 'prev');
         }
     };
     $scope.$watch('currentIndex', function(index) {
@@ -154,4 +134,51 @@ angular.module('ob')
             });
         }
     };
-});
+})
+.animation('.item', [
+         '$animate',
+function ($animate) {
+  return {
+    beforeAddClass: function (element, className, done) {
+      // Due to transclusion, noTransition property is on parent's scope
+      if (className == 'active' && element.parent() &&
+          !element.parent().scope().noTransition) {
+        var stopped = false;
+        var direction = element.isolateScope().direction;
+        var directionClass = direction == 'next' ? 'left' : 'right';
+        element.addClass(direction);
+        $animate.addClass(element, directionClass,function () {
+          if (!stopped) {
+            element.removeClass(directionClass + ' ' + direction);
+          }
+          done();
+        });
+
+        return function () {
+          stopped = true;
+        };
+      }
+      done();
+    },
+    beforeRemoveClass: function (element, className, done) {
+      // Due to transclusion, noTransition property is on parent's scope
+      if (className == 'active' && element.parent() &&
+          !element.parent().scope().noTransition) {
+        var stopped = false;
+        var direction = element.isolateScope().direction;
+        var directionClass = direction == 'next' ? 'left' : 'right';
+        $animate.addClass(element, directionClass,function () {
+          if (!stopped) {
+            element.removeClass(directionClass);
+          }
+          done();
+        });
+        return function () {
+          stopped = true;
+        };
+      }
+      done();
+    }
+  };
+
+}]);

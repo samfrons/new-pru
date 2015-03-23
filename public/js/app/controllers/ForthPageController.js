@@ -25,19 +25,7 @@ angular.module('ob')
 
     this.user = {
         contribution: 1,
-        contributionPlan: 'percentage'
+        contributionCompany: 1
     };
 
-    this.moreContribution = function(){
-        this.user.contribution++;
-    };
-
-    this.lessContribution = function(){
-        if(this.user.contribution === 0){
-            return;
-        }
-        this.user.contribution--;
-    };
-
-    
 }]);

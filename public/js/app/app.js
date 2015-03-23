@@ -1,1 +1,1 @@
-angular.module('ob', ['ui.bootstrap']);
+angular.module('ob', ['ui.bootstrap', 'ngAnimate']);

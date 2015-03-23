@@ -25,6 +25,7 @@
 		
 
 
+
 		  <page class="slide one" ng-controller="FirstPageController as firstPage">
 			<div class="container grid">
 				<h3 class="ywft navy">Retirement</h3>
@@ -137,37 +138,30 @@
 
 				<div class="col-sm-4 contrib">
 					<div class="roundedOne">
-						<input type="checkbox"  id="roundedOne" name="contributionPlan" value="percentage" ng-model="forthPage.user.contributionPlan" />
-						<label for="roundedOne"></label>
-					</div>
-				
+									<input type="radio" id="percentage" ng-model="forthPage.user.contributionPlan" value="percentage" name="radio" />
+									<label for="percentage"><span></span></label>
+								</div>
+								<animated-number class="col-xs-9 col-sm-12" number="forthPage.user.contribution" select="{{forthPage.user.contributionPlan === 'percentage'}}" clicked="forthPage.user.contributionPlan = 'percentage'"></animated-number>
 
-					<div class="row controls money col-xs-9 col-sm-12">
-						<button class="btn btn-default" ng-click="forthPage.lessContribution()" ng-disabled="forthPage.user.contributionPlan !== 'percentage'"><span class="arrow-less"/></button>
-						<h4 class="labels navy"><animated-number class="number" number="forthPage.user.contribution" /></animated-number><span class="percent">%</span></h4>
-						<button class="btn btn-default" ng-click="forthPage.moreContribution()" ng-disabled="forthPage.user.contributionPlan !== 'percentage'"><span class="arrow-more"/></button>
-					</div>
 
-						<div class="matches">
-		  					<h5>		  						
-		  					<p class="i dark">		
-		  					<button ng-click="fifthPage.infoMode = !fifthPage.infoMode">i</button>
-		  					</p>
+						<span ng-show="forthPage.user.contributionPlan === 'percentage'">
+								<div class="matches">
+									<h5>
+										<p class="i dark">
+											<button>i</button>
+										</p>
 
-		  					My company matches</h5>
-		  					
-		  					<!-- Squared TWO -->
-							<div class="squaredTwo">
-								<input type="checkbox" value="None" id="squaredTwo" name="check" />
-								<label for="squaredTwo"></label>
-							</div>
-		  				</div>
+										My company matches</h5>
 
-		  				<div class="row controls money match col-xs-12">
-						<button class="btn btn-default" ng-click="forthPage.lessCompany()" ng-disabled="forthPage.user.contributionPlan !== 'percentage'"><span class="arrow-less"/></button>
-						<h4 class="labels navy"><animated-number number="forthPage.user.contribution" class="number"/></animated-number><span class="percent">%</span></h4>
-						<button class="btn btn-default" ng-click="forthPage.moreCompany()" ng-disabled="forthPage.user.contributionPlan !== 'percentage'"><span class="arrow-more"/></button>
-					</div>
+									<!-- Squared TWO -->
+									<div class="squaredTwo">
+										<input type="checkbox" ng-model="forthPage.user.match" id="squaredTwo" name="check" />
+										<label for="squaredTwo"></label>
+									</div>
+								</div>
+
+								<animated-number class="match col-xs-12" number="forthPage.user.contributionCompany" select="{{forthPage.user.match}}" clicked="forthPage.user.match = true"></animated-number>
+								</span>
 
 				</div>
 
@@ -175,9 +169,9 @@
 					<!--<input type="radio" name="contributionPlan" value="auto" ng-model="forthPage.user.contributionPlan">
 										 Rounded ONE -->
 					<div class="roundedOne">
-						<input type="radio"  name="contributionPlan" value="auto" ng-model="forthPage.user.contributionPlan" />
-						<label for="roundedOne"></label>
-					</div>
+									<input type="radio" id="auto" ng-model="forthPage.user.contributionPlan"  value="auto" name="radio" />
+									<label for="auto"><span></span></label>
+								</div>
 					<h5 class="labels navy">I don't know. I just did auto-enrollment.</h5>
 					<div class="prompt contribution" ng-class="{'vis-hidden': forthPage.user.contributionPlan !== 'auto'}" ng-hide="isMobile()">
 						You may be contributing less than you think. Most auto-enrollment plans start your contributions at just 3%. We'll use that for your calculation.
@@ -187,9 +181,9 @@
 				<div class="col-sm-4 col-xs-12">
 
 					<div class="roundedOne">
-						<input type="radio"  name="contributionPlan"  value="social" ng-model="forthPage.user.contributionPlan" />
-						<label for="roundedOne"></label>
-					</div>
+									<input type="radio" id="social" ng-model="forthPage.user.contributionPlan"  value="social" name="radio" />
+									<label for="social"><span></span></label>
+								</div>
 				<!--	<input type="radio" name="contributionPlan"  value="social" ng-model="forthPage.user.contributionPlan">
 				-->
 					<h5 class="labels navy">Nothing. I'll just collect my Social Security</h5>
@@ -221,7 +215,7 @@
 									</div>
 
 		  							<h4 class="col-xs-6 col-sm-12" ng-hide="isMobile()">estimated income in retirement</h4>
-		  							<h2 class="col-xs-6 col-sm-12">{{ fifthPage.result.totalSaving | currency:"$":0 }}<span class="slash">/yr</span></h2>
+		  							<h2 class="col-xs-6 col-sm-12">{{ fifthPage.result.savingPerYear | currency:"$":0 }}<span class="slash">/yr</span></h2>
 		  							<p class="col-xs-6 col-sm-12" ng-hide="isMobile()">including Social Security</p>
 		  						</span>
 		  						<span ng-show="fifthPage.infoMode">
@@ -249,10 +243,10 @@
 		  				</span>
 		  			</div>
 		  			<div class="arrow-down"></div>
-		  			<div class="circle">
+		  			<div class="circle intro-circle">
 		  				<span class="inner"></span>
 		  			</div>
-		  			<div class="shadow"></div>
+		  			<div class="shadow intro-shadow"></div>
 		  		</div>
 
 		  		<div class="enough col-sm-6" ng-show="fifthPage.resultMode">
@@ -262,11 +256,7 @@
 		  				<h4 class="col-sm-12">is that enough?</h4>
 		  				<p class="col-sm-12">See how increasing your retirement contribution could make a big difference.</p>
 		  				</div>
-		  				<div class="row controls money col-xs-6 col-sm-12">
-		  					<button class="btn btn-default" ng-click="fifthPage.lessIncrease()"><span class="arrow-less"/></button>
-		  					<h4 class="labels navy" ><animated-number number="fifthPage.increase" style="display:inline-block"/></animated-number><span class="percent">%</span></h4>
-		  					<button class="btn btn-default" ng-click="fifthPage.moreIncrease()"><span class="arrow-more"/></button>
-		  				</div>
+		  				<animated-number class="col-xs-6 col-sm-12" number="fifthPage.increase" select="true" more-clicked="fifthPage.more(number)" less-clicked="fifthPage.less(number)"></animated-number>
 		  				</div>
 
 		  				<div class="prompt estimate col-xs-12" ng-hide="isMobile()">

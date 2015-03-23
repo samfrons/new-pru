@@ -36,19 +36,14 @@ angular.module('ob')
         this.infoMode = false;
 
 
-        this.moreIncrease = function(){
-            this.increase++;
-            retirment.percentContributed = this.increase / 100;
-            this.result.totalSaving = retirment.totalSaving();
+        this.more = function(increase){
+            retirment.percentContributed = increase / 100;
+            this.result.savingPerYear = retirment.savingPerYear();
         };
 
-        this.lessIncrease = function(){
-            if(this.increase === 0){
-                return;
-            }
-            this.increase--;
-            retirment.percentContributed = this.increase / 100;
-            this.result.totalSaving = retirment.totalSaving();
+        this.less = function(increase){
+            retirment.percentContributed = increase / 100;
+            this.result.savingPerYear = retirment.savingPerYear();
 
         };
 
