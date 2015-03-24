@@ -4,6 +4,7 @@ angular.module('ob')
 
     var parent = $scope.main;
     var _this = this;
+    this.info = false;
 
     $scope.$watch('main.currentIndex', function(index){
         if(index === 3){
@@ -11,7 +12,13 @@ angular.module('ob')
         }
         if(index === 4){
             if(_this.user.contributionPlan === 'percentage'){
-                retirment.percentContributed = _this.user.contribution / 100;
+                var totalContribution = 0;
+                console.log();
+                if(_this.user.match){
+                    totalContribution += _this.user.contributionCompany;
+                }
+                totalContribution += _this.user.contribution;
+                retirment.percentContributed = totalContribution / 100;
             }else{
                 retirment.percentContributed = 0.03;
             }

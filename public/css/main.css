@@ -1,3 +1,50 @@
+@charset "UTF-8";
+[ng-cloak] {
+  display: none !important; }
+
+@-webkit-keyframes scaleout {
+  0% {
+    -webkit-transform: scale(0); }
+
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 0; } }
+
+@keyframes scaleout {
+  0% {
+    transform: scale(0);
+    -webkit-transform: scale(0); }
+
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 0; } }
+
+.loader {
+  height: 610px;
+  position: relative;
+  width: 100px;
+  margin: auto;
+  text-align: center; }
+  .loader div {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    transform: translate(-50%);
+    position: absolute; }
+    .loader div .ball {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: -20px;
+      top: -20px;
+      margin: 0 auto;
+      background-color: #009ed1;
+      border-radius: 100%;
+      -webkit-animation: scaleout 1s infinite ease-in-out;
+      animation: scaleout 1s infinite ease-in-out; }
+
 html {
   overflow-x: hidden; }
 
@@ -11,6 +58,12 @@ body {
 input[type=text], textarea, button, button:active, button:hover {
   outline: none !important;
   border: none; }
+
+input[type=text] {
+  font-family: "TradeGothicBold", sans-serif; }
+
+.number {
+  font-family: "TradeGothic", sans-serif; }
 
 p {
   font-family: "TradeGothic"; }
@@ -143,7 +196,7 @@ input[type=radio] {
   background: #009ed1; }
 
 .grid {
-  background: url(/bundles/droga5optimismbias/images/grid-find.png);
+  background: url(../images/grid-find.png);
   background-position: bottom center;
   background-repeat: no-repeat;
   padding-top: 45px;
@@ -152,7 +205,7 @@ input[type=radio] {
   background-size: contain; }
 
 .grid.r-none {
-  background: url(/bundles/droga5optimismbias/images/grid-find.png);
+  background: url(../images/grid-find.png);
   padding-top: 10px;
   margin-top: 0px;
   background-position: top center;
@@ -288,12 +341,11 @@ button.btn.btn-default.find {
   top: 30px;
   -webkit-transition: .3 all ease-in; }
   button.btn.btn-default.find .glyphicon.glyphicon-menu-right {
-    top: 15px;
+    top: 18px;
     right: 15px;
     position: absolute; }
 
 button.btn.btn-default.find:hover {
-  -webkit-transform: translateY(-2%);
   -webkit-transition: .3s all ease-in; }
 
 button.btn.btn-default.round {
@@ -319,7 +371,7 @@ button.btn:hover {
   background: #009ed1; }
 
 .prompt {
-  background: url(/bundles/droga5optimismbias/images/reality-check-bk.png);
+  background: url(../images/reality-check-bk.png);
   color: #009ed1;
   font-family: "Chapparral Pro";
   font-style: italic;
@@ -341,10 +393,13 @@ button.btn:hover {
     line-height: 1em;
     position: absolute;
     top: 50%;
+    left: 0%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     font-size: 15px; }
+  .prompt .slash, .prompt .footnote {
+    left: auto; }
 
 p.note {
   font-style: italic;
@@ -447,16 +502,19 @@ h5.labels {
   padding: 0px;
   overflow: auto;
   clear: both;
-  float: left; }
+  float: none; }
   .matches h5 {
     font-size: 16px;
     display: inline-block;
     font-family: "TradeGothicBoldCon20", sans-serif;
-    padding-right: 10px; }
+    padding-left: 10px; }
     .matches h5 .i.dark {
-      margin-right: 10px; }
+      margin-left: 10px;
+      float: right;
+      margin-top: 10px; }
   .matches .squaredTwo {
-    margin: 8px auto; }
+    margin: 8px auto;
+    margin-right: 5px; }
 
 .money .btn.btn-default {
   height: 40px;
@@ -486,12 +544,18 @@ input[type="checkbox"] {
   max-width: 320px;
   overflow: auto;
   padding-bottom: 0px;
-  min-height: 150px; }
+  min-height: 195px; }
   .top-info p.note {
     line-height: inherit;
     font-family: "TradeGothic", sans-serif;
     font-style: normal;
     font-size: 10px; }
+  .top-info p.ital {
+    font-family: "ChaparralItalic", serif; }
+
+.footnote {
+  line-height: inherit;
+  font-size: 10px; }
 
 #upit-related-content h2.h1 {
   font-family: "TradeGothicBoldCon20"; }
@@ -523,8 +587,8 @@ input[type="checkbox"] {
   height: 0;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  margin: 0 auto;
-  border-top: 15px solid rgba(56, 72, 77, 0.8); }
+  border-top: 15px solid rgba(56, 72, 77, 0.8);
+  margin: 0 auto; }
 
 .top-info h4 {
   text-transform: uppercase;
@@ -555,17 +619,21 @@ input[type="checkbox"] {
 
 .left-align.estimate {
   position: relative;
-  top: 60px; }
+  top: 20px; }
 
-.circle .inner {
-  background: rgba(56, 72, 77, 0.4);
-  left: -25px;
-  top: 100px;
-  width: 200px;
-  height: 200px;
-  position: absolute;
-  border-radius: 100%; }
-
+/*
+.circle {
+    .inner {
+    background: rgba(56,72,77,0.4);
+    left: -25px;
+    top: 100px;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    border-radius: 100%;
+}
+}
+*/
 .shadow {
   background-color: lightgrey;
   border-radius: 100%;
@@ -600,7 +668,7 @@ input[type="checkbox"] {
   vertical-align: top; }
 
 .prompt.estimate {
-  background: url(/bundles/droga5optimismbias/images/estimate-check.png);
+  background: url(../images/estimate-check.png);
   background-position: center center;
   color: #009ed1;
   min-height: 142px;
@@ -616,7 +684,7 @@ input[type="checkbox"] {
   text-align: center; }
 
 .prompt.contribution {
-  background: url(/bundles/droga5optimismbias/images/contribution-check.png);
+  background: url(../images/contribution-check.png);
   line-height: 1em;
   background-position: top center;
   margin: 0 auto;
@@ -677,6 +745,47 @@ button.call-submit {
 
 .vis-hidden {
   visibility: hidden; }
+
+.info-tool {
+  background: black;
+  border-radius: 5px;
+  position: absolute;
+  left: 265px;
+  top: 85px;
+  width: 250px;
+  padding: 5px; }
+  .info-tool p {
+    color: white;
+    font-size: 12px;
+    line-height: initial; }
+  .info-tool .arrow-right {
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid black;
+    position: absolute;
+    left: -10px;
+    top: 42px; }
+
+.match.col-xs-12.row.controls.animated-number button.btn.btn-default {
+  width: 35px;
+  height: 35px; }
+  .match.col-xs-12.row.controls.animated-number button.btn.btn-default .arrow-more {
+    left: 13px;
+    top: 13.5px; }
+  .match.col-xs-12.row.controls.animated-number button.btn.btn-default .arrow-less {
+    left: 13px;
+    top: 13.5px; }
+.match.col-xs-12.row.controls.animated-number h4 {
+  margin-top: 5px;
+  font-weight: normal; }
+
+.info-tool.ng-enter {
+    animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s; }
+
+.info-tool.ng-leave {
+    animation: fadeOut 1s;
+   -webkit-animation: fadeOut 1s; }
 
 .dis-hidden {
   display: none; }
@@ -946,7 +1055,7 @@ slideUp
   font-size: 30px;
   border: none;
   color: #001f45;
-  top: 21%;
+  top: 26%;
   left: 5px;
   font-family: "TradeGothicBold", sans-serif; }
 
@@ -962,6 +1071,29 @@ slideUp
     position: relative; } }
 
 @media (max-width: 768px) {
+  .matches {
+    float: left; }
+  .info-tool {
+    background: black;
+    border-radius: 5px;
+    position: absolute;
+    left: -10px;
+    width: 100%;
+    top: -45px;
+    padding: 10px 5px;
+    min-width: 310px; }
+    .info-tool p {
+      color: white;
+      font-size: 12px;
+      line-height: initial; }
+    .info-tool .arrow-right {
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid black;
+      position: absolute;
+      right: auto;
+      top: 100%;
+      left: 10px; }
   .container.grid h5 {
     font-size: 1.1em;
     padding: 0 1.4em; }
@@ -973,7 +1105,7 @@ slideUp
   .estimate {
     max-width: inherit; }
   .prompt.estimate {
-    background: url(/bundles/droga5optimismbias/images/contribution-check.png);
+    background: url(../images/contribution-check.png);
     max-width: 360px;
     background-repeat: no-repeat;
     background-size: 100% auto; }
@@ -1205,6 +1337,11 @@ slideUp
   overflow: auto;
   clear: both;
   margin: 0 auto; }
+
+.contrib .controls.animated-number {
+  clear: none; }
+.contrib .match.col-xs-12.row.controls.animated-number {
+  opacity: 0.9; }
 
 .controls.animated-number.contribution {
   position: static; }

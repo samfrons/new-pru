@@ -8,6 +8,62 @@ $trade: "TradeGothic", sans-serif;
 $trade-bold: "TradeGothicBold", sans-serif;
 $italic: "ChaparralItalic", serif;
 
+
+[ng-cloak]
+{
+  display: none !important;
+}
+
+
+@-webkit-keyframes scaleout {
+  0% { -webkit-transform: scale(0.0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleout {
+  0% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 100% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+.loader {
+      height: 610px;
+      position: relative;
+       width: 100px;
+      margin: auto;
+      text-align: center;
+      div {
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%);
+          -ms-transform: translate(-50%);
+          transform: translate(-50%);
+          position: absolute;
+          .ball {
+              width: 40px;
+              height: 40px;
+              position: absolute;
+              left: -20px;
+              top: -20px;
+              margin: 0 auto;
+              background-color: $blue;
+              border-radius: 100%;  
+              -webkit-animation: scaleout 1.0s infinite ease-in-out;
+              animation: scaleout 1.0s infinite ease-in-out;
+            }
+      }
+
+}
+
+
 @mixin arrow {
     width: 0;
     height: 0;
@@ -48,9 +104,18 @@ body {
 }
 
 
+
 input[type=text], textarea, button, button:active, button:hover {
     outline: none !important;
     border: none;
+}
+
+input[type=text] {
+    font-family: $trade-bold;
+}
+
+.number {
+    font-family: $trade;
 }
 
 p {
@@ -221,7 +286,9 @@ input[type=radio] {
     background: $blue;
 }
 .grid {
-    background: url(/bundles/droga5optimismbias/images/grid-find.png);
+
+
+    background: url(../images/grid-find.png);
     background-position: bottom center;
     background-repeat: no-repeat;
     padding-top: 45px;
@@ -231,7 +298,7 @@ input[type=radio] {
 }
 
 .grid.r-none {
-    background: url(/bundles/droga5optimismbias/images/grid-find.png);
+    background: url(../images/grid-find.png);
     padding-top: 10px;
     margin-top: 0px;
     background-position: top center;
@@ -397,14 +464,14 @@ button.btn.btn-default.find {
     top: 30px;
     -webkit-transition: .3 all ease-in;
     .glyphicon.glyphicon-menu-right {
-            top: 15px;
+            top: 18px;
             right: 15px;
             position: absolute;
     }
 }
 
 button.btn.btn-default.find:hover {
-    -webkit-transform: translateY(-2%);
+    
     -webkit-transition: .3s all ease-in;
 }
 
@@ -435,7 +502,7 @@ button.btn:hover {
 }
 
 .prompt {
-    background: url(/bundles/droga5optimismbias/images/reality-check-bk.png);
+    background: url(../images/reality-check-bk.png);
     color: $blue;
     font-family: "Chapparral Pro";
     font-style: italic;
@@ -457,10 +524,14 @@ button.btn:hover {
         line-height: 1em;
         position: absolute;
         top: 50%;
+        left: 0%;
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
         font-size: 15px;
+    }
+    .slash, .footnote {
+        left: auto;
     }
 }
 
@@ -585,18 +656,21 @@ h5.labels {
     padding: 0px; 
     overflow: auto;
     clear: both;
-    float: left;
+    float: none;
     h5 {
         font-size: 16px;
         display: inline-block;
         font-family: $condensed;
-        padding-right: 10px;
+        padding-left: 10px;
             .i.dark {
-                margin-right: 10px;
+                margin-left: 10px;
+                float: right;
+                margin-top: 10px;
             }
         }
     .squaredTwo {
             margin: 8px auto;
+            margin-right: 5px;
         }
     }
 
@@ -634,15 +708,22 @@ input[type="checkbox"] {
     max-width: 320px;
     overflow: auto;
     padding-bottom: 0px;
-    min-height: 150px;
+    min-height: 195px;
     p.note {
         line-height: inherit;
         font-family: $trade;
         font-style: normal;
         font-size: 10px;
     }
+    p.ital {
+        font-family: $italic;
+    }
 }
 
+.footnote {
+    line-height: inherit;
+    font-size: 10px;
+}
 #upit-related-content h2.h1 {
     font-family: "TradeGothicBoldCon20";
 }
@@ -664,8 +745,9 @@ input[type="checkbox"] {
     height: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-    margin: 0 auto;
     border-top: 15px solid rgba(56,72,77,0.8);
+    margin: 0 auto;
+    
 }
 
 .top-info h4 {
@@ -702,9 +784,10 @@ input[type="checkbox"] {
 
 .left-align.estimate {
     position: relative;
-    top: 60px;
+    top: 20px;
 }
 
+/*
 .circle {
     .inner {
     background: rgba(56,72,77,0.4);
@@ -716,6 +799,7 @@ input[type="checkbox"] {
     border-radius: 100%;
 }
 }
+*/
 
 .shadow {
     background-color: lightgrey;
@@ -746,7 +830,7 @@ input[type="checkbox"] {
 }
 
 .prompt.estimate {
-    background: url(/bundles/droga5optimismbias/images/estimate-check.png);
+    background: url(../images/estimate-check.png);
     background-position: center center;
     color: $blue;
     min-height: 142px;
@@ -762,7 +846,7 @@ input[type="checkbox"] {
 }
 
 .prompt.contribution {
-    background: url(/bundles/droga5optimismbias/images/contribution-check.png);
+    background: url(../images/contribution-check.png);
     line-height: 1em;
     background-position: top center;
     @include prompt-bk;
@@ -840,6 +924,60 @@ button.call-submit {
     visibility: hidden;
 }
 
+.info-tool {
+    background: black;
+    border-radius: 5px;
+    position: absolute;
+    left: 265px;
+    top: 85px;
+    width: 250px;
+    padding: 5px;
+    p {
+        color: white;
+        font-size: 12px;
+        line-height: initial;
+    }
+    .arrow-right {
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent; 
+        border-right: 10px solid black;
+        position: absolute;
+        left: -10px;
+        top: 42px;
+    }
+}
+
+
+.match.col-xs-12.row.controls.animated-number {
+        button.btn.btn-default {
+            width: 35px;
+            height: 35px;
+            .arrow-more {
+                left: 13px;
+                top: 13.5px;
+            }
+            .arrow-less {
+                left: 13px;
+                top: 13.5px;
+            }
+        }
+        h4 {
+            margin-top: 5px;
+            font-weight: normal;
+        }
+    }
+
+
+.info-tool.ng-enter {
+  animation: fadeIn 1s;
+-webkit-animation: fadeIn 1s;
+}
+
+.info-tool.ng-leave {
+  animation: fadeOut 1s;
+ -webkit-animation: fadeOut 1s;
+}
+
 .dis-hidden {
     display: none;
 }
@@ -857,6 +995,8 @@ button.call-submit {
     -webkit-animation-timing-function: ease;
     visibility: visible !important;
 }
+
+
 
 @keyframes slideDown {
     0% {
@@ -1154,7 +1294,7 @@ slideUp
   font-size: 30px;
   border: none;
   color: $navy;
-  top: 21%;
+  top: 26%;
   left: 5px;
   font-family: $trade-bold;
 }
@@ -1185,6 +1325,35 @@ slideUp
 
 @media (max-width: 768px) {
 
+    .matches {
+        float: left;
+    }
+
+    .info-tool {
+    background: black;
+    border-radius: 5px;
+    position: absolute;
+    left: -10px;
+    width: 100%;
+    top: -45px;
+    padding: 10px 5px;
+    min-width: 310px;
+    p {
+        color: white;
+        font-size: 12px;
+        line-height: initial;
+    }
+    .arrow-right {
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid black;
+        position: absolute;
+        right: auto;
+        top: 100%;
+        left: 10px;
+    }
+}
+
     .container.grid {
         h5 {
             font-size: 1.1em;
@@ -1204,7 +1373,7 @@ slideUp
     }
 
     .prompt.estimate {
-        background: url(/bundles/droga5optimismbias/images/contribution-check.png);
+        background: url(../images/contribution-check.png);
         max-width: 360px;
         background-repeat: no-repeat;
         background-size: 100% auto;
@@ -1269,6 +1438,8 @@ slideUp
         }
 
     }
+
+
 
     .offset-container {
         left: 0px;

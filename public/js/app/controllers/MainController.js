@@ -38,6 +38,10 @@ angular.module('ob')
         this.currentIndex = -1;
     };
 
+    $scope.isLoaded = function() {
+        return true;
+    }
+
     $scope.isMobile = function(){
         return $window.innerWidth < 768;
     }

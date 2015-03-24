@@ -1,6 +1,6 @@
 angular.module('ob')
 
-.controller('FifthPageController', ['$scope', 'utils', '$timeout', 'retirment', function($scope, utils, $timeout, retirment) {
+.controller('FifthPageController', ['$scope', 'utils', '$timeout', 'retirment', '$animate', function($scope, utils, $timeout, retirment, $animate) {
 
         var parent = $scope.main;
         var _this = this;
@@ -34,17 +34,18 @@ angular.module('ob')
         this.increase = 1;
         this.slot = false;
         this.infoMode = false;
-
+        this.circle = {scale: 'normal'};
 
         this.more = function(increase){
+            this.circle.scale = 'grow';
             retirment.percentContributed = increase / 100;
             this.result.savingPerYear = retirment.savingPerYear();
         };
 
         this.less = function(increase){
+            this.circle.scale = 'smaller';
             retirment.percentContributed = increase / 100;
             this.result.savingPerYear = retirment.savingPerYear();
-
         };
 
         var calculatePhases = {

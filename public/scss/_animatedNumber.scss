@@ -17,6 +17,15 @@
   clear: both;
   margin: 0 auto;
 }
+
+.contrib {
+  .controls.animated-number {
+    clear: none;
+  }
+  .match.col-xs-12.row.controls.animated-number {
+    opacity: 0.9;
+  }
+}
 .controls.animated-number.contribution {
   position: static;
 }
