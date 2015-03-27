@@ -29,6 +29,9 @@ angular.module('ob')
                 }
             });
             scope.more = function(){
+                if(scope.number == 10) {
+                    return;
+                } 
                 scope.number++;
                 scope.selected = true;
                 scope.clicked();
@@ -40,6 +43,9 @@ angular.module('ob')
             };
 
             scope.less = function(){
+                if(scope.number == 0) {
+                    return;
+                } 
                 scope.number--;
                 scope.selected = true;
                 scope.clicked();

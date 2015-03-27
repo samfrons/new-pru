@@ -1,6 +1,6 @@
 angular.module('ob')
 
-.controller('FifthPageController', ['$scope', 'utils', '$timeout', 'retirment', '$animate', function($scope, utils, $timeout, retirment, $animate) {
+.controller('FifthPageController', ['$scope', 'utils', '$timeout', 'retirement', '$animate', function($scope, utils, $timeout, retirement, $animate) {
 
         var parent = $scope.main;
         var _this = this;
@@ -16,14 +16,14 @@ angular.module('ob')
             parent.nextButton = 'Next';
             $timeout(function () {            
                 _this.result = {
-                    totalSaving: retirment.totalSaving(),
-                    yearBeforeRetirment: retirment.yearBeforeRetirment(),
-                    savingPerYear: retirment.savingPerYear(),
-                    inflationRate: retirment.inflationRate * 100,
-                    annualContribution: retirment.percentContributed * 100,
-                    retirmentLast: retirment.retirmentLast
+                    totalSaving: retirement.totalSaving(),
+                    yearBeforeRetirement: retirement.yearBeforeRetirement(),
+                    savingPerYear: retirement.savingPerYear(),
+                    inflationRate: retirement.inflationRate * 100,
+                    annualContribution: (retirement.userPercentContributed * 100) + (retirement.companyPercentContributed * 100) ,
+                    retirementLast: retirement.retirementLast
                 };
-                _this.increase = retirment.percentContributed * 100;
+                _this.increase = retirement.userPercentContributed * 100;
                 _this.calculate();
             }, 300);     
         };
@@ -38,14 +38,14 @@ angular.module('ob')
 
         this.more = function(increase){
             this.circle.scale = 'grow';
-            retirment.percentContributed = increase / 100;
-            this.result.savingPerYear = retirment.savingPerYear();
+            retirement.userPercentContributed = increase / 100;
+            this.result.savingPerYear = retirement.savingPerYear();
         };
 
         this.less = function(increase){
             this.circle.scale = 'smaller';
-            retirment.percentContributed = increase / 100;
-            this.result.savingPerYear = retirment.savingPerYear();
+            retirement.userPercentContributed = increase / 100;
+            this.result.savingPerYear = retirement.savingPerYear();
         };
 
         var calculatePhases = {

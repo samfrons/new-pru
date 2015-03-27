@@ -52,7 +52,7 @@
 					<div class="v-center">
 						<div class="col-sm-4 tall">
 							<h4 class="labels navy col-xs-6 col-sm-12">How old are you?</h4>
-							<input type="text" ng-model="secondPage.user.age" only-integer class="col-xs-6 col-sm-12 " name="how old are you?" only-integer max="3">
+							<input type="text" ng-model="secondPage.user.age" only-integer class="col-xs-6 col-sm-12 " name="how old are you?" only-integer max="3" autofocus="autofocus">
 						</div>
 
 						<div class="col-sm-4 tall">
@@ -77,7 +77,7 @@
 		  <page class="slide">
 			<div class="container" ng-controller="ThirdPageController as thirdPage">
 				<div class="content inner row">
-					<div class="h-center response col-sm-11 col-xs-12">
+					<div class="v-center response col-sm-12 col-xs-12">
 				<div class="col-sm-6 tall small left">
 					<h4 class="labels navy col-xs-6 col-sm-12">How old do you think you'll be when you retire?</h4>
 					<input type="text" ng-model="thirdPage.user.minRetire" only-integer max="3" class="col-xs-6 col-sm-12">
@@ -161,7 +161,7 @@
 		  <page class="slide">
 			<div class="container" ng-controller="ForthPageController as forthPage">
 				<div class="content inner row">
-				<div class="h-center col-xs-12 your">
+				<div class="v-center col-xs-12 your">
 				<h4 class="labels navy">How much are you currently contributing to your workplace retirement plan?</h4>
 
 				<div class="col-sm-4 contrib">
@@ -172,7 +172,7 @@
 								<animated-number class="col-xs-9 col-sm-12" number="forthPage.user.contribution" select="{{forthPage.user.contributionPlan === 'percentage'}}" clicked="forthPage.user.contributionPlan = 'percentage'"></animated-number>
 
 
-						<span ng-show="forthPage.user.contributionPlan === 'percentage'" >
+						<span ng-class="{'vis-hidden': forthPage.user.contributionPlan !== 'percentage'}" >
 								<div class="matches" >
 									<div class="info-tool" ng-if="forthPage.info">
 										<p>This calculation assumes a xx rate of return over xx year.  
@@ -254,7 +254,15 @@
 									</div>
 
 		  							<h4 class="col-xs-6 col-sm-12" ng-hide="isMobile()">estimated income in retirement</h4>
-		  							<h2 class="col-xs-6 col-sm-12">{{ fifthPage.result.savingPerYear | currency:"$":0 }}<span class="slash">/yr</span></h2>
+
+
+<!--{{ fifthPage.result.savingPerYear | currency:"$":0 }} -->
+
+
+		  							<h2 class="col-xs-6 col-sm-12">$
+									<slot-machine-numbers number="{{ fifthPage.result.savingPerYear}}">
+									</slot-machine-numbers>
+		  							<span class="slash">/yr</span></h2>
 		  							<p class="col-xs-6 col-sm-12 ital" ng-hide="isMobile()">including Social Security</p>
 		  						</span>
 		  						<span ng-show="fifthPage.infoMode">
@@ -273,16 +281,16 @@
 		  						<span style="font-size: 20px;">Calculating...</span>
 		  						<progressbar style="height: 5px;margin-bottom: 0px;margin-left: 40px;margin-right: 40px;" value="fifthPage.progress"></progressbar>
 		  						<slot-machine-text increase="fifthPage.slot">
-		  						<div style="font-size: 20px;" class="slideUp">Years Until Retirement: {{ fifthPage.result.yearBeforeRetirment }}</div>
-		  						<div style="font-size: 20px;" class="slideUp">Annual Contribution: {{ fifthPage.result.annualContribution }}%</div>
-		  						<div style="font-size: 20px;" class="slideUp">Inflation: {{ fifthPage.result.inflationRate }}%</div>
-		  						<div style="font-size: 20px;" class="slideUp">Total Saving: {{ fifthPage.result.totalSaving | currency:"$":0 }}</div>
-		  						<div style="font-size: 20px;" class="slideUp">Divided By {{ fifthPage.result.retirmentLast }} Years</div>
+		  						<div style="font-size: 20px;">Years Until Retirement: {{ fifthPage.result.yearBeforeRetirement }}</div>
+		  						<div style="font-size: 20px;">Annual Contribution: {{ fifthPage.result.annualContribution }}%</div>
+		  						<div style="font-size: 20px;">Inflation: {{ fifthPage.result.inflationRate }}%</div>
+		  						<div style="font-size: 20px;">Total Saving: {{ fifthPage.result.totalSaving | currency:"$":0 }}</div>
+		  						<div style="font-size: 20px;">Divided By {{ fifthPage.result.retirementLast }} Years</div>
 		  					</slot-machine-text>
 		  				</span>
 		  			</div>
 		  			<div class="arrow-down"></div>
-		  			<ball scale="fifthPage.circle.scale"></ball>
+		  			<ball scale="fifthPage.circle.scale" init-scale="{{ fifthPage.result.annualContribution }}"></ball>
 		  		</div>
 
 		  		<div class="enough col-sm-6" ng-show="fifthPage.resultMode">
@@ -296,20 +304,24 @@
 		  				</div>
 
 		  				<div class="prompt estimate col-xs-12" ng-hide="isMobile()">
+		  				<div class="h-center">
 		  					<p>Once you factor in inflation, you would have about 
 
 		  					<h2>$27,000<span class="slash">/yr</span><span class="footnote num">1</span></h2>
 		  						in today's dollars.
 		  					</p>
+		  					</div>
 		  				</div>
 
 
 		  				<div class="prompt estimate col-xs-12" ng-show="isMobile()">
+		  				<div class="h-center">
 		  					<p>Once you factor in inflation, you would have about 
 
 		  					<b>$27,000<span class="slash">/yr</span><span class="footnote num">1</span></b>
 		  						in today's dollars.
 		  					</p>
+		  					</div>
 		  				</div>
 		  			</div>
 		  			<p class="footnote ital" ng-hide="isMobile()">Inflation is assumed to be 3%. The return is purely hypothetical</p>

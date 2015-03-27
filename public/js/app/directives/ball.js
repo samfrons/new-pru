@@ -5,7 +5,8 @@ angular.module('ob')
             restrict: 'E',
             scope: {
                 scale: '=',
-                intro: '@'
+                intro: '@',
+                initScale: '@'
             },
             replace: true,
             template: '<div><div class="circle"> \
@@ -17,30 +18,38 @@ angular.module('ob')
                 var arrowDOM = element.parent().children()[1];
                 var tabDOM = element.parent().children()[0];
                 var shadowDOM = element[0].children[1];
-                    console.log(arrowDOM);
+
                 var currentScale = 1;
                 var currentTranslation = 0;
 
-                var scale = function(){
-                    var tween = TweenLite.to(circleDOM, .2, {transform:'scale('+currentScale+')'});
+                var scale = function(times){
+                    TweenLite.to(circleDOM, .15, {transform:'scale('+(currentScale+0.15)+')', onComplete: function(){
+                        TweenLite.to(circleDOM, .05, {transform:'scale('+(currentScale)+')', onComplete: function(){
+                            scope.scale = '';
+                            scope.$apply();
+                            if(!angular.isUndefined(times)){
+                                if(times > 0){
+                                    currentScale += 0.2;
+                                    currentTranslation -= 8 + currentScale * 5;
+                                    scale(times-1);
+                                }
+                            }
+                        }});
+                    }});
                     TweenLite.to(arrowDOM, .2, {transform:'translateY('+currentTranslation+'px)'});
                     TweenLite.to(tabDOM, .2, {transform:'translateY('+currentTranslation+'px)'});
                     TweenLite.to(shadowDOM, .2, {transform:'translateY('+(-currentTranslation)+'px)scaleX('+currentScale+')'});
-                    tween.eventCallback('onComplete', function(){
-                        scope.scale = '';
-                        scope.$apply();
-                    });
                 };
 
                 var bigger = function(){
                     currentScale += 0.2;
-                    currentTranslation -= 8 + currentScale * 5;
+                    //currentTranslation -= 1 + currentScale / 2;
                     scale();
                 };
 
                 var smaller = function(){
                     currentScale -= 0.2;
-                    currentTranslation += 8 + currentScale * 5;
+                    //currentTranslation += 1 + currentScale / 2;
                     scale();
                 };
 
@@ -53,6 +62,11 @@ angular.module('ob')
                 });
                 scope.$watch('intro', function(value){
 
+                });
+                scope.$watch('initScale', function(value){
+                    currentScale += 0.2;
+                    //currentTranslation -= 1 + currentScale / 2;
+                    scale(parseInt(value, 10));
                 });
             }
         };

@@ -1,6 +1,6 @@
 angular.module('ob')
 
-.controller('SecondPageController', ['$scope', 'utils', 'retirment', function($scope, utils, retirment) {
+.controller('SecondPageController', ['$scope', 'utils', 'retirement', function($scope, utils, retirement) {
 
     var parent = $scope.main;
     var _this = this;
@@ -12,9 +12,9 @@ angular.module('ob')
             _this.init();
         }
         if(index === 2){
-            retirment.age = parseInt(_this.user.age,10);
-            retirment.salary = parseInt(_this.user.annualSalary.replace('$','').replace(',','').trim(),10);
-            retirment.savedForRetirment = parseInt(_this.user.savedForRetirement.replace('$','').replace(',','').trim(),10);
+            retirement.age = parseInt(_this.user.age,10);
+            retirement.salary = parseInt(_this.user.annualSalary.replace(',','').trim(),10);
+            retirement.savedForRetirment = parseInt(_this.user.savedForRetirement.replace(',','').trim(),10);
         }
     });
 

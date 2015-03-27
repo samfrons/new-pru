@@ -38,11 +38,13 @@ gulp.task('js', function() {
     'js/app/controllers/FifthPageController.js',
     'js/app/controllers/SixthPageController.js',
     'js/app/services/utils.js',
-    'js/app/services/retirment.js',
+    'js/app/services/retirement.js',
     'js/app/directives/animatedNumber.js',
     'js/app/directives/formatMoney.js',
     'js/app/directives/pageCarousel.js',
-    'js/app/directives/slotMachineText.js'
+    'js/app/directives/slotMachineText.js',
+    'js/app/directives/slotMachineNumbers.js',
+    'js/app/directives/ball.js'
       ])
       .pipe(concat('app.min.js'))
       //.pipe(uglify())

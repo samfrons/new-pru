@@ -133,6 +133,7 @@ h5 {
 
 * {
     box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 h3.ywft {
@@ -253,6 +254,8 @@ input[type=radio] {
     margin: 0 auto;
 }
 .grey {
+    overflow: auto;
+    clear: both;
     .controls.money {
         margin: 0 auto;
     }
@@ -332,6 +335,7 @@ button.btn.btn-default.next {
 
 header {
     border-bottom: 1px solid $light-grey;
+    min-height: 47px;
 }
 
 ul.nav-tabs {
@@ -557,7 +561,20 @@ p.note.sans {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);    
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+
+}
+
+.v-center.response {
+    height: 100%;
+    .tall.small.left {
+        height: 50%;
+    }
+
 }
 
 .source p {
@@ -570,6 +587,10 @@ input {
     padding: 5px;
     border-style: none;
     box-shadow: inset 4px 4px 11px 0px rgba(0, 0, 0, 0.26);
+    -webkit-box-shadow: inset 4px 4px 11px 0px rgba(0, 0, 0, 0.26);
+    -moz-box-shadow: inset 4px 4px 11px 0px rgba(0, 0, 0, 0.26);
+    -ms-box-shadow: inset 4px 4px 11px 0px rgba(0, 0, 0, 0.26);
+    -o-box-shadow: inset 4px 4px 11px 0px rgba(0, 0, 0, 0.26);
     color: $navy;
     font-size: 30px;
     width: 100%;
@@ -585,7 +606,6 @@ h4.labels {
 }
 
 .your {
-    padding: 0px;
     h4.labels {
         min-height: auto;
         margin-bottom: 0px;
@@ -776,8 +796,8 @@ input[type="checkbox"] {
 .circle {
     background: $blue;
     margin-top: 10px;
-    width: 155px;
-    height: 155px;
+    width: 100px;
+    height: 100px;
     overflow: hidden;
     position: relative;
 }
@@ -1480,6 +1500,8 @@ slideUp
         }
         .prompt {
             top: 0px;
+            top: 70px;
+            position: absolute;
             margin: 0 auto;
             float: none;
             max-width: 360px;
@@ -1536,7 +1558,7 @@ slideUp
             font-size: 13px;
         }
         position: static;
-        transform: none;
+        position: absolute;
         padding: 0px;
     }
 

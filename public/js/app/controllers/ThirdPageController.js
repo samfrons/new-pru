@@ -1,6 +1,6 @@
 angular.module('ob')
 
-.controller('ThirdPageController', ['$scope', 'utils','retirment', function($scope, utils, retirment) {
+.controller('ThirdPageController', ['$scope', 'utils','retirement', function($scope, utils, retirement) {
 
     var parent = $scope.main;
     var _this = this;
@@ -11,8 +11,8 @@ angular.module('ob')
             _this.init();
         }
         if(index === 3){
-            retirment.retirmentAge = parseInt(_this.user.minRetire,10);
-            retirment.retirmentLast = parseInt(_this.user.maxRetire,10);
+            retirement.retirementAge = parseInt(_this.user.minRetire,10);
+            retirement.retirementLast = parseInt(_this.user.maxRetire,10);
         }
     });
 

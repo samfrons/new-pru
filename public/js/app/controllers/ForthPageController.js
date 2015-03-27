@@ -1,6 +1,6 @@
 angular.module('ob')
 
-.controller('ForthPageController', ['$scope', 'utils', 'retirment', function($scope, utils, retirment) {
+.controller('ForthPageController', ['$scope', 'utils', 'retirement', function($scope, utils, retirement) {
 
     var parent = $scope.main;
     var _this = this;
@@ -11,16 +11,15 @@ angular.module('ob')
             _this.init();
         }
         if(index === 4){
-            if(_this.user.contributionPlan === 'percentage'){
-                var totalContribution = 0;
-                console.log();
+            if(_this.user.contributionPlan === 'percentage'){                
                 if(_this.user.match){
-                    totalContribution += _this.user.contributionCompany;
+                    retirement.companyPercentContributed = _this.user.contributionCompany / 100;
+                }else{
+                    retirement.companyPercentContributed = 0;
                 }
-                totalContribution += _this.user.contribution;
-                retirment.percentContributed = totalContribution / 100;
+                retirement.userPercentContributed = _this.user.contribution / 100;
             }else{
-                retirment.percentContributed = 0.03;
+                retirement.percentContributed = 0.03;
             }
         }
     });

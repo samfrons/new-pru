@@ -76,7 +76,8 @@ h5 {
   font-size: 24px; }
 
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
 
 h3.ywft {
   font-family: "ChaparralItalic";
@@ -169,8 +170,11 @@ input[type=radio] {
   clear: both;
   margin: 0 auto; }
 
-.grey .controls.money {
-  margin: 0 auto; }
+.grey {
+  overflow: auto;
+  clear: both; }
+  .grey .controls.money {
+    margin: 0 auto; }
 
 .controls.money.contribution {
   position: static; }
@@ -232,7 +236,8 @@ button.btn.btn-default.next {
   float: right; }
 
 header {
-  border-bottom: 1px solid #c4c4c4; }
+  border-bottom: 1px solid #c4c4c4;
+  min-height: 47px; }
 
 ul.nav-tabs {
   margin-right: auto;
@@ -420,7 +425,16 @@ p.note.sans {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); }
+
+.v-center.response {
+  height: 100%; }
+  .v-center.response .tall.small.left {
+    height: 50%; }
 
 .source p {
   font-style: italic; }
@@ -431,6 +445,10 @@ input {
   padding: 5px;
   border-style: none;
   box-shadow: inset 4px 4px 11px 0px rgba(0, 0, 0, 0.26);
+  -webkit-box-shadow: inset 4px 4px 11px 0px rgba(0, 0, 0, 0.26);
+  -moz-box-shadow: inset 4px 4px 11px 0px rgba(0, 0, 0, 0.26);
+  -ms-box-shadow: inset 4px 4px 11px 0px rgba(0, 0, 0, 0.26);
+  -o-box-shadow: inset 4px 4px 11px 0px rgba(0, 0, 0, 0.26);
   color: #001f45;
   font-size: 30px;
   width: 100%;
@@ -443,11 +461,9 @@ h4.labels {
   min-height: 60px;
   font-weight: bold; }
 
-.your {
-  padding: 0px; }
-  .your h4.labels {
-    min-height: auto;
-    margin-bottom: 0px; }
+.your h4.labels {
+  min-height: auto;
+  margin-bottom: 0px; }
 
 h5.labels {
   font-weight: normal;
@@ -612,8 +628,8 @@ input[type="checkbox"] {
 .circle {
   background: #009ed1;
   margin-top: 10px;
-  width: 155px;
-  height: 155px;
+  width: 100px;
+  height: 100px;
   overflow: hidden;
   position: relative; }
 
@@ -1176,6 +1192,8 @@ slideUp
       float: right; }
     .tall.small .prompt {
       top: 0px;
+      top: 70px;
+      position: absolute;
       margin: 0 auto;
       float: none;
       max-width: 360px;
@@ -1209,7 +1227,7 @@ slideUp
     margin-top: 10px; }
   .h-center {
     position: static;
-    transform: none;
+    position: absolute;
     padding: 0px; }
     .h-center h4 {
       text-align: center;

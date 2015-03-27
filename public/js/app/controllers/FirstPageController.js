@@ -1,6 +1,6 @@
 angular.module('ob')
 
-.controller('FirstPageController', ['$scope', 'retirment', function($scope, retirment) {
+.controller('FirstPageController', ['$scope', function($scope) {
 
     var parent = $scope.main;
     var _this = this;
