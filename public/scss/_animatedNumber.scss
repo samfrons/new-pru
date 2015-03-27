@@ -16,6 +16,7 @@
   overflow: auto;
   clear: both;
   margin: 0 auto;
+  padding: 0;
 }
 
 .contrib {
@@ -293,4 +294,17 @@
   100% {
     -webkit-transform: scale(1,1);
   }
+}
+
+@media (max-width: 768px) {
+
+.grey {
+            background: rgb(246,246,246);
+            overflow: visible;
+            clear: both;
+            .controls.animated-number {
+                position: relative;
+                top: -70px;
+            }
+          }
 }

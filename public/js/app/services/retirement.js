@@ -20,7 +20,10 @@ function() {
             return this.retirementAge - this.age;
         },
         savingPerYear: function(){
+            console.log(this.totalSaving());
+            console.log(this.retirementLast);
             return this.totalSaving() / this.retirementLast;
+
         }
     };
     return serviceAPI;

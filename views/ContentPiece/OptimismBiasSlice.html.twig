@@ -19,11 +19,11 @@
 	<div class="main" ng-cloak>
 		<header ng-class="{'vis-hidden': !main.currentIndex > 0}">
 			<ul class="nav nav-tabs" >
-				<li ng-class="{active: main.currentIndex === 1}"><a href="#">about you</a></li>
-				<li ng-class="{active: main.currentIndex === 2}"><a href="#">your retirement</a></li>
-				<li ng-class="{active: main.currentIndex === 3}"><a href="#">your contribution</a></li>
-				<li ng-class="{active: main.currentIndex === 4}"><a href="#">results</a></li>
-				<li ng-class="{active: main.currentIndex === 5}"><a href="#">next steps</a></li>
+				<li ng-class="{active: main.currentIndex === 1, past: main.currentIndex > 1}"><a href="#">about you</a></li>
+				<li ng-class="{active: main.currentIndex === 2, past: main.currentIndex > 2}"><a href="#">your retirement</a></li>
+				<li ng-class="{active: main.currentIndex === 3, past: main.currentIndex > 3}"><a href="#">your contribution</a></li>
+				<li ng-class="{active: main.currentIndex === 4, past: main.currentIndex > 4 }"><a href="#">results</a></li>
+				<li ng-class="{active: main.currentIndex === 5, past: main.currentIndex > 5 }"><a href="#">next steps</a></li>
 			</ul>
 		</header>
 
@@ -41,7 +41,10 @@
 				<img class="responsive" src="/bundles/droga5optimismbias/images/reality-check.png" alt="reality check logo"/>
 				<h5 class="navy">Are you being too optimistic about your retirement plans?</h5>
 				<button class="btn btn-default find" ng-click="main.next()">Find out<span class="glyphicon glyphicon-menu-right"></span></button>
+
+
 			</div>
+			<!--<button class="btn-1e">Button</button>-->
 		  </page>
 
 
@@ -80,7 +83,7 @@
 					<div class="v-center response col-sm-12 col-xs-12">
 				<div class="col-sm-6 tall small left">
 					<h4 class="labels navy col-xs-6 col-sm-12">How old do you think you'll be when you retire?</h4>
-					<input type="text" ng-model="thirdPage.user.minRetire" only-integer max="3" class="col-xs-6 col-sm-12">
+					<input type="text" ng-model="thirdPage.user.minRetire" only-integer max="3" class="col-xs-6 col-sm-12" autofocus="autofocus">
 
 					<!-- IF LESS THAN 65 -->
 					<div class="col-xs-12 prompt" ng-class="{'vis-hidden': !thirdPage.realityMin() && !thirdPage.realityMax() && !thirdPage.realityMid()}">
@@ -140,7 +143,7 @@
 					<div class="col-xs-12 prompt" ng-class="{'vis-hidden': !thirdPage.futureMin() && !thirdPage.futureMax() && !thirdPage.futureMid()}">
 						<span ng-if="thirdPage.futureMin()">Did you know experts recomment planning to live to 105?</span>
 						<span ng-if="thirdPage.futureMax()">The oldest person in history lived to 122. But with modern medical advances, who knows what the future of longevity will bring.</span>
-						<span ng-if="thirdPage.futureMid()">It looks like you're setting realistic goals. The average American retires at 62.</span>
+						<span ng-if="thirdPage.futureMid()">That sounds about right. Many experts recommend planning to live to 105.</span>
 						<span ng-if="thirdPage.futureMax()" class="source future-max" ng-class="{'vis-hidden': !thirdPage.futureMin() && !thirdPage.futureMax() && !thirdPage.futureMid()}" ng-show="isMobile()">Source: 
 						<a href="#">New York Times mobile</a>
 						</span>
@@ -199,7 +202,7 @@
 
 								</div>
 
-								<animated-number class="match col-xs-12" number="forthPage.user.contributionCompany" select="{{forthPage.user.match}}" clicked="forthPage.user.match = true"></animated-number>
+								<animated-number max-number="6"  class="match col-xs-12" number="forthPage.user.contributionCompany" select="{{forthPage.user.match}}" clicked="forthPage.user.match = true"></animated-number>
 								</span>
 
 				</div>
@@ -211,7 +214,7 @@
 									<input type="radio" id="auto" ng-model="forthPage.user.contributionPlan"  value="auto" name="radio" />
 									<label for="auto"><span></span></label>
 								</div>
-					<h5 class="labels navy">I don't know. I just did auto-enrollment.</h5>
+					<h5 class="labels navy down">I don't know. I just did auto-enrollment.</h5>
 					<div class="prompt contribution" ng-class="{'vis-hidden': forthPage.user.contributionPlan !== 'auto'}" ng-hide="isMobile()">
 						You may be contributing less than you think. Most auto-enrollment plans start your contributions at just 3%. We'll use that for your calculation.
 					</div>
@@ -225,7 +228,7 @@
 								</div>
 				<!--	<input type="radio" name="contributionPlan"  value="social" ng-model="forthPage.user.contributionPlan">
 				-->
-					<h5 class="labels navy">Nothing. I'll just collect my Social Security</h5>
+					<h5 class="labels navy down">Nothing. I'll just collect my Social Security</h5>
 					<div class="prompt contribution" ng-class="{'vis-hidden': forthPage.user.contributionPlan !== 'social'}">
 						A lot of people think of Social Security as a safety net, but on its own, the average monthly benefit likely isn't enough to live abov a federal poverty line.
 					</div>
@@ -270,10 +273,11 @@
 									The compounding concept is hypothetical and for illustrative 
 									purposes only and is not intended to represent performance of any specific investment, which may fluctuate. No taxes are considered in the calculations; generally withdrawals are taxable at ordinary rates. It is possible to lose money by investing in securities. 
 									</br><br>
-
+									<span ng-hide="isMobile()">
 									The Social Security benefits included are estimates and 
 									are not guaranteed.  Benefits may be reduced or even 
-									eliminated at any time. </p>
+									eliminated at any time.
+									</span> </p>
 		  						</span>
 		  						<p class="i"><button ng-click="fifthPage.infoMode = !fifthPage.infoMode">i</button></p>
 		  					</span>
@@ -290,7 +294,12 @@
 		  				</span>
 		  			</div>
 		  			<div class="arrow-down"></div>
-		  			<ball scale="fifthPage.circle.scale" init-scale="{{ fifthPage.result.annualContribution }}"></ball>
+		  			<ball scale="fifthPage.circle.scale" init-scale="{{ fifthPage.result.annualContribution }}" ng-if="!isMobile()">
+		  				<span class="inner-shadow">
+		  				</span>
+
+		  			</ball>
+		  			<p class="footnote ital" ng-hide="isMobile()">Inflation is assumed to be 3%. The return is purely hypothetical</p>
 		  		</div>
 
 		  		<div class="enough col-sm-6" ng-show="fifthPage.resultMode">
@@ -300,7 +309,7 @@
 		  				<h4 class="col-sm-12">is that enough?</h4>
 		  				<p class="col-sm-12">See how increasing your retirement contribution could make a big difference.</p>
 		  				</div>
-		  				<animated-number class="col-xs-6 col-sm-12" number="fifthPage.increase" select="true" more-clicked="fifthPage.more(number)" less-clicked="fifthPage.less(number)"></animated-number>
+		  				<animated-number class="col-xs-12 col-sm-12" number="fifthPage.increase" select="true" more-clicked="fifthPage.more(number)" less-clicked="fifthPage.less(number)"></animated-number>
 		  				</div>
 
 		  				<div class="prompt estimate col-xs-12" ng-hide="isMobile()">
@@ -342,20 +351,22 @@
 			</ul>
 				<h3>MAKE A PLAN </h3>
 				<p class="blue-note">Studies show people who monitor their investments are more than twice as likely to succeed at retirement.<span class="footnote" ng-hide="isMobile()">1</span>
-
-				<div class="col-sm-6 plan-entry">
+				
+				<div class="center">
+				<div class="col-xs-8 col-sm-4 plan-entry">
 				<h4 class="labels navy">Remind me</h4>
 				<p>Set a quarterly calendar reminder to check in on your retirement account.</p>
 				<a href="http://sit.bringyourchallenges.com/roundtable/calendar" style="text-decoration: none;"><button class="btn btn-default round"> Set a calendar reminder</button></a>
 				</div>
 
-				<div class="col-sm-6 plan-entry">
+				<div class="col-xs-8 col-sm-4 plan-entry">
 				<h4 class="labels navy">Start now</h4>
 				<p>Log in to your Prudential retirement account and start contributing more today. <br>Or call 1-XXX-XXXX for assistance.</p>
 				<button class="btn btn-default round" >Login now</button>
 				</div>
+				</div>
 
-				<div class="row source">
+				<div class="col-xs-12 row source">
 				<p>Source: <a href="#">Prudential Financial Literacy and Retirement Readiness Study</a></p>
 				</div>
 			</div>

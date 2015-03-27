@@ -83,14 +83,15 @@ angular.module('ob')
             phase4: function () {
                 _this.progress = 100;
                 _this.slot = true;
-                $timeout(function () {
-                    _this.slot = true;
-                    $timeout(function () {
+              $timeout(function () {
+                     _this.slot = true;
+                     $timeout(function () {
                         _this.calculMode = false;
-                        _this.resultMode = true;
+                      _this.resultMode = true;
                     },300);
                 }, 1000);
             }
+            
         };
 
         this.calculate = function(){

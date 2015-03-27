@@ -50,7 +50,8 @@ html {
 
 body {
   background: #ececec;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 .container {
   padding: 10px; }
@@ -86,8 +87,7 @@ h3.ywft {
   margin-bottom: -12px; }
 
 .down {
-  position: relative;
-  top: 35px; }
+  position: relative; }
   .down h5 {
     margin-top: 20px;
     margin-bottom: 30px; }
@@ -153,6 +153,15 @@ input[type=radio] {
   width: auto;
   margin: 0 auto; }
 
+.center {
+  margin: 0 auto; }
+  .center .plan-entry {
+    float: none;
+    display: inline-block;
+    padding: 0px;
+    margin: 0px 15px;
+    vertical-align: top; }
+
 .money button.btn.btn-default {
   width: 50px;
   height: 50px;
@@ -171,7 +180,7 @@ input[type=radio] {
   margin: 0 auto; }
 
 .grey {
-  overflow: auto;
+  overflow: hidden;
   clear: both; }
   .grey .controls.money {
     margin: 0 auto; }
@@ -184,6 +193,9 @@ input[type=radio] {
   min-height: 20px;
   overflow: hidden;
   text-align: center; }
+
+.labels.navy.down {
+  margin-top: 17px; }
 
 .retire .col-sm-6 input {
   margin-bottom: 10px;
@@ -457,9 +469,9 @@ input {
 h4.labels {
   display: block;
   font-size: 16px;
-  font-family: "TradeGothic", sans-serif;
+  font-family: "TradeGothicBold", sans-serif;
   min-height: 60px;
-  font-weight: bold; }
+  font-weight: normal; }
 
 .your h4.labels {
   min-height: auto;
@@ -493,10 +505,13 @@ h5.labels {
   left: 75px; }
 
 .prompt.estimate h2 {
-  font-family: "TradeGothic", sans-serif;
-  font-weight: bold; }
+  font-family: "TradeGothicBold", sans-serif;
+  font-weight: normal; }
   .prompt.estimate h2 span {
     font-size: .6em; }
+
+.estimate-left span span .note {
+  padding: 0 30px; }
 
 .enough .inner {
   background: white;
@@ -523,7 +538,7 @@ h5.labels {
     font-size: 16px;
     display: inline-block;
     font-family: "TradeGothicBoldCon20", sans-serif;
-    padding-left: 10px; }
+    padding-left: 0px; }
     .matches h5 .i.dark {
       margin-left: 10px;
       float: right;
@@ -550,7 +565,7 @@ input[type="checkbox"] {
 
 .top-info {
   padding: 15px;
-  background: rgba(56, 72, 77, 0.8);
+  background: rgba(56, 72, 77, 0.9);
   border-radius: 5px;
   color: white;
   font-family: "TradeGothic", sans-serif;
@@ -558,9 +573,12 @@ input[type="checkbox"] {
   padding-right: 15px;
   padding-left: 15px;
   max-width: 320px;
-  overflow: auto;
+  overflow: visible;
   padding-bottom: 0px;
-  min-height: 195px; }
+  min-height: 160px;
+  height: 160px;
+  position: relative;
+  top: 50px; }
   .top-info p.note {
     line-height: inherit;
     font-family: "TradeGothic", sans-serif;
@@ -568,6 +586,10 @@ input[type="checkbox"] {
     font-size: 10px; }
   .top-info p.ital {
     font-family: "ChaparralItalic", serif; }
+  .top-info span p.i {
+    top: 135px;
+    right: 10px;
+    position: absolute; }
 
 .footnote {
   line-height: inherit;
@@ -603,35 +625,57 @@ input[type="checkbox"] {
   height: 0;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-top: 15px solid rgba(56, 72, 77, 0.8);
-  margin: 0 auto; }
+  border-top: 15px solid rgba(56, 72, 77, 0.9);
+  margin: 0 auto;
+  position: relative;
+  top: 49.4px; }
 
 .top-info h4 {
   text-transform: uppercase;
   font-family: "TradeGothicBoldCon20", sans-serif;
-  font-size: 1em;
+  font-size: 1.25em;
   margin-bottom: 0; }
 
 .top-info h2 {
-  font-weight: bold;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  font-size: 20px; }
+  font-family: "TradeGothicBoldCon20", sans-serif;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-size: 34px;
+  overflow: hidden;
+  max-height: 60px; }
 
 .top-info h2 span {
   font-weight: normal;
-  font-size: .7em; }
+  font-size: .7em;
+  font-family: "TradeGothic", sans-serif; }
+
+.top-info h2 span.number {
+  font-family: "TradeGothicBold", sans-serif;
+  font-size: 50px;
+  margin-left: -5px; }
 
 .top-info p {
   color: white; }
 
+.nav-tabs > li.past > a {
+  color: #555 !important; }
+
 .circle {
   background: #009ed1;
   margin-top: 10px;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   overflow: hidden;
   position: relative; }
+  .circle .inner {
+    background: rgba(0, 0, 0, 0.2);
+    display: block;
+    height: 100px;
+    width: 200px;
+    position: absolute;
+    left: -20px;
+    border-radius: 100%;
+    top: 80px; }
 
 .left-align.estimate {
   position: relative;
@@ -703,9 +747,15 @@ input[type="checkbox"] {
   background: url(../images/contribution-check.png);
   line-height: 1em;
   background-position: top center;
+  -webkit-transition: .3s all ease-in;
+  opacity: 1;
   margin: 0 auto;
   background-size: contain;
   background-repeat: no-repeat; }
+
+.prompt {
+  -webkit-transition: .3s all ease-in;
+  opacity: 1; }
 
 .blue-note {
   color: #009ed1;
@@ -717,13 +767,23 @@ input[type="checkbox"] {
   margin: 0 auto;
   line-height: 1em; }
 
+.plan .blue-note {
+  font-size: 18px; }
+.plan .source {
+  margin-top: 40px; }
+  .plan .source p {
+    font-size: 10px; }
+    .plan .source p a {
+      color: #009ed1; }
+
 .plan .labels {
   min-height: inherit; }
 
 .plan-entry p {
   font-family: "TradeGothic", sans-serif;
-  font-size: 12px;
-  min-height: 100px; }
+  font-size: 14px;
+  min-height: 100px;
+  color: #001f45; }
 
 .prompt .footnote {
   padding: 0; }
@@ -755,12 +815,18 @@ button.call-submit {
 
 .nav-plan li {
   color: #009ed1;
-  font-family: "TradeGothic", sans-serif;
-  font-weight: bold;
+  font-family: "TradeGothicBold", sans-serif;
+  font-weight: normal;
   text-decoration: underline; }
 
 .vis-hidden {
   visibility: hidden; }
+
+.prompt.contribution.vis-hidden, .prompt.vis-hidden {
+  opacity: 0; }
+
+.fade {
+  opacity: 1; }
 
 .info-tool {
   background: black;
@@ -954,9 +1020,10 @@ slideUp
 .squaredTwo {
   width: 23px;
   height: 23px;
-  background: black;
+  background: url(../images/square.png);
   margin: 20px auto;
   position: relative;
+  background-size: 100% auto;
   display: inline-block; }
 
 .squaredTwo label {
@@ -1088,7 +1155,26 @@ slideUp
 
 @media (max-width: 768px) {
   .matches {
-    float: left; }
+    float: none; }
+  .match.col-xs-12.row.controls.animated-number {
+    width: 85%; }
+  .top-info h2 {
+    padding: 0; }
+  .top-info h2 span.number {
+    font-family: "TradeGothicBoldCon20", sans-serif;
+    font-size: 34px;
+    margin-left: -10px;
+    max-height: 45px;
+    overflow: hidden;
+    vertical-align: bottom; }
+  .prompt .slash {
+    position: relative;
+    padding: 0px; }
+  .prompt .footnote.num {
+    position: relative;
+    top: -5px;
+    font-weight: normal;
+    font-size: 12px; }
   .info-tool {
     background: black;
     border-radius: 5px;
@@ -1124,7 +1210,11 @@ slideUp
     background: url(../images/contribution-check.png);
     max-width: 360px;
     background-repeat: no-repeat;
-    background-size: 100% auto; }
+    background-size: 100% auto;
+    -webkit-transition: none; }
+    .prompt.estimate .h-center {
+      width: 100%;
+      padding: 0 10px; }
     .prompt.estimate p {
       max-width: inherit; }
       .prompt.estimate p .inflate {
@@ -1175,12 +1265,22 @@ slideUp
       top: 0px; }
       .offset-container .left-align.estimate .top-info {
         padding: 0;
+        top: 0px;
+        padding-top: 15px;
         max-width: initial;
-        min-height: 100px; }
+        min-height: 100px;
+        max-height: 100px;
+        position: relative;
+        transform: none !important;
+        -webkit-transform: none !important; }
         .offset-container .left-align.estimate .top-info span p.i {
           position: absolute;
           top: 10px;
           right: 10px; }
+        .offset-container .left-align.estimate .top-info span span p.note {
+          padding: 0 30px; }
+        .offset-container .left-align.estimate .top-info p.ital {
+          font-size: 14px; }
   .enough {
     left: 0px;
     max-width: initial; }
@@ -1253,8 +1353,10 @@ slideUp
     padding: 0; }
     .enough .inner .grey {
       background: #f6f6f6;
-      overflow: auto;
+      overflow: hidden;
       clear: both; }
+      .enough .inner .grey .controls.animated-number {
+        position: relative; }
       .enough .inner .grey div p {
         line-height: initial;
         color: #333333; }
@@ -1305,6 +1407,26 @@ slideUp
   -webkit-transition: 0s ease-in-out left;
   transition: 0s ease-in-out left; }
 
+/* buttons */
+.btn-1e:hover, .btn-1e:active {
+  color: #0e83cd; }
+
+.btn-1e:hover:after {
+  height: 260%;
+  opacity: 1; }
+
+.btn-1e:after {
+  width: 100%;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  opacity: 0;
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  -moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transform: translateX(-50%) translateY(-50%) rotate(45deg); }
+
 .roundedOne input[type="radio"] {
   display: none; }
 
@@ -1354,7 +1476,8 @@ slideUp
   height: 60px;
   overflow: auto;
   clear: both;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding: 0; }
 
 .contrib .controls.animated-number {
   clear: none; }
@@ -1564,6 +1687,15 @@ slideUp
 
   100% {
     -webkit-transform: scale(1, 1); } }
+
+@media (max-width: 768px) {
+  .grey {
+    background: #f6f6f6;
+    overflow: visible;
+    clear: both; }
+    .grey .controls.animated-number {
+      position: relative;
+      top: -70px; } }
 
 .intro-shadow {
   animation-name: intro-shadow;

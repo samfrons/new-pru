@@ -8,7 +8,8 @@ angular.module('ob')
             select: '@',
             clicked: '&',
             moreClicked: '&',
-            lessClicked: '&'
+            lessClicked: '&', 
+            maxNumber: '@'
         },
         replace: true,
         template: "<div class='row controls animated-number'> \
@@ -21,6 +22,11 @@ angular.module('ob')
             var circle1 = angular.element(element[0].children[0]);
             var circle2 = angular.element(element[0].children[2]);
             scope.selected = false;
+            if (angular.isUndefined(scope.maxNumber)) {
+                scope.max = 10;
+            } else {
+                 scope.max = parseInt(scope.maxNumber, 10);
+            }
             scope.$watch('select', function(value){
                 if(value == 'true'){
                     scope.selected = true
@@ -29,7 +35,7 @@ angular.module('ob')
                 }
             });
             scope.more = function(){
-                if(scope.number == 10) {
+                if(scope.number == scope.max) {
                     return;
                 } 
                 scope.number++;
