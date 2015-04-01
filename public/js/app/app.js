@@ -1,1 +1,1 @@
-angular.module('ob', ['ui.bootstrap', 'ngAnimate']);
+angular.module('ob', ['ui.bootstrap', 'ngAnimate', 'ui.odometer']);

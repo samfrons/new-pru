@@ -43,7 +43,7 @@ gulp.task('js', function() {
     'js/app/directives/formatMoney.js',
     'js/app/directives/pageCarousel.js',
     'js/app/directives/slotMachineText.js',
-    'js/app/directives/slotMachineNumbers.js',
+    'js/app/directives/centeredMenu.js',
     'js/app/directives/ball.js'
       ])
       .pipe(concat('app.min.js'))

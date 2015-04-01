@@ -578,7 +578,8 @@ input[type="checkbox"] {
   min-height: 160px;
   height: 160px;
   position: relative;
-  top: 50px; }
+  top: 50px;
+  z-index: 10; }
   .top-info p.note {
     line-height: inherit;
     font-family: "TradeGothic", sans-serif;
@@ -587,8 +588,8 @@ input[type="checkbox"] {
   .top-info p.ital {
     font-family: "ChaparralItalic", serif; }
   .top-info span p.i {
-    top: 135px;
-    right: 10px;
+    top: 5px;
+    right: 5px;
     position: absolute; }
 
 .footnote {
@@ -646,7 +647,7 @@ input[type="checkbox"] {
 
 .top-info h2 span {
   font-weight: normal;
-  font-size: .7em;
+  font-size: 1em;
   font-family: "TradeGothic", sans-serif; }
 
 .top-info h2 span.number {
@@ -1147,13 +1148,24 @@ slideUp
   .col-sm-offset-2.left-align {
     margin-left: 16.66667%; } }
 
-@media screen and (max-width: 62.5em) {
-  .col-sm-offset-2.left-align {
-    margin-left: auto; }
+@media screen and (max-width: 1000px) {
+  .offset-container {
+    margin-right: -15px;
+    margin-left: -15px;
+    left: 0px; }
+  .left-align.estimate {
+    float: left; }
+  .col-sm-6.col-sm-offset-1.left-align.estimate {
+    float: none; }
   .left-align.estimate {
     position: relative; } }
 
 @media (max-width: 768px) {
+  .v-center.response {
+    padding: 0px; }
+  .container.contribution {
+    background: white;
+    margin: 10px; }
   .matches {
     float: none; }
   .match.col-xs-12.row.controls.animated-number {
@@ -1179,9 +1191,9 @@ slideUp
     background: black;
     border-radius: 5px;
     position: absolute;
-    left: -10px;
+    left: 0px;
     width: 100%;
-    top: -45px;
+    top: 0px;
     padding: 10px 5px;
     min-width: 310px; }
     .info-tool p {
@@ -1426,6 +1438,89 @@ slideUp
   -moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
   -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
   transform: translateX(-50%) translateY(-50%) rotate(45deg); }
+
+@media screen and (max-device-width: 768px) {
+  input {
+    -webkit-appearance: none; }
+  .tall {
+    min-width: 100px; }
+  .response .tall input {
+    width: 300px; }
+  div.col-sm-4.tall {
+    width: 30%;
+    min-width: initial;
+    margin: 10px; }
+  p.note.sans {
+    top: 0px;
+    width: 100%; }
+  .tall.small {
+    float: left;
+    overflow: auto;
+    height: 100%;
+    width: 50%; }
+    .tall.small h4 {
+      float: left; }
+    .tall.small input {
+      float: left; }
+    .tall.small .prompt {
+      top: 0px;
+      position: relative;
+      margin: 0 auto;
+      float: left;
+      max-width: 300px; }
+  input#squaredTwo {
+    -webkit-appearance: none; }
+  .i button {
+    padding: 2px; }
+  .circle {
+    display: none; }
+  .enough .inner {
+    padding: 0; }
+    .enough .inner .grey {
+      background: #f6f6f6;
+      overflow: hidden;
+      clear: both; }
+      .enough .inner .grey div.col-xs-6.col-sm-12 {
+        width: 50%; }
+      .enough .inner .grey .controls.animated-number {
+        display: block; }
+      .enough .inner .grey div p {
+        line-height: initial;
+        color: #333333; }
+  .controls.animated-number {
+    display: block; }
+  .tall.small.right {
+    float: right;
+    overflow: auto;
+    padding-left: 50px; }
+    .tall.small.right h4 {
+      float: right; }
+    .tall.small.right input {
+      float: right; }
+  .your div.col-sm-4.contrib {
+    overflow: auto; }
+  div.v-center.response.col-sm-12.col-xs-12 {
+    margin: 0 auto;
+    width: 100%;
+    float: none; }
+  .v-center.response .tall.small.left {
+    width: 50%; } }
+
+.panel-body {
+  padding: 0; }
+
+.panel-default > .panel-heading {
+  background-color: white;
+  background: white;
+  border-color: white;
+  border: none; }
+
+.panel-default {
+  border-color: white;
+  border: none; }
+
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+  border: none; }
 
 .roundedOne input[type="radio"] {
   display: none; }

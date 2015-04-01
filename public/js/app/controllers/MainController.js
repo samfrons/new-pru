@@ -45,6 +45,9 @@ angular.module('ob')
     $scope.isMobile = function(){
         return $window.innerWidth < 768;
     }
+    this.isMobile = function(){
+        return $scope.isMobile();
+    }
     var w = angular.element($window);
     w.bind('resize', function () {
         $scope.$apply();

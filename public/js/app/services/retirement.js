@@ -20,11 +20,12 @@ function() {
             return this.retirementAge - this.age;
         },
         savingPerYear: function(){
-            console.log(this.totalSaving());
-            console.log(this.retirementLast);
             return this.totalSaving() / this.retirementLast;
-
-        }
+        },
+        realityCheck: function(){
+            //return this.savingPerYear() * Math.pow(1 + this.inflationRate, this.retirementLast);
+            return this.savingPerYear() - (this.savingPerYear() * this.inflationRate)
+        },
     };
     return serviceAPI;
 }]);

@@ -3,17 +3,30 @@ angular.module('ob')
     return {
         restrict: 'A',
         scope: {
-            field: '='
+            field: '=',
+            max: '@'
         },
         replace: true,
         template: '<span><div class="input-group right"><span class="input-group-addon dollar">$</span><input type="text" ng-model="field" /></div></span>',
         link: function(scope, element, attrs) {
+                var max;
+                var historyValue = '';
+                if (angular.isUndefined(scope.max)) {
+                    max= 9;
+                }
+                else {
+                    max= scope.max;
+                }
             function spliceSlice(str, index, count, add) {
-                return str.slice(0, index) + (add || "") + str.slice(index + count);
+                return str.slice(0, index) + (add || "") + str.slice(index + count);   
             }
             (element).bind('keyup', function(e) {
                 var input = element.find('input');
                 var inputVal = input.val();
+                if (inputVal.length >= max) {
+                    scope.$apply(function() {scope.field = historyValue});
+                    return;
+                }
 
                 scope.field = scope.field.replace(/[^\d.\',']/g, '');
 
@@ -49,6 +62,7 @@ angular.module('ob')
                     decPart = "." + decPart;
                 }
                 var res = intPart + decPart;
+                historyValue = res;
                 scope.$apply(function() {scope.field = res});
 
             });

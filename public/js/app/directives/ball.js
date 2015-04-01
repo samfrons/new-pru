@@ -13,11 +13,12 @@ angular.module('ob')
             link: function(scope, element, attrs) {
                 var arrowDOM = element.parent().children()[1];
                 var tabDOM = element.parent().children()[0];
-                
+
                 var currentScale = 1;
-                var currentTranslation = 0;
+                var currentTranslation = 55;
                 var mode = 1;
-                var secretFormula = 5 + currentScale * 5;
+                var secretFormula = 8;
+                var max = 10;
 
                 window.Raphael && (Raphael.fn.arc = function(a, b, c, d, e, f, g) {
                     var h = [e, f, g, 0, 1, c, d].join(" "),
@@ -35,61 +36,44 @@ angular.module('ob')
 
                 var circle = rsr.set();
 
-                var circle_b = rsr.circle(130, 170, 60);
+                var circle_b = rsr.circle(187, 150, 30);
                 circle_b.attr({fill: '#009ed1',stroke: '#009ed1',"stroke-width": '2'});
 
-                var circle_c = rsr.circularArc(130, 170, 60, 17, 163);
+                var circle_c = rsr.circularArc(187, 150, 30, 17, 163);
                 circle_c.attr({fill: '#1089b5',stroke: 'none'});
                 circle.push(circle_c, circle_b);
 
-                var shadow = rsr.ellipse(100, 450, 55, 7);
+                var shadow = rsr.ellipse(187, 200, 25, 7);
                 shadow.attr({fill: '#d1d1d1',stroke: 'none','stroke-width':'1'});
 
                 var scale = function(){
-                    console.log(currentScale);
-                    circle.animate({"transform": "...S" + [currentScale, currentScale, 100, 130]}, 1000, "elastic");
-                    /*
-                    TweenLite.to(circleDOM, .15, {css:{transform:'scale('+(currentScale+(mode*0.15))+')'}, onComplete: function(){
-                        TweenLite.to(circleDOM, .05, {css:{transform:'scale('+(currentScale)+')'}, onComplete: function(){
-                            scope.scale = '';
-                            scope.$apply();
-                            if(!angular.isUndefined(times)){
-                                if(times > 0){
-                                    if (currentScale >= 1) {
-                                        return;
-                                    };
-                                    currentScale += 0.12;
-                                    currentTranslation -= secretFormula;
-                                    scale(times-1);
-                                };
-                            }
-                        }});
-                    }});*/
-                    TweenLite.to(arrowDOM, .1, {css:{transform:'translateY('+currentTranslation+'px)'}});
-                    TweenLite.to(tabDOM, .1, {css:{transform:'translateY('+currentTranslation+'px)'}});
-                    //TweenLite.to(shadowDOM, .2, {css:{transform:'translateY('+(-currentTranslation)+'px)scaleX('+currentScale+')'}});
+                    circle.animate({"transform": "...S" + [currentScale, currentScale, 187, 175]}, 500, "elastic", function(){
+                        scope.scale = '';
+                        scope.$apply();
+                    });
+                    TweenLite.to(arrowDOM, .2, {transform:'translateY('+(currentTranslation)+'px)'});
+                    TweenLite.to(tabDOM, .2, {transform:'translateY('+(currentTranslation)+'px)'});
+                    shadow.animate({"transform": "...S,"+ [currentScale, 1, 187, 200]}, 200, "elastic");
                 };
 
 
                 var bigger = function(){
-                    //if (currentScale >= 1) {
-                    //    return;
-                    //} 
+                    if (max === 0) {
+                        return;
+                    }
                     mode = 1;
-                    currentScale += 0.12;
+                    currentScale = 1.1;
                     currentTranslation -= secretFormula;
                     scale();
+                    max--;
                 };
 
                 var smaller = function(){
-                    //if (currentScale <= 0.2) {
-                    //    return;
-                    //}
                     mode = -1;
-                    currentScale -= 0.12;
+                    currentScale = 0.9;
                     currentTranslation += secretFormula;
                     scale();
-
+                    max++;
                 };
 
                 scope.$watch('scale', function(value){
@@ -103,13 +87,19 @@ angular.module('ob')
 
                 });
                 scope.$watch('initScale', function(value){
-                    currentScale += 0.12;
-                    currentTranslation -= secretFormula;
-                    scale(parseInt(value, 10));
+                    for(var i=0;i< parseInt(value, 10); i++){
+                        mode = 1;
+                        currentScale = 1.1;
+                        currentTranslation -= secretFormula;
+                        circle.attr({"transform": "...S" + [currentScale, currentScale, 187, 175]});
+                        TweenLite.to(arrowDOM, 0, {transform:'translateY('+(currentTranslation)+'px)'});
+                        TweenLite.to(tabDOM, 0, {transform:'translateY('+(currentTranslation)+'px)'});
+                        shadow.attr({"transform": "...S,"+ [currentScale, 1, 187, 200]});
+                        max--;
+                    }
                 });
-                //TweenLite.to(circleDOM, .15, {css:{transform:'scale('+currentScale+')'}, onComplete: function(){
-
-                //}});
+                TweenLite.to(arrowDOM, 0, {transform:'translateY(55px)'});
+                TweenLite.to(tabDOM, 0, {transform:'translateY(55px)'});
             }
         };
 

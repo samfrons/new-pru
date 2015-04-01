@@ -34,6 +34,8 @@ $italic: "ChaparralItalic", serif;
   }
 }
 
+
+
 .loader {
       height: 610px;
       position: relative;
@@ -111,6 +113,7 @@ body {
 input[type=text], textarea, button, button:active, button:hover {
     outline: none !important;
     border: none;
+
 }
 
 input[type=text] {
@@ -760,6 +763,7 @@ input[type="checkbox"] {
     height: 160px;
     position: relative;
     top: 50px;
+    z-index: 10;
     p.note {
         line-height: inherit;
         font-family: $trade;
@@ -772,9 +776,9 @@ input[type="checkbox"] {
     }
     span {
         p.i {
-            top: 135px;
-  right: 10px;
-  position: absolute;
+            top: 5px;
+          right: 5px;
+          position: absolute;
         }
     }
 }
@@ -829,7 +833,7 @@ input[type="checkbox"] {
 
 .top-info h2 span {
     font-weight: normal;
-    font-size: .7em;
+    font-size: 1em;
     font-family: $trade;
 }
 .top-info h2 span.number {
@@ -938,6 +942,7 @@ opacity: 1;
     @include prompt-bk;
 
 }
+
 
 .prompt  {
     -webkit-transition: .3s all ease-in;
@@ -1421,6 +1426,8 @@ slideUp
 
 /* ------------------------------ MEDIA QUERIES ------------------------------ */
 
+
+
 @media (min-width: 568px) {
 
     .col-sm-offset-2.left-align {
@@ -1428,10 +1435,23 @@ slideUp
     }
 }
 
-@media screen and (max-width: 62.5em) {
- 
+@media screen and (max-width: 1000px) {
+    
+    .offset-container {
+          margin-right: -15px;
+  margin-left: -15px;
+  left: 0px;
+    }
+    .left-align.estimate {
+        float: left;
+    }
+
     .col-sm-offset-2.left-align {
-        margin-left: auto;
+
+    }
+
+    .col-sm-6.col-sm-offset-1.left-align.estimate {
+        float: none;
     }
 
     .left-align.estimate {
@@ -1444,6 +1464,16 @@ slideUp
 
 @media (max-width: 768px) {
 
+
+.v-center.response {
+    padding: 0px;
+}
+
+
+.container.contribution {
+    background: white;
+    margin: 10px;
+}
     .matches {
         float: none;
     }
@@ -1478,9 +1508,9 @@ slideUp
     background: black;
     border-radius: 5px;
     position: absolute;
-    left: -10px;
+    left: 0px;
     width: 100%;
-    top: -45px;
+    top: 0px;
     padding: 10px 5px;
     min-width: 310px;
     p {
@@ -1850,6 +1880,151 @@ slideUp
   -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
   transform: translateX(-50%) translateY(-50%) rotate(45deg);
 }
+
+
+@media screen and (max-device-width: 768px) {
+     input {
+    -webkit-appearance: none;
+    }
+    
+    .tall {
+     min-width: 100px;     
+    }
+
+
+    .response {
+        .tall {
+            input {
+                width: 300px;
+            }
+        }
+    }
+    div.col-sm-4.tall {
+    width: 30%;
+    min-width: initial;
+    margin: 10px;
+    }
+
+    p.note.sans {
+    top: 0px;
+    width: 100%;
+
+    }
+
+    .tall.small {
+        float: left;
+        overflow: auto;
+        height:100%; 
+        width: 50%;
+        h4 {
+            float: left;
+        }
+        input {
+            float: left;
+        }
+
+        .prompt {
+            top: 0px;
+            position: relative;
+            margin: 0 auto;
+            float: left;
+            max-width: 300px;
+        }
+    }
+
+    input#squaredTwo {
+        -webkit-appearance: none;
+    }
+
+    .i {
+        button {
+            padding: 2px;
+        }
+    }
+
+    .circle {
+        display: none;
+    }
+
+        .enough {
+        .inner {
+            padding: 0;
+            .grey {
+            background: rgb(246,246,246);
+            overflow: hidden;
+            clear: both;
+            div.col-xs-6.col-sm-12 {
+                width: 50%;
+            }
+            .controls.animated-number {
+                display: block;
+            }
+            div {
+                p {
+                    line-height: initial;
+                    color: $grey;
+                }
+            }
+        }
+        }
+    }
+.controls.animated-number {
+                display: block;
+            }
+  
+    .tall.small.right {
+        float: right;
+        overflow: auto;
+        padding-left: 50px;
+        h4 {
+             float: right;  
+        }
+        input {
+            float: right;
+        }
+    }
+    
+.your {
+    div.col-sm-4.contrib {
+        overflow: auto;
+    }
+}
+    div.v-center.response.col-sm-12.col-xs-12 {
+        margin: 0 auto;
+        width: 100%;
+        float: none;
+    }
+
+    .v-center.response {
+        .tall.small.left {
+            width: 50%;
+        }
+
+    }
+} 
+
+
+
+.panel-body {
+    padding: 0;
+}
+
+.panel-default>.panel-heading {
+    background-color: white;
+    background: white;
+    border-color: white;
+    border: none;
+}
+
+.panel-default {
+  border-color: white;
+  border: none;
+}
+
+.panel-default>.panel-heading+.panel-collapse>.panel-body {
+    border: none;
+}
+
 @import "input",
         "animatedNumber",
         "resultPage";

@@ -21,15 +21,16 @@ angular.module('ob')
                     savingPerYear: retirement.savingPerYear(),
                     inflationRate: retirement.inflationRate * 100,
                     annualContribution: (retirement.userPercentContributed * 100) + (retirement.companyPercentContributed * 100) ,
-                    retirementLast: retirement.retirementLast
+                    retirementLast: retirement.retirementLast,
+                    realityCheck: retirement.realityCheck()
                 };
                 _this.increase = retirement.userPercentContributed * 100;
                 _this.calculate();
-            }, 300);     
+            }, 0);     
         };
         
-        this.resultMode = false;
-        this.calculMode = true;
+        this.resultMode = parent.isMobile();
+        this.calculMode = !parent.isMobile();
         this.progress = 0;
         this.increase = 1;
         this.slot = false;
@@ -40,12 +41,14 @@ angular.module('ob')
             this.circle.scale = 'grow';
             retirement.userPercentContributed = increase / 100;
             this.result.savingPerYear = retirement.savingPerYear();
+            this.result.realityCheck = retirement.realityCheck();
         };
 
         this.less = function(increase){
             this.circle.scale = 'smaller';
             retirement.userPercentContributed = increase / 100;
             this.result.savingPerYear = retirement.savingPerYear();
+            this.result.realityCheck = retirement.realityCheck();
         };
 
         var calculatePhases = {
@@ -86,15 +89,18 @@ angular.module('ob')
               $timeout(function () {
                      _this.slot = true;
                      $timeout(function () {
-                        _this.calculMode = false;
+                      _this.calculMode = false;
                       _this.resultMode = true;
                     },300);
                 }, 1000);
             }
-            
+
         };
 
         this.calculate = function(){
+            if(parent.isMobile()){
+                return;
+            }
             calculatePhases.init();
         };
 }]);

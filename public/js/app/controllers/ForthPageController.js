@@ -34,4 +34,39 @@ angular.module('ob')
         contributionCompany: 1
     };
 
+    this.accordion = {
+        part1: false,
+        part2: false,
+        part3: false,
+    };
+
+    this.percentageOpen = function(){
+        if(this.accordion.part1){
+            return;
+        }
+        this.accordion.part2 = false;
+        this.accordion.part3 = false;
+        this.user.contributionPlan = 'percentage';
+        this.accordion.part1 = true;
+    };
+
+    this.autoOpen = function(){
+        if(this.accordion.part2){
+            return;
+        }
+        this.accordion.part1 = false;
+        this.accordion.part3 = false;
+        this.user.contributionPlan = 'auto';
+        this.accordion.part2 = true;
+    };
+
+    this.socialOpen = function(){
+        if(this.accordion.part3){
+            return;
+        }
+        this.accordion.part2 = false;
+        this.accordion.part1 = false;
+        this.user.contributionPlan = 'social';
+        this.accordion.part3 = true;
+    };
 }]);
