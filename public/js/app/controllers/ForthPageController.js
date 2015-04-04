@@ -1,6 +1,6 @@
 angular.module('ob')
 
-.controller('ForthPageController', ['$scope', 'utils', 'retirement', function($scope, utils, retirement) {
+.controller('ForthPageController', ['$scope', 'utils', 'retirement', '$timeout', function($scope, utils, retirement, $timeout) {
 
     var parent = $scope.main;
     var _this = this;
@@ -19,7 +19,7 @@ angular.module('ob')
                 }
                 retirement.userPercentContributed = _this.user.contribution / 100;
             }else{
-                retirement.percentContributed = 0.03;
+                retirement.userPercentContributed = 0.03;
             }
         }
     });
@@ -69,4 +69,28 @@ angular.module('ob')
         this.user.contributionPlan = 'social';
         this.accordion.part3 = true;
     };
+
+    this.accordion.waitPart2 = false;
+    $scope.$watch('forthPage.accordion.part2',function(value){
+        if(value){
+            $timeout(function(){
+                _this.accordion.waitPart2 = value;
+            },300);
+        }else{
+            _this.accordion.waitPart2 = value;
+        }
+
+    });
+
+    this.accordion.waitPart3 = false;
+    $scope.$watch('forthPage.accordion.part3',function(value){
+        if(value){
+            $timeout(function(){
+                _this.accordion.waitPart3 = value;
+            },300);
+        }else{
+            _this.accordion.waitPart3 = value;
+            console.log('dqdq');
+        }
+    });
 }]);

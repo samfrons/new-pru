@@ -6,7 +6,7 @@ angular.module('ob')
     var _this = this;
 
     this.user = {};
-
+    this.focus = false;
     $scope.$watch('main.currentIndex', function(index){
         if(index === 1){
             _this.init();
@@ -19,13 +19,14 @@ angular.module('ob')
     });
 
     this.init = function(){
+        this.focus = true;
         parent.displayButtons = true;
         parent.nextButton = 'Next';
         parent.nextDisabled = function(){
             return !_this.ageValid() || !_this.annualSalaryValid() || !_this.savedForRetirementValid();
         };
     };
-
+    
     this.ageValid = function(){
         return utils.isInteger(this.user.age);
     };

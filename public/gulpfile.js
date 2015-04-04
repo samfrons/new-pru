@@ -44,7 +44,8 @@ gulp.task('js', function() {
     'js/app/directives/pageCarousel.js',
     'js/app/directives/slotMachineText.js',
     'js/app/directives/centeredMenu.js',
-    'js/app/directives/ball.js'
+    'js/app/directives/ball.js',
+    'js/app/directives/focusMe.js'
       ])
       .pipe(concat('app.min.js'))
       //.pipe(uglify())

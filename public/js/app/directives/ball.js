@@ -15,10 +15,6 @@ angular.module('ob')
                 var tabDOM = element.parent().children()[0];
 
                 var currentScale = 1;
-                var currentTranslation = 55;
-                var mode = 1;
-                var secretFormula = 8;
-                var max = 10;
 
                 window.Raphael && (Raphael.fn.arc = function(a, b, c, d, e, f, g) {
                     var h = [e, f, g, 0, 1, c, d].join(" "),
@@ -43,37 +39,47 @@ angular.module('ob')
                 circle_c.attr({fill: '#1089b5',stroke: 'none'});
                 circle.push(circle_c, circle_b);
 
+                var invisibleCircle = rsr.set();
+
+                var circle_b_inv = rsr.circle(1187, 1150, 30);
+                circle_b_inv.attr({fill: 'none',stroke: 'none',"stroke-width": '2'});
+
+                var circle_c_inv = rsr.circularArc(1187, 1150, 30, 17, 163);
+                circle_c_inv.attr({fill: 'none',stroke: 'none'});
+                invisibleCircle.push(circle_c_inv, circle_b_inv);
+
                 var shadow = rsr.ellipse(187, 200, 25, 7);
                 shadow.attr({fill: '#d1d1d1',stroke: 'none','stroke-width':'1'});
 
+                var translate = 70;
+
                 var scale = function(){
-                    circle.animate({"transform": "...S" + [currentScale, currentScale, 187, 175]}, 500, "elastic", function(){
+                    invisibleCircle.attr({"transform": "s" + [currentScale, currentScale, 1187, 1175]});
+                    translate -= invisibleCircle.getBBox().height - circle.getBBox().height;
+                    circle.animate({"transform": "s" + [currentScale, currentScale, 187, 175]}, 500, "elastic", function(){
                         scope.scale = '';
                         scope.$apply();
                     });
-                    TweenLite.to(arrowDOM, .2, {transform:'translateY('+(currentTranslation)+'px)'});
-                    TweenLite.to(tabDOM, .2, {transform:'translateY('+(currentTranslation)+'px)'});
-                    shadow.animate({"transform": "...S,"+ [currentScale, 1, 187, 200]}, 200, "elastic");
+                    TweenLite.to(arrowDOM, .5, {transform:'translateY('+(translate)+'px)', ease:Elastic.easeOut});
+                    TweenLite.to(tabDOM, .5, {transform:'translateY('+(translate)+'px)', ease:Elastic.easeOut});
+                    shadow.animate({"transform": "s,"+ [currentScale, 1, 187, 200]}, 500, "elastic");
                 };
 
 
                 var bigger = function(){
-                    if (max === 0) {
+                    if(invisibleCircle.getBBox().height >= 165){
                         return;
                     }
-                    mode = 1;
-                    currentScale = 1.1;
-                    currentTranslation -= secretFormula;
+                    currentScale += 0.4;
                     scale();
-                    max--;
                 };
 
                 var smaller = function(){
-                    mode = -1;
-                    currentScale = 0.9;
-                    currentTranslation += secretFormula;
+                    if(invisibleCircle.getBBox().height <= 20){
+                        return;
+                    }
+                    currentScale -= 0.4;
                     scale();
-                    max++;
                 };
 
                 scope.$watch('scale', function(value){
@@ -88,21 +94,22 @@ angular.module('ob')
                 });
                 scope.$watch('initScale', function(value){
                     for(var i=0;i< parseInt(value, 10); i++){
-                        mode = 1;
-                        currentScale = 1.1;
-                        currentTranslation -= secretFormula;
-                        circle.attr({"transform": "...S" + [currentScale, currentScale, 187, 175]});
-                        TweenLite.to(arrowDOM, 0, {transform:'translateY('+(currentTranslation)+'px)'});
-                        TweenLite.to(tabDOM, 0, {transform:'translateY('+(currentTranslation)+'px)'});
-                        shadow.attr({"transform": "...S,"+ [currentScale, 1, 187, 200]});
-                        max--;
+                        if(invisibleCircle.getBBox().height >= 165){
+                            return;
+                        }
+                        currentScale += 0.4;
+                        invisibleCircle.attr({"transform": "s" + [currentScale, currentScale, 1187, 1175]});
+                        translate -= invisibleCircle.getBBox().height - circle.getBBox().height;
+                        circle.attr({"transform": "s" + [currentScale, currentScale, 187, 175]});
+                        TweenLite.to(arrowDOM, 0, {transform:'translateY('+(translate)+'px)'});
+                        TweenLite.to(tabDOM, 0, {transform:'translateY('+(translate)+'px)'});
+                        shadow.attr({"transform": "s,"+ [currentScale, 1, 187, 200]});
                     }
                 });
-                TweenLite.to(arrowDOM, 0, {transform:'translateY(55px)'});
-                TweenLite.to(tabDOM, 0, {transform:'translateY(55px)'});
+                TweenLite.to(arrowDOM, 0, {transform:'translateY(70px)'});
+                TweenLite.to(tabDOM, 0, {transform:'translateY(70px)'});
             }
         };
 
 
     }]);
-

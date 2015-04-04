@@ -5,7 +5,7 @@ angular.module('ob')
     var parent = $scope.main;
     var _this = this;
     this.user = {};
-
+    this.focus = false;
     $scope.$watch('main.currentIndex', function(index){
         if(index === 2){
             _this.init();
@@ -17,6 +17,7 @@ angular.module('ob')
     });
 
     this.init = function(){
+        this.focus = true;
         parent.displayButtons = true;
         parent.nextButton = 'Next';
         parent.nextDisabled = function(){
@@ -33,15 +34,15 @@ angular.module('ob')
     };
 
     this.realityMin = function(){
-        return this.validMinRate() && utils.isInf(65, this.user.minRetire);
+        return this.validMinRate() && utils.isInf(59, this.user.minRetire);
     };
 
     this.realityMax = function(){
-        return this.validMinRate() && utils.isSup(75, this.user.minRetire);
+        return this.validMinRate() && utils.isSup(68, this.user.minRetire);
     };
 
     this.realityMid = function(){
-        return this.validMinRate() && utils.isBetween(65, 75, this.user.minRetire);
+        return this.validMinRate() && utils.isBetween(59, 68, this.user.minRetire);
     };
 
     this.futureMin = function(){

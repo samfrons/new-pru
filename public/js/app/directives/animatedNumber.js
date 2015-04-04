@@ -23,7 +23,7 @@ angular.module('ob')
             var circle2 = angular.element(element[0].children[2]);
             scope.selected = false;
             if (angular.isUndefined(scope.maxNumber)) {
-                scope.max = 10;
+                scope.max = 20;
             } else {
                  scope.max = parseInt(scope.maxNumber, 10);
             }

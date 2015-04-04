@@ -104,6 +104,8 @@ body {
 
 
 
+
+
 .container {
     padding: 10px;
 }
@@ -544,7 +546,7 @@ button.btn:hover {
     margin: 0 auto;
     min-height: 113px;
     position: relative;
-    span {
+    .span {
         padding: 10px 10px 0 10px;
         line-height: 1em;
         position: absolute;
@@ -666,10 +668,26 @@ h5.labels {
     left: 75px;
 }
 
+.inflation {
+        padding: 10px 10px 0 10px;
+        line-height: 1em;
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        font-size: 15px;
+background: red;
+}
+
 .prompt.estimate h2 {
     font-family: $trade-bold;
     font-weight: normal;
     span {
+          font-size: 1em;  
+    }
+    .span {
           font-size: .6em;  
     }
 }
@@ -783,6 +801,13 @@ input[type="checkbox"] {
     }
 }
 
+.black {
+    background: black;
+}
+
+.black-arrow {
+    border-top: 15px solid black;
+}
 .footnote {
     line-height: inherit;
     font-size: 10px;
@@ -834,6 +859,11 @@ input[type="checkbox"] {
 .top-info h2 span {
     font-weight: normal;
     font-size: 1em;
+    font-family: $trade;
+}
+.top-info h2 .span {
+    font-weight: normal;
+    font-size: .6em;
     font-family: $trade;
 }
 .top-info h2 span.number {

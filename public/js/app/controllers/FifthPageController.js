@@ -56,7 +56,7 @@ angular.module('ob')
                 var self = this;
                 $timeout(function () {
                     self.phase1();
-                }, 1000);
+                }, 500);
             },
             phase1: function()
             {
@@ -65,7 +65,7 @@ angular.module('ob')
                 _this.slot = true;
                 $timeout(function () {
                     self.phase2();
-                }, 1000);
+                }, 500);
             },
             phase2: function () {
                 _this.progress = 50;
@@ -73,7 +73,7 @@ angular.module('ob')
                 _this.slot = true;
                 $timeout(function () {
                     self.phase3();
-                }, 1000);
+                }, 500);
             },
             phase3: function () {
                 _this.progress = 75;
@@ -81,7 +81,7 @@ angular.module('ob')
                 _this.slot = true;
                 $timeout(function () {
                     self.phase4();
-                }, 1000);
+                }, 500);
             },
             phase4: function () {
                 _this.progress = 100;
@@ -92,7 +92,7 @@ angular.module('ob')
                       _this.calculMode = false;
                       _this.resultMode = true;
                     },300);
-                }, 1000);
+                }, 500);
             }
 
         };
