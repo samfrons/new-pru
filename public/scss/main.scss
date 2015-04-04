@@ -293,6 +293,12 @@ input[type=radio] {
 
 .labels.navy.down {
     margin-top: 17px;
+    text-decoration: none !important;
+}
+
+.labels.navy.down:hover {
+    margin-top: 17px;
+    text-decoration: none !important;
 }
 
 .retire .col-sm-6 input {
@@ -805,12 +811,16 @@ input[type="checkbox"] {
     background: black;
 }
 
-.black-arrow {
-    border-top: 15px solid black;
+.blackarrow {
+    border-top: 15px solid black !important;
 }
 .footnote {
     line-height: inherit;
     font-size: 10px;
+}
+
+.footnote.ital.desktop {
+    position: relative;
 }
 #upit-related-content h2.h1 {
     font-family: "TradeGothicBoldCon20";
@@ -999,8 +1009,10 @@ opacity: 1;
         margin-top: 40px;
         p {
             font-size: 10px;
+            font-style: normal;
             a {
                 color: $blue;
+                text-align: underline;
             }
     }
 }
@@ -1465,6 +1477,13 @@ slideUp
     }
 }
 
+@media screen and  (min-width: 568px) and (max-width: 808px) {
+
+    .col-sm-offset-2.left-align {
+        margin-left: 10.66666667%;
+    }
+}
+
 @media screen and (max-width: 1000px) {
     
     .offset-container {
@@ -1661,6 +1680,8 @@ slideUp
         }
         .left-align.estimate {
             top: 0px;
+            margin: 0 auto;
+            width: 100%;
             .top-info {
                 padding: 0;
                 top: 0px;
@@ -1680,6 +1701,8 @@ slideUp
                     span {
                         p.note {
                             padding: 0 30px;
+                            top: -7px;
+                            position: relative;
                         }
                     }
                 }
@@ -1913,6 +1936,19 @@ slideUp
 
 
 @media screen and (max-device-width: 768px) {
+
+div.panel-heading {
+    overflow: auto;
+}
+.container.contribution {
+    max-height: 460px;
+}
+    .col-xs-12.col-sm-4.tall {
+    float: left;
+        h4.labels {
+            padding-right: 10px;
+        }
+    }
      input {
     -webkit-appearance: none;
     }
@@ -2018,7 +2054,7 @@ slideUp
     div.col-sm-4.contrib {
         overflow: auto;
     }
-}
+    }
     div.v-center.response.col-sm-12.col-xs-12 {
         margin: 0 auto;
         width: 100%;
@@ -2026,14 +2062,30 @@ slideUp
     }
 
     .v-center.response {
+        .tall.small {
+            input {
+                width: 50%;
+            }
+        }
         .tall.small.left {
-            width: 50%;
+            width: 100%;
+        }
+        .tall.small.right {
+            width: 100%;
+            float: left;
+            padding-left: 0px;
+            h4 {
+                float: left;
+            }
+
         }
 
     }
 } 
 
-
+.panel {
+    box-shadow: none !important;
+}
 
 .panel-body {
     padding: 0;

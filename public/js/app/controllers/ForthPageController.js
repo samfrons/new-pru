@@ -18,8 +18,10 @@ angular.module('ob')
                     retirement.companyPercentContributed = 0;
                 }
                 retirement.userPercentContributed = _this.user.contribution / 100;
-            }else{
+            }else if(_this.user.contributionPlan === 'auto'){
                 retirement.userPercentContributed = 0.03;
+            }else{
+                retirement.userPercentContributed = 0;
             }
         }
     });
@@ -69,28 +71,4 @@ angular.module('ob')
         this.user.contributionPlan = 'social';
         this.accordion.part3 = true;
     };
-
-    this.accordion.waitPart2 = false;
-    $scope.$watch('forthPage.accordion.part2',function(value){
-        if(value){
-            $timeout(function(){
-                _this.accordion.waitPart2 = value;
-            },300);
-        }else{
-            _this.accordion.waitPart2 = value;
-        }
-
-    });
-
-    this.accordion.waitPart3 = false;
-    $scope.$watch('forthPage.accordion.part3',function(value){
-        if(value){
-            $timeout(function(){
-                _this.accordion.waitPart3 = value;
-            },300);
-        }else{
-            _this.accordion.waitPart3 = value;
-            console.log('dqdq');
-        }
-    });
 }]);

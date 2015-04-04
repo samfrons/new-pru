@@ -195,7 +195,12 @@ input[type=radio] {
   text-align: center; }
 
 .labels.navy.down {
-  margin-top: 17px; }
+  margin-top: 17px;
+  text-decoration: none !important; }
+
+.labels.navy.down:hover {
+  margin-top: 17px;
+  text-decoration: none !important; }
 
 .retire .col-sm-6 input {
   margin-bottom: 10px;
@@ -609,12 +614,15 @@ input[type="checkbox"] {
 .black {
   background: black; }
 
-.black-arrow {
-  border-top: 15px solid black; }
+.blackarrow {
+  border-top: 15px solid black !important; }
 
 .footnote {
   line-height: inherit;
   font-size: 10px; }
+
+.footnote.ital.desktop {
+  position: relative; }
 
 #upit-related-content h2.h1 {
   font-family: "TradeGothicBoldCon20"; }
@@ -798,9 +806,11 @@ input[type="checkbox"] {
 .plan .source {
   margin-top: 40px; }
   .plan .source p {
-    font-size: 10px; }
+    font-size: 10px;
+    font-style: normal; }
     .plan .source p a {
-      color: #009ed1; }
+      color: #009ed1;
+      text-align: underline; }
 
 .plan .labels {
   min-height: inherit; }
@@ -1173,6 +1183,10 @@ slideUp
   .col-sm-offset-2.left-align {
     margin-left: 16.66667%; } }
 
+@media screen and (min-width: 568px) and (max-width: 808px) {
+  .col-sm-offset-2.left-align {
+    margin-left: 10.66667%; } }
+
 @media screen and (max-width: 1000px) {
   .offset-container {
     margin-right: -15px;
@@ -1299,7 +1313,9 @@ slideUp
     .offset-container div {
       padding: 0; }
     .offset-container .left-align.estimate {
-      top: 0px; }
+      top: 0px;
+      margin: 0 auto;
+      width: 100%; }
       .offset-container .left-align.estimate .top-info {
         padding: 0;
         top: 0px;
@@ -1315,7 +1331,9 @@ slideUp
           top: 10px;
           right: 10px; }
         .offset-container .left-align.estimate .top-info span span p.note {
-          padding: 0 30px; }
+          padding: 0 30px;
+          top: -7px;
+          position: relative; }
         .offset-container .left-align.estimate .top-info p.ital {
           font-size: 14px; }
   .enough {
@@ -1530,6 +1548,9 @@ slideUp
     float: none; }
   .v-center.response .tall.small.left {
     width: 50%; } }
+
+.panel {
+  box-shadow: none !important; }
 
 .panel-body {
   padding: 0; }
