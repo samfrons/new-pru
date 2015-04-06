@@ -817,6 +817,12 @@ input[type="checkbox"] {
     position: relative;
     top: 50px;
     z-index: 10;
+    h2 {
+        span.slash.span {
+            vertical-align: text-bottom;
+            margin-left: -10px;
+        }
+    }
     p.note {
         line-height: inherit;
         font-family: $trade;
@@ -2293,6 +2299,11 @@ div.panel.panel-default {
 .panel-default>.panel-heading+.panel-collapse>.panel-body {
     border: none;
 }
+/*
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner, .odometer.odometer-auto-theme .odometer-digit .odometer-ribbon.inner span, .odometer-value {
+  font-family:$trade-bold !important;
+}
+*/
 
 @import "input",
         "animatedNumber",

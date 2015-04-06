@@ -621,6 +621,9 @@ input[type="checkbox"] {
   position: relative;
   top: 50px;
   z-index: 10; }
+  .top-info h2 span.slash.span {
+    vertical-align: text-bottom;
+    margin-left: -10px; }
   .top-info p.note {
     line-height: inherit;
     font-family: "TradeGothic", sans-serif;
@@ -1681,6 +1684,11 @@ div.panel.panel-default {
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border: none; }
 
+/*
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner, .odometer.odometer-auto-theme .odometer-digit .odometer-ribbon.inner span, .odometer-value {
+  font-family:$trade-bold !important;
+}
+*/
 .roundedOne input[type="radio"] {
   display: none; }
 
@@ -1722,6 +1730,11 @@ div.panel.panel-default {
   vertical-align: top;
   position: relative; }
 
+/*
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner, .odometer.odometer-auto-theme .odometer-digit .odometer-ribbon.inner span {
+  font-family: $condensed !important;
+}
+*/
 .animated-number .btn-default.disable {
   background: #c4c4c4; }
 

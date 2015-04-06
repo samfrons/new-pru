@@ -6,6 +6,11 @@
   position: relative;
 }
 
+/*
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner, .odometer.odometer-auto-theme .odometer-digit .odometer-ribbon.inner span {
+  font-family: $condensed !important;
+}
+*/
 .animated-number .btn-default.disable {
   background: $light-grey;
 }

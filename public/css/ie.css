@@ -33,3 +33,24 @@
 .roundedOne input[type="radio"]:checked + label span{
   opacity: 1;
 }
+.top-info {
+  background: rgb(56, 72, 77)!important;
+ -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+}
+
+ul.nav-tabs {
+  width: 615px !important;
+}
+
+.grey .prompt.estimate .h-center {
+top: 0% !important;
+left: 30% !important;
+}
+
+.labels.navy.down {
+  font-size: 14px !important;
+}
+
+.btn-group .btn[disabled] {
+  background: red !important;
+}
