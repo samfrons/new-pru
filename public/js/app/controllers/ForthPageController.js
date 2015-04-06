@@ -71,4 +71,14 @@ angular.module('ob')
         this.user.contributionPlan = 'social';
         this.accordion.part3 = true;
     };
+
+
+    $scope.$watch(function(){
+        return _this.user.contributionPlan;
+    }, function(value){
+        console.log(value);
+        if (value != 'percentage') {
+            _this.info = false;
+        }
+    } )
 }]);

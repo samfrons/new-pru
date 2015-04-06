@@ -45,6 +45,12 @@ angular.module('ob')
     $scope.isMobile = function(){
         return $window.innerWidth < 768;
     }
+
+    $scope.isTablet = function(){
+        console.log($window.orientation);
+        return $window.innerWidth >= 768 && $window.innerWidth <= 1024 && ($window.orientation == 0 || $window.orientation == 180);
+
+    }
     this.isMobile = function(){
         return $scope.isMobile();
     }

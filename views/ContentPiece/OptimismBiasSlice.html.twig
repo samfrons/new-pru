@@ -1,3 +1,14 @@
+<!--[if lte IE 8]>
+	<script>
+	  document.createElement('centered-menu');
+	  document.createElement('menu');
+	  document.createElement('page-carousel');
+	  document.createElement('page');
+	  document.createElement('animated-number');
+	  document.createElement('ball');
+	  document.createElement('slot-machine-text');
+	</script>
+<![endif]-->
 {% if tracking_code | default is empty %}
     {% if content_piece.sliceTrackingCode | default is not empty %}
         {% set tracking_code = content_piece.sliceTrackingCode | default %}
@@ -159,9 +170,9 @@
 
 		  <page class="slide">
 			<div class="container contribution" ng-controller="ForthPageController as forthPage">
-				<div class="content inner row" ng-if="!isMobile()">
+				<div class="content inner row" ng-if="!isMobile() && !isTablet()">
 				<div class="v-center col-xs-12 your">
-				<h4 class="labels navy">How much are you currently contributing to your workplace retirement plan?</h4>
+				<h4 class="labels navy center">How much are you currently contributing to your workplace retirement plan?</h4>
 
 				<div class="col-sm-4 contrib">
 					<div class="roundedOne">
@@ -241,17 +252,17 @@
 				</div>
 			</div>
 
-				<div ng-if="isMobile()">
-				<h4 class="labels navy">How much are you currently contributing to your workplace retirement plan?</h4>
+				<div ng-if="isMobile() || isTablet()">
+				<h4 class="labels navy center">How much are you currently contributing to your workplace retirement plan?</h4>
 					<accordion close-others="true">
 					    <accordion-group is-open="forthPage.accordion.part1">
-					        <accordion-heading>
-								<div class="col-sm-4 contrib" ng-click="forthPage.percentageOpen()">
+					        <accordion-heading class="match1">
+								<div class="col-sm-12 contrib" ng-click="forthPage.percentageOpen()">
 								<div class="roundedOne">
 									<input type="radio" id="percentage" ng-model="forthPage.user.contributionPlan" value="percentage" name="radio" />
 									<label for="percentage"><span></span></label>
 								</div>
-								<animated-number class="col-xs-9 col-sm-12" number="forthPage.user.contribution" select="{{forthPage.user.contributionPlan === 'percentage'}}" clicked="forthPage.percentageOpen()"></animated-number>
+								<animated-number class="col-xs-9 col-sm-6" number="forthPage.user.contribution" select="{{forthPage.user.contributionPlan === 'percentage'}}" clicked="forthPage.percentageOpen()"></animated-number>
 								</div>
 					        </accordion-heading>
 					      <span class="info-tool-mobile">
@@ -288,11 +299,16 @@
 					    <accordion-group is-open="forthPage.accordion.part2">
 					        <accordion-heading>
 								<div ng-click="forthPage.autoOpen()">
+						
+								
 								<div class="roundedOne">
 									<input type="radio" id="auto" ng-model="forthPage.user.contributionPlan"  value="auto" name="radio" />
 									<label for="auto"><span></span></label>
 								</div>
-								<h5 class="labels navy down">I don't know. I just did auto-enrollment.</h5>
+								<!--
+								<h5 class="labels navy down">I don't know. I just did auto-enrollment.</h5>-->
+
+								<h5 class="labels navy down" style="text-decoration:none">I don't know. I just did auto-enrollment.</h5>
 								</div>
 					        </accordion-heading>
 
@@ -421,11 +437,11 @@
 		  					</div>
 		  				</div>
 		  			</div>
-		  			<p class="footnote ital" ng-show="isMobile()">Inflation is assumed to be 3%. The return is purely hypothetical</p>
+		  			<p class="footnote ital" ng-show="isMobile()" style="text-align: center;">Inflation is assumed to be 3%. The return is purely hypothetical and is used for illustrative purposes only. Performance results are not indicative of any particular investment. Actual results and investment risks will vary.</p>
 		  		</div>
 
 		  	</div>
-		  	<div class="col-xs-12 col-sm-10 h-center" style="top:74%">
+		  	<div class="col-xs-12 col-sm-11 h-center" style="top:98%; line-height: initial;">
 		  		<p class="row col-xs-12 footnote ital desktop" ng-hide="isMobile()">This calculation assumes a xx% rate of return over xx year. The compounding concept is hypothetical and for illustrative purposes only, and is not intended to represent the performance of any specific investment, which may fluctuate. No taxes are considered in the calculations; generally withdrawals are taxable at ordinary rates. It is possible to lose money by investing in securities. The Social Security benefits included are estimates and are not guaranteed. Benefits may be reduced or even eliminated at any time.</p>
 		  		</div>
 		  </div>

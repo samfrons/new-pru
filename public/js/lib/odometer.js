@@ -16,7 +16,7 @@
 
   FRAMERATE = 30;
 
-  DURATION = 2000;
+  DURATION = 200;
 
   COUNT_FRAMERATE = 20;
 
@@ -426,6 +426,7 @@
       cur = this.value;
       return (tick = function() {
         var delta, dist, fraction;
+        console.log(_this.options.duration);
         if ((now() - start) > _this.options.duration) {
           _this.value = newValue;
           _this.render();

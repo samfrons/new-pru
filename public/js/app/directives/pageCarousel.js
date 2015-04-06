@@ -2,7 +2,7 @@ angular.module('ob')
 .controller('PageCarouselController', ['$scope', '$interval', '$animate', function ($scope, $interval, $animate) {
     var self = this;
     var slides = self.slides = $scope.slides = [];
-    var currentIndex = -1;
+    $scope.current = -1;
     self.currentSlide = null;
 
     var destroyed = false;
@@ -11,7 +11,7 @@ angular.module('ob')
         var nextIndex = slides.indexOf(nextSlide);
         //Decide direction if it's not given
         if (direction === undefined) {
-            direction = nextIndex > currentIndex ? 'next' : 'prev';
+            direction = nextIndex > $scope.current ? 'next' : 'prev';
         }
         if (nextSlide && nextSlide !== self.currentSlide) {
             goNext();
@@ -35,7 +35,7 @@ angular.module('ob')
           }
 
           self.currentSlide = nextSlide;
-          currentIndex = nextIndex;
+          $scope.current = nextIndex;
         }
     };
 
@@ -45,7 +45,7 @@ angular.module('ob')
     };
 
     $scope.next = function() {
-        var newIndex = (currentIndex + 1) % slides.length;
+        var newIndex = ($scope.current + 1) % slides.length;
 
         //Prevent this user-triggered transition from occurring if there is already one in progress
         if (!$scope.$currentTransition) {
@@ -54,7 +54,7 @@ angular.module('ob')
     };
 
     $scope.prev = function() {
-        var newIndex = currentIndex - 1 < 0 ? slides.length - 1 : currentIndex - 1;
+        var newIndex = $scope.current - 1 < 0 ? slides.length - 1 : $scope.current - 1;
 
         //Prevent this user-triggered transition from occurring if there is already one in progress
         if (!$scope.$currentTransition) {
@@ -62,17 +62,17 @@ angular.module('ob')
         }
     };
     $scope.$watch('currentIndex', function(index) {
-        if (index !== currentIndex) {
+        if (index !== $scope.current) {
             if(index === -1){
                 self.select(slides[0],'prev');
-                $scope.currentIndex = 0;
+                $scope.$scope.current = 0;
             }else{
-                if(index > currentIndex){
-                    for(var i=0;i<index - currentIndex;i++){
+                if(index > $scope.current){
+                    for(var i=0;i<index - $scope.current;i++){
                         $scope.next();
                     }
                 }else{
-                    for(var i=0;i<currentIndex - index;i++){
+                    for(var i=0;i<$scope.current - index;i++){
                         $scope.prev();
                     }
                 }
@@ -95,7 +95,6 @@ angular.module('ob')
     };
 
 }])
-
 
 
 .directive('pageCarousel', [function() {

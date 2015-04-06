@@ -38,14 +38,18 @@ angular.module('ob')
         this.circle = {scale: 'normal'};
 
         this.more = function(increase){
-            this.circle.scale = 'grow';
+            if (increase <= 5 ){
+                this.circle.scale = 'grow';
+            }
             retirement.userPercentContributed = increase / 100;
             this.result.savingPerYear = retirement.savingPerYear();
             this.result.realityCheck = retirement.realityCheck();
         };
 
         this.less = function(increase){
-            this.circle.scale = 'smaller';
+            if (increase <= 5 ){
+                this.circle.scale = 'smaller';
+            }
             retirement.userPercentContributed = increase / 100;
             this.result.savingPerYear = retirement.savingPerYear();
             this.result.realityCheck = retirement.realityCheck();
