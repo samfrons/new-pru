@@ -57,6 +57,7 @@ $italic: "ChaparralItalic", serif;
               border-radius: 100%;  
               -webkit-animation: scaleout 1.0s infinite ease-in-out;
               animation: scaleout 1.0s infinite ease-in-out;
+              behavior: url(PIE.htc);
             }
       }
 
@@ -1017,6 +1018,9 @@ opacity: 1;
     text-align: center;
     margin: 0 auto;
     line-height: 1em;
+    span.footnote {
+        vertical-align: super;
+    }
 }
 
 .plan {

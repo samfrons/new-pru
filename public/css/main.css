@@ -43,7 +43,8 @@
       background-color: #009ed1;
       border-radius: 100%;
       -webkit-animation: scaleout 1s infinite ease-in-out;
-      animation: scaleout 1s infinite ease-in-out; }
+      animation: scaleout 1s infinite ease-in-out;
+      behavior: url(PIE.htc); }
 
 html {
   overflow-x: hidden; }
@@ -814,6 +815,8 @@ input[type="checkbox"] {
   text-align: center;
   margin: 0 auto;
   line-height: 1em; }
+  .blue-note span.footnote {
+    vertical-align: super; }
 
 .plan .blue-note {
   font-size: 18px; }

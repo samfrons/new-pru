@@ -10,7 +10,7 @@ function() {
         companyPercentContributed: 0,
         salary: 0,
         interestRate: 0.06,
-        inflationRate: 0.03,
+        inflationRate: 3,
         savedForRetirement: 0,
         principal: function(){
             var socialSecurity = this.retirementLast * 12 * 1294;
